@@ -16,3 +16,18 @@
 4. **Requests for access to the [UTD19](https://utd19.ethz.ch) dataset**  
    - Sent two requests to download the dataset.  
    - **Status**: No response received.  
+
+# March 30
+
+I rushed into searching for the perfect dataset without even knowing exactly what I need or want for this project. I don’t think there is a quick and easy answer to my question, so in the next few weeks, I will read the studies I can find and explore the best way to generate the data myself using a digital replica of the city of Iași.
+
+Getting access to live camera feeds in the city seems nearly impossible—especially considering that a simple request has remained unanswered for over three weeks now. Even if I did get access, I would still need to implement a video-based traffic analysis algorithm, which would require a significant amount of time and resources.
+
+For now, I am looking into the option of recreating a realistic digital copy of Iași, or at least a large part of it, using data from OpenStreetMap and refining it where necessary with JOSM. I will dedicate some time to understanding the SUMO (Simulation of Urban MObility) software and attempting to simulate meaningful traffic data. As mentioned in *The Effect of the Dataset on Evaluating Urban Traffic Prediction* study, additional factors such as weather conditions play a crucial role in prediction models, so I will also investigate the feasibility of generating that data.
+
+## Next Steps
+
+- Replicating in digital the city of Iași
+- Generate at least some urban traffic data
+- Refine and improve the generated data for further analysis  
+
