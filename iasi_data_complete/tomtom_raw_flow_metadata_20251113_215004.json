@@ -1,0 +1,12 @@
+{
+  "execution_date": "2025-11-13",
+  "execution_time": "21:50:04",
+  "execution_datetime_iso": "2025-11-13T21:50:04.342749",
+  "total_records": 2469,
+  "input_file": "iasi_data_complete/traffic_flow_tiles.geojson",
+  "output_files": {
+    "ndjson": "tomtom_raw_flow_data_20251113_215004.ndjson",
+    "json": "tomtom_raw_flow_data_20251113_215004.json",
+    "metadata": "tomtom_raw_flow_metadata_20251113_215004.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "collection_time": "2025-11-08T11:17:56.789266",
+  "total_segments": 2469,
+  "total_length_km": 900.4633621312938,
+  "traffic_level": {
+    "average": 0.625076143878277,
+    "median": 0.6570000052452087,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "estimated_speeds_kmh": {
+    "average": 31.661680825952395,
+    "min": 0.0,
+    "max": 100.0
+  },
+  "congestion": {
+    "average_percentage": 37.49238561217229
+  },
+  "traffic_categories": {
+    "Free flow": 552,
+    "Heavy": 385,
+    "Light": 868,
+    "Moderate": 664
+  },
+  "road_type_statistics": {
+    "Connecting road": {
+      "count": 392,
+      "average_traffic_level": 0.6342270412691393,
+      "total_length_km": 174.525262666294
+    },
+    "Minor local road": {
+      "count": 599,
+      "average_traffic_level": 0.6939582635084158,
+      "total_length_km": 306.42827569415743
+    },
+    "International road": {
+      "count": 176,
+      "average_traffic_level": 0.5285909098403697,
+      "total_length_km": 52.570647745033995
+    },
+    "Major local road": {
+      "count": 271,
+      "average_traffic_level": 0.6059225087167482,
+      "total_length_km": 67.756156981114
+    },
+    "Secondary road": {
+      "count": 336,
+      "average_traffic_level": 0.5407678563413876,
+      "total_length_km": 95.48170518775619
+    },
+    "Local road": {
+      "count": 589,
+      "average_traffic_level": 0.6344499147176136,
+      "total_length_km": 167.64480158142513
+    },
+    "Major road": {
+      "count": 106,
+      "average_traffic_level": 0.6263113181405472,
+      "total_length_km": 36.05651227551312
+    }
+  }
+}
