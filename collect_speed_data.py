@@ -96,7 +96,7 @@ def main():
     print("\nCollecting traffic data from API...")
     raw_data = []
 
-    for idx, feature in enumerate(features[:1], 1):  # LIMIT TO 1 FOR TESTING
+    for idx, feature in enumerate(features, 1):
         # Extract geometric center of street
         lat, lon = extract_center_point(feature['geometry'])
         if not lat or not lon:
