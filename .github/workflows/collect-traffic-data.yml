@@ -5,13 +5,13 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 9 * * 1'
-    - cron: '20 9 * * 2'
-    - cron: '40 9 * * 3'
-    - cron: '0 10 * * 4'
-    - cron: '20 10 * * 5'
-    - cron: '0 10 * * 6'
-    - cron: '30 10 * * 0'
+    - cron: '0 11 * * 1'
+    - cron: '20 11 * * 2'
+    - cron: '40 11 * * 3'
+    - cron: '0 12 * * 4'
+    - cron: '20 12 * * 5'
+    - cron: '0 12 * * 6'
+    - cron: '30 12 * * 0'
 
   workflow_dispatch:
 
