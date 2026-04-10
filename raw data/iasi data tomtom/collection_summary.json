@@ -1,0 +1,97 @@
+{
+  "collection_time": "2025-11-05T17:32:10.144146",
+  "location": "Iași, Romania",
+  "bounding_box": {
+    "min_lat": 47.1,
+    "min_lon": 27.52,
+    "max_lat": 47.22,
+    "max_lon": 27.66
+  },
+  "files_collected": [
+    {
+      "filename": "tomtom_raw_flow_data.json",
+      "size_bytes": 29832182,
+      "size_mb": 28.45
+    },
+    {
+      "filename": "traffic_analysis_summary.json",
+      "size_bytes": 1312,
+      "size_mb": 0.0
+    },
+    {
+      "filename": "pois_records.ndjson",
+      "size_bytes": 1409851,
+      "size_mb": 1.34
+    },
+    {
+      "filename": "routing_records.ndjson",
+      "size_bytes": 11886,
+      "size_mb": 0.01
+    },
+    {
+      "filename": "traffic_flow_tiles.geojson",
+      "size_bytes": 3786782,
+      "size_mb": 3.61
+    },
+    {
+      "filename": "search_data.json",
+      "size_bytes": 1131675,
+      "size_mb": 1.08
+    },
+    {
+      "filename": "routing_data.json",
+      "size_bytes": 576871,
+      "size_mb": 0.55
+    },
+    {
+      "filename": "traffic_flow_records.ndjson",
+      "size_bytes": 536915,
+      "size_mb": 0.51
+    },
+    {
+      "filename": "pois.geojson",
+      "size_bytes": 4729195,
+      "size_mb": 4.51
+    },
+    {
+      "filename": "traffic_incidents_raw.json",
+      "size_bytes": 247086,
+      "size_mb": 0.24
+    },
+    {
+      "filename": "traffic_incidents_records.ndjson",
+      "size_bytes": 51503,
+      "size_mb": 0.05
+    },
+    {
+      "filename": "traffic_flow_analyzed.geojson",
+      "size_bytes": 1519307,
+      "size_mb": 1.45
+    },
+    {
+      "filename": "traffic_incidents.geojson",
+      "size_bytes": 252777,
+      "size_mb": 0.24
+    },
+    {
+      "filename": "tomtom_raw_flow_data.ndjson",
+      "size_bytes": 16466475,
+      "size_mb": 15.7
+    },
+    {
+      "filename": "pois_raw.json",
+      "size_bytes": 4179138,
+      "size_mb": 3.99
+    },
+    {
+      "filename": "collection_summary.json",
+      "size_bytes": 2066,
+      "size_mb": 0.0
+    },
+    {
+      "filename": "traffic_analysis_detailed.ndjson",
+      "size_bytes": 440566,
+      "size_mb": 0.42
+    }
+  ]
+}

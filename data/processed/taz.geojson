@@ -1,0 +1,485 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z01",
+        "name": "Centru",
+        "type": "commercial",
+        "weight": 9,
+        "centroid": [
+          27.587000000000003,
+          47.162000000000006
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.574,
+              47.154
+            ],
+            [
+              27.6,
+              47.154
+            ],
+            [
+              27.6,
+              47.17
+            ],
+            [
+              27.574,
+              47.17
+            ],
+            [
+              27.574,
+              47.154
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z02",
+        "name": "Podu Ros",
+        "type": "mixed",
+        "weight": 6,
+        "centroid": [
+          27.588500000000003,
+          47.147999999999996
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.577,
+              47.141
+            ],
+            [
+              27.6,
+              47.141
+            ],
+            [
+              27.6,
+              47.155
+            ],
+            [
+              27.577,
+              47.155
+            ],
+            [
+              27.577,
+              47.141
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z03",
+        "name": "Tatarasi Nord",
+        "type": "residential",
+        "weight": 8,
+        "centroid": [
+          27.61,
+          47.1665
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.595,
+              47.158
+            ],
+            [
+              27.625,
+              47.158
+            ],
+            [
+              27.625,
+              47.175
+            ],
+            [
+              27.595,
+              47.175
+            ],
+            [
+              27.595,
+              47.158
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z04",
+        "name": "Tatarasi Sud",
+        "type": "residential",
+        "weight": 7,
+        "centroid": [
+          27.606499999999997,
+          47.1495
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.595,
+              47.141
+            ],
+            [
+              27.618,
+              47.141
+            ],
+            [
+              27.618,
+              47.158
+            ],
+            [
+              27.595,
+              47.158
+            ],
+            [
+              27.595,
+              47.141
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z05",
+        "name": "Nicolina",
+        "type": "residential",
+        "weight": 9,
+        "centroid": [
+          27.57,
+          47.1475
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.555,
+              47.14
+            ],
+            [
+              27.585,
+              47.14
+            ],
+            [
+              27.585,
+              47.155
+            ],
+            [
+              27.555,
+              47.155
+            ],
+            [
+              27.555,
+              47.14
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z06",
+        "name": "Copou",
+        "type": "mixed",
+        "weight": 7,
+        "centroid": [
+          27.567999999999998,
+          47.180499999999995
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.55,
+              47.168
+            ],
+            [
+              27.586,
+              47.168
+            ],
+            [
+              27.586,
+              47.193
+            ],
+            [
+              27.55,
+              47.193
+            ],
+            [
+              27.55,
+              47.168
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z07",
+        "name": "Pacurari",
+        "type": "residential",
+        "weight": 7,
+        "centroid": [
+          27.55,
+          47.168
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.538,
+              47.158
+            ],
+            [
+              27.562,
+              47.158
+            ],
+            [
+              27.562,
+              47.178
+            ],
+            [
+              27.538,
+              47.178
+            ],
+            [
+              27.538,
+              47.158
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z08",
+        "name": "CUG",
+        "type": "residential",
+        "weight": 8,
+        "centroid": [
+          27.57,
+          47.1325
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.555,
+              47.125
+            ],
+            [
+              27.585,
+              47.125
+            ],
+            [
+              27.585,
+              47.14
+            ],
+            [
+              27.555,
+              47.14
+            ],
+            [
+              27.555,
+              47.125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z09",
+        "name": "Galata",
+        "type": "residential",
+        "weight": 5,
+        "centroid": [
+          27.547,
+          47.155
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.538,
+              47.148
+            ],
+            [
+              27.556,
+              47.148
+            ],
+            [
+              27.556,
+              47.162
+            ],
+            [
+              27.538,
+              47.162
+            ],
+            [
+              27.538,
+              47.148
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z10",
+        "name": "Tudor Vladimirescu",
+        "type": "residential",
+        "weight": 8,
+        "centroid": [
+          27.5945,
+          47.18
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.574,
+              47.17
+            ],
+            [
+              27.615,
+              47.17
+            ],
+            [
+              27.615,
+              47.19
+            ],
+            [
+              27.574,
+              47.19
+            ],
+            [
+              27.574,
+              47.17
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z11",
+        "name": "Gara Vest",
+        "type": "mixed",
+        "weight": 5,
+        "centroid": [
+          27.564500000000002,
+          47.161500000000004
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.555,
+              47.155
+            ],
+            [
+              27.574,
+              47.155
+            ],
+            [
+              27.574,
+              47.168
+            ],
+            [
+              27.555,
+              47.168
+            ],
+            [
+              27.555,
+              47.155
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z12",
+        "name": "Exterior",
+        "type": "external",
+        "weight": 6,
+        "centroid": [
+          27.585,
+          47.1565
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.505,
+              47.098
+            ],
+            [
+              27.665,
+              47.098
+            ],
+            [
+              27.665,
+              47.215
+            ],
+            [
+              27.505,
+              47.215
+            ],
+            [
+              27.505,
+              47.098
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
