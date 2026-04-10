@@ -1,0 +1,14 @@
+<configuration>
+    <input>
+        <net-file value="../network/iasi.net.xml"/>
+        <route-files value="../routes/routes_weekday.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="86400"/>
+        <step-length value="1"/>
+    </time>
+    <processing>
+        <ignore-route-errors value="true"/>
+    </processing>
+</configuration>
