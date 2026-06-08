@@ -1,0 +1,49 @@
+{
+  "prompt": "You are given a floor plan drawing. With no extra context, analyze it and return ONLY a JSON object:\n{\"building_type\": \"...\", \"num_floors\": <int>, \"floors\": [{\"floor_label\": \"...\", \"rooms\": [\"...\"]}], \"observations\": [\"...\"]}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"residential\",\n  \"num_floors\": 3,\n  \"floors\": [\n    {\n      \"floor_label\": \"Ground Floor\",\n      \"rooms\": [\n        \"Living Room\",\n        \"Kitchen\",\n        \"Dining Area\",\n        \"Staircase\",\n        \"Bathrooms\",\n        \"Storage\"\n      ]\n    },\n    {\n      \"floor_label\": \"First Floor\",\n      \"rooms\": [\n        \"Bedroom 1\",\n        \"Bedroom 2\",\n        \"Bedroom 3\",\n        \"Bathrooms\",\n        \"Staircase\",\n        \"Balcony\"\n      ]\n    },\n    {\n      \"floor_label\": \"Second Floor\",\n      \"rooms\": [\n        \"Master Bedroom\",\n        \"Walk-in Closet\",\n        \"Ensuite Bathroom\",\n        \"Study\",\n        \"Staircase\",\n        \"Terrace\"\n      ]\n    }\n  ],\n  \"observations\": [\n    \"The building has a spiral staircase connecting all floors.\",\n    \"Each floor includes at least one bathroom.\",\n    \"The top floor features a terrace or balcony.\",\n    \"The ground floor has an open-plan living area with kitchen and dining.\"\n  ]\n}",
+  "parsed": {
+    "building_type": "residential",
+    "num_floors": 3,
+    "floors": [
+      {
+        "floor_label": "Ground Floor",
+        "rooms": [
+          "Living Room",
+          "Kitchen",
+          "Dining Area",
+          "Staircase",
+          "Bathrooms",
+          "Storage"
+        ]
+      },
+      {
+        "floor_label": "First Floor",
+        "rooms": [
+          "Bedroom 1",
+          "Bedroom 2",
+          "Bedroom 3",
+          "Bathrooms",
+          "Staircase",
+          "Balcony"
+        ]
+      },
+      {
+        "floor_label": "Second Floor",
+        "rooms": [
+          "Master Bedroom",
+          "Walk-in Closet",
+          "Ensuite Bathroom",
+          "Study",
+          "Staircase",
+          "Terrace"
+        ]
+      }
+    ],
+    "observations": [
+      "The building has a spiral staircase connecting all floors.",
+      "Each floor includes at least one bathroom.",
+      "The top floor features a terrace or balcony.",
+      "The ground floor has an open-plan living area with kitchen and dining."
+    ]
+  }
+}

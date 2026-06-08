@@ -1,0 +1,57 @@
+{
+  "building_type": "single_family_house",
+  "floors": [
+    {
+      "level_index": 0,
+      "floor_label_original": "1. KERROS",
+      "floor_role": "ground",
+      "rooms": [
+        {"label": "KUISTI", "type_en": "porch", "position": "top-center"},
+        {"label": "PUKUH.", "type_en": "dressing_room", "position": "top-center"},
+        {"label": "HUONE 13.0", "type_en": "room", "position": "top-right"},
+        {"label": "LO", "type_en": "closet", "position": "top-left"},
+        {"label": "WC", "type_en": "toilet", "position": "top-left"},
+        {"label": "PESUH.", "type_en": "bathroom", "position": "center-left"},
+        {"label": "KEITTIO 17.0", "type_en": "kitchen", "position": "center-left"},
+        {"label": "OLOH. 21.4", "type_en": "living_room", "position": "center"},
+        {"label": "WC", "type_en": "toilet", "position": "bottom-center"},
+        {"label": "TEKN. 3.1", "type_en": "technical_room", "position": "bottom-left"},
+        {"label": "KHH", "type_en": "utility_room", "position": "bottom-left"},
+        {"label": "TK", "type_en": "technical_closet", "position": "bottom-center"},
+        {"label": "KUISTI", "type_en": "porch", "position": "bottom-center"}
+      ]
+    },
+    {
+      "level_index": 1,
+      "floor_label_original": "2. KERROS",
+      "floor_role": "upper",
+      "rooms": [
+        {"label": "PARVEKE", "type_en": "balcony", "position": "top-center"},
+        {"label": "MH 19.3", "type_en": "bedroom", "position": "top-left"},
+        {"label": "VH", "type_en": "hallway", "position": "top-right"},
+        {"label": "KYLPH.", "type_en": "bathroom", "position": "center-left"},
+        {"label": "AULA", "type_en": "hall", "position": "center"},
+        {"label": "AVOIN ALAS", "type_en": "open_to_below", "position": "center-right"},
+        {"label": "MH 8.2", "type_en": "bedroom", "position": "bottom-left"},
+        {"label": "MH 8.2", "type_en": "bedroom", "position": "bottom-right"}
+      ]
+    }
+  ],
+  "vertical_connections": [
+    {"type": "staircase", "connects_floors": [0, 1], "position": "center-right"}
+  ],
+  "ground_floor_adjacency": [
+    {"from": "KUISTI (top)", "to": "PUKUH.", "via": "door"},
+    {"from": "PUKUH.", "to": "HUONE 13.0", "via": "door"},
+    {"from": "PUKUH.", "to": "KEITTIO 17.0", "via": "door"},
+    {"from": "LO", "to": "WC (top)", "via": "door"},
+    {"from": "WC (top)", "to": "PESUH.", "via": "door"},
+    {"from": "PESUH.", "to": "KEITTIO 17.0", "via": "door"},
+    {"from": "KEITTIO 17.0", "to": "OLOH. 21.4", "via": "opening"},
+    {"from": "OLOH. 21.4", "to": "WC (bottom)", "via": "door"},
+    {"from": "OLOH. 21.4", "to": "KUISTI (bottom)", "via": "door"},
+    {"from": "KHH", "to": "KEITTIO 17.0", "via": "door"},
+    {"from": "TEKN. 3.1", "to": "KHH", "via": "door"},
+    {"from": "TK", "to": "OLOH. 21.4", "via": "door"}
+  ]
+}

@@ -1,0 +1,9 @@
+# Backend runs in pyenv 3.10.15, which already provides the geometry stack:
+#   torch, detectron2, opencv-python, numpy  (do NOT reinstall in a fresh venv)
+# App-level deps:
+fastapi
+uvicorn[standard]
+python-multipart
+httpx
+ezdxf==1.3.5  # DXF export (P5)
+shapely==2.1.2  # robust 2D polygon ops for the edit engine (split/merge/wall) + centerlines

@@ -1,0 +1,104 @@
+{
+  "prompt": "This is one drawing sheet of a single-family Finnish house showing several storeys side by side. Labels are Finnish abbreviations.\nFinnish glossary: MH=bedroom, OH=living room, K/KEITTIO=kitchen, RUOKAILUTILA/RUOKATILA=dining, KPH/PESUH=bathroom, WC=toilet, ET=entry hall, AULA=hall/landing, S/SAUNA=sauna, PUKUH=changing room, VH/KHH=utility room, TK=technical closet, VARASTO/VARAS=storage, AUTOTALLI=garage, PARVEKE=balcony, TERASSI=terrace, KELLARI=cellar, KATTILAHUONE=boiler room, TAKKAHUONE=fireplace room, VESIVARAAJA=water heater, ALKOVI=alcove, HALLI=hall. Floor labels: KELLARIKERROS=basement floor, (I/II) KERROS / KRS=storey, VINTTIKERROS=attic floor, POHJA=plan.\n\nExtract a STRICT structured representation. For every storey list its rooms with a coarse relative position. Identify vertical circulation (staircases that connect storeys). For the main/ground storey give a room adjacency list (which rooms are directly connected by a door or opening). Return ONLY JSON matching exactly:\n{\n  \"building_type\": \"single_family_house\",\n  \"floors\": [{\"level_index\": <int, 0=lowest>, \"floor_label_original\": \"...\",\n    \"floor_role\": \"basement|ground|upper|attic\",\n    \"rooms\": [{\"label\": \"...\", \"type_en\": \"...\", \"position\": \"top-left|top|top-right|left|center|right|bottom-left|bottom|bottom-right\"}]}],\n  \"vertical_connections\": [{\"via\": \"staircase\", \"connects_levels\": [<int>, <int>]}],\n  \"ground_floor_adjacency\": [{\"from\": \"...\", \"to\": \"...\", \"via\": \"door|opening\"}]\n}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"single_family_house\",\n  \"floors\": [\n    {\n      \"level_index\": 0,\n      \"floor_label_original\": \"POHJA I KRS\",\n      \"floor_role\": \"ground\",\n      \"rooms\": [\n        {\n          \"label\": \"MH\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"OH\",\n          \"type_en\": \"living room\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"K\",\n          \"type_en\": \"kitchen\",\n          \"position\": \"bottom-left\"\n        },\n        {\n          \"label\": \"ET\",\n          \"type_en\": \"entry hall\",\n          \"position\": \"bottom\"\n        },\n        {\n          \"label\": \"TK\",\n          \"type_en\": \"technical closet\",\n          \"position\": \"bottom-right\"\n        },\n        {\n          \"label\": \"WC\",\n          \"type_en\": \"toilet\",\n          \"position\": \"bottom-right\"\n        }\n      ]\n    },\n    {\n      \"level_index\": 1,\n      \"floor_label_original\": \"POHJA II KRS\",\n      \"floor_role\": \"upper\",\n      \"rooms\": [\n        {\n          \"label\": \"MH\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"PARVEKE\",\n          \"type_en\": \"balcony\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"AULA\",\n          \"type_en\": \"hall\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"ALKOVI\",\n          \"type_en\": \"alcove\",\n          \"position\": \"bottom-right\"\n        }\n      ]\n    }\n  ],\n  \"vertical_connections\": [\n    {\n      \"via\": \"staircase\",\n      \"connects_levels\": [0, 1]\n    }\n  ],\n  \"ground_floor_adjacency\": [\n    {\n      \"from\": \"OH\",\n      \"to\": \"ET\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"ET\",\n      \"to\": \"K\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"K\",\n      \"to\": \"TK\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"TK\",\n      \"to\": \"WC\",\n      \"via\": \"door\"\n    }\n  ]\n}",
+  "parsed": {
+    "building_type": "single_family_house",
+    "floors": [
+      {
+        "level_index": 0,
+        "floor_label_original": "POHJA I KRS",
+        "floor_role": "ground",
+        "rooms": [
+          {
+            "label": "MH",
+            "type_en": "bedroom",
+            "position": "top-left"
+          },
+          {
+            "label": "OH",
+            "type_en": "living room",
+            "position": "left"
+          },
+          {
+            "label": "K",
+            "type_en": "kitchen",
+            "position": "bottom-left"
+          },
+          {
+            "label": "ET",
+            "type_en": "entry hall",
+            "position": "bottom"
+          },
+          {
+            "label": "TK",
+            "type_en": "technical closet",
+            "position": "bottom-right"
+          },
+          {
+            "label": "WC",
+            "type_en": "toilet",
+            "position": "bottom-right"
+          }
+        ]
+      },
+      {
+        "level_index": 1,
+        "floor_label_original": "POHJA II KRS",
+        "floor_role": "upper",
+        "rooms": [
+          {
+            "label": "MH",
+            "type_en": "bedroom",
+            "position": "top-left"
+          },
+          {
+            "label": "PARVEKE",
+            "type_en": "balcony",
+            "position": "left"
+          },
+          {
+            "label": "AULA",
+            "type_en": "hall",
+            "position": "center"
+          },
+          {
+            "label": "ALKOVI",
+            "type_en": "alcove",
+            "position": "bottom-right"
+          }
+        ]
+      }
+    ],
+    "vertical_connections": [
+      {
+        "via": "staircase",
+        "connects_levels": [
+          0,
+          1
+        ]
+      }
+    ],
+    "ground_floor_adjacency": [
+      {
+        "from": "OH",
+        "to": "ET",
+        "via": "door"
+      },
+      {
+        "from": "ET",
+        "to": "K",
+        "via": "door"
+      },
+      {
+        "from": "K",
+        "to": "TK",
+        "via": "door"
+      },
+      {
+        "from": "TK",
+        "to": "WC",
+        "via": "door"
+      }
+    ]
+  }
+}

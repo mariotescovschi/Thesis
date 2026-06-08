@@ -1,0 +1,47 @@
+{
+  "prompt": "You are given a floor plan drawing. With no extra context, analyze it and return ONLY a JSON object:\n{\"building_type\": \"...\", \"num_floors\": <int>, \"floors\": [{\"floor_label\": \"...\", \"rooms\": [\"...\"]}], \"observations\": [\"...\"]}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"school\",\n  \"num_floors\": 2,\n  \"floors\": [\n    {\n      \"floor_label\": \"POHJA I KRS\",\n      \"rooms\": [\n        \"MH\",\n        \"OH\",\n        \"K\",\n        \"TK\",\n        \"WC\",\n        \"ET\",\n        \"HK\",\n        \"VE\",\n        \"TH/KODINH.H\",\n        \"PH\",\n        \"VH\",\n        \"S\",\n        \"BP\",\n        \"PT\",\n        \"TA\",\n        \"HK\"\n      ]\n    },\n    {\n      \"floor_label\": \"POHJA II KRS\",\n      \"rooms\": [\n        \"MH\",\n        \"AULA\",\n        \"PARVEKE\",\n        \"PH\",\n        \"ALKOVI\",\n        \"ALKOVI\"\n      ]\n    }\n  ],\n  \"observations\": [\n    \"The first floor (POHJA I KRS) includes administrative and classroom spaces (MH, OH, K, TK, etc.) as well as technical rooms (PH, VH, S, etc.).\",\n    \"The second floor (POHJA II KRS) is dedicated to larger public spaces including an AULA, PARVEKE (likely a gymnasium or sports hall), and ALKOVI (alcoves or storage areas).\",\n    \"Both floors have labeled dimensions and architectural details such as doors, windows, and staircases.\"\n  ]\n}",
+  "parsed": {
+    "building_type": "school",
+    "num_floors": 2,
+    "floors": [
+      {
+        "floor_label": "POHJA I KRS",
+        "rooms": [
+          "MH",
+          "OH",
+          "K",
+          "TK",
+          "WC",
+          "ET",
+          "HK",
+          "VE",
+          "TH/KODINH.H",
+          "PH",
+          "VH",
+          "S",
+          "BP",
+          "PT",
+          "TA",
+          "HK"
+        ]
+      },
+      {
+        "floor_label": "POHJA II KRS",
+        "rooms": [
+          "MH",
+          "AULA",
+          "PARVEKE",
+          "PH",
+          "ALKOVI",
+          "ALKOVI"
+        ]
+      }
+    ],
+    "observations": [
+      "The first floor (POHJA I KRS) includes administrative and classroom spaces (MH, OH, K, TK, etc.) as well as technical rooms (PH, VH, S, etc.).",
+      "The second floor (POHJA II KRS) is dedicated to larger public spaces including an AULA, PARVEKE (likely a gymnasium or sports hall), and ALKOVI (alcoves or storage areas).",
+      "Both floors have labeled dimensions and architectural details such as doors, windows, and staircases."
+    ]
+  }
+}

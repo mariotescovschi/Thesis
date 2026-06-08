@@ -1,0 +1,54 @@
+{
+  "prompt": "You are given a floor plan drawing. With no extra context, analyze it and return ONLY a JSON object:\n{\"building_type\": \"...\", \"num_floors\": <int>, \"floors\": [{\"floor_label\": \"...\", \"rooms\": [\"...\"]}], \"observations\": [\"...\"]}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"residential\",\n  \"num_floors\": 3,\n  \"floors\": [\n    {\n      \"floor_label\": \"KELLARIKERROS\",\n      \"rooms\": [\n        \"KELLARI\",\n        \"PESUH\",\n        \"GAUNA\",\n        \"VARASTO\",\n        \"PUKUH\",\n        \"VESIMARAÄÄ\",\n        \"KATTILAHUDNE\",\n        \"WC\",\n        \"ET\",\n        \"VERSTAS/TYÖHUONE\",\n        \"TAIKKAHUONE/MH\",\n        \"AUTOTALLI\"\n      ]\n    },\n    {\n      \"floor_label\": \"I KERROS\",\n      \"rooms\": [\n        \"KEITTIO\",\n        \"KÄHH\",\n        \"WC\",\n        \"ET\",\n        \"RUOKATILA\",\n        \"PARVEKE\"\n      ]\n    },\n    {\n      \"floor_label\": \"VINTTIKERROS\",\n      \"rooms\": [\n        \"VARASTO\",\n        \"HALLI\",\n        \"le-pelikki\",\n        \"lp-ulkik\",\n        \"KATETTU PARVEKE\",\n        \"VARASTO\"\n      ]\n    }\n  ],\n  \"observations\": [\n    \"The building has three levels: basement (Kellarikerros), ground floor (I Kerros), and attic (Vinttikerros).\",\n    \"Each floor is labeled with its Finnish name and scale (1/50).\",\n    \"Rooms are labeled in Finnish, including utility spaces like WC, storage (Varasto), and living areas.\"\n  ]\n}",
+  "parsed": {
+    "building_type": "residential",
+    "num_floors": 3,
+    "floors": [
+      {
+        "floor_label": "KELLARIKERROS",
+        "rooms": [
+          "KELLARI",
+          "PESUH",
+          "GAUNA",
+          "VARASTO",
+          "PUKUH",
+          "VESIMARAÄÄ",
+          "KATTILAHUDNE",
+          "WC",
+          "ET",
+          "VERSTAS/TYÖHUONE",
+          "TAIKKAHUONE/MH",
+          "AUTOTALLI"
+        ]
+      },
+      {
+        "floor_label": "I KERROS",
+        "rooms": [
+          "KEITTIO",
+          "KÄHH",
+          "WC",
+          "ET",
+          "RUOKATILA",
+          "PARVEKE"
+        ]
+      },
+      {
+        "floor_label": "VINTTIKERROS",
+        "rooms": [
+          "VARASTO",
+          "HALLI",
+          "le-pelikki",
+          "lp-ulkik",
+          "KATETTU PARVEKE",
+          "VARASTO"
+        ]
+      }
+    ],
+    "observations": [
+      "The building has three levels: basement (Kellarikerros), ground floor (I Kerros), and attic (Vinttikerros).",
+      "Each floor is labeled with its Finnish name and scale (1/50).",
+      "Rooms are labeled in Finnish, including utility spaces like WC, storage (Varasto), and living areas."
+    ]
+  }
+}

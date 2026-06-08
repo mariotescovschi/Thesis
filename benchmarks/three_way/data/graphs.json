@@ -1,0 +1,7689 @@
+{
+  "333": {
+    "rooms": [
+      {
+        "id": 14,
+        "area_pct": 16.5,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 8.3,
+        "position": "left"
+      },
+      {
+        "id": 23,
+        "area_pct": 7.3,
+        "position": "right"
+      },
+      {
+        "id": 15,
+        "area_pct": 4.8,
+        "position": "top-right"
+      },
+      {
+        "id": 18,
+        "area_pct": 4.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 4.1,
+        "position": "center"
+      },
+      {
+        "id": 21,
+        "area_pct": 4.0,
+        "position": "top-center"
+      },
+      {
+        "id": 19,
+        "area_pct": 2.2,
+        "position": "top-right"
+      },
+      {
+        "id": 16,
+        "area_pct": 1.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 5,
+        "b": 15
+      },
+      {
+        "a": 5,
+        "b": 20
+      },
+      {
+        "a": 14,
+        "b": 17
+      },
+      {
+        "a": 15,
+        "b": 19
+      },
+      {
+        "a": 16,
+        "b": 18
+      },
+      {
+        "a": 16,
+        "b": 20
+      }
+    ],
+    "n_doors": 6,
+    "n_windows": 8,
+    "text": "DETECTED STRUCTURE (9 rooms, 6 doors, 8 windows):\nRooms by area (largest first):\n  A: 16.5% of plan area, located center\n  B: 8.3% of plan area, located left\n  C: 7.3% of plan area, located right\n  D: 4.8% of plan area, located top-right\n  E: 4.4% of plan area, located bottom-center\n  F: 4.1% of plan area, located center\n  G: 4.0% of plan area, located top-center\n  H: 2.2% of plan area, located top-right\n  I: 1.9% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  F <-> D\n  A <-> B\n  D <-> H\n  I <-> E"
+  },
+  "1654": {
+    "rooms": [
+      {
+        "id": 7,
+        "area_pct": 12.0,
+        "position": "center"
+      },
+      {
+        "id": 3,
+        "area_pct": 11.6,
+        "position": "top-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 7.7,
+        "position": "left"
+      },
+      {
+        "id": 6,
+        "area_pct": 7.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 5.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.5,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 3,
+        "b": 7
+      },
+      {
+        "a": 4,
+        "b": 6
+      },
+      {
+        "a": 4,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 6
+      }
+    ],
+    "n_doors": 4,
+    "n_windows": 1,
+    "text": "DETECTED STRUCTURE (6 rooms, 4 doors, 1 windows):\nRooms by area (largest first):\n  A: 12.0% of plan area, located center\n  B: 11.6% of plan area, located top-center\n  C: 7.7% of plan area, located left\n  D: 7.3% of plan area, located bottom-center\n  E: 5.3% of plan area, located bottom-center\n  F: 3.5% of plan area, located center\nConnections (rooms sharing a door):\n  B <-> C\n  B <-> A\n  C <-> D\n  C <-> A\n  E <-> D"
+  },
+  "5559": {
+    "rooms": [
+      {
+        "id": 13,
+        "area_pct": 7.6,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 7.3,
+        "position": "top-center"
+      },
+      {
+        "id": 22,
+        "area_pct": 5.6,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 3.2,
+        "position": "top-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 3.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 24,
+        "area_pct": 3.1,
+        "position": "top-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.9,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.7,
+        "position": "bottom-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.3,
+        "position": "center"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 1,
+        "b": 22
+      },
+      {
+        "a": 1,
+        "b": 26
+      },
+      {
+        "a": 8,
+        "b": 22
+      },
+      {
+        "a": 9,
+        "b": 23
+      },
+      {
+        "a": 12,
+        "b": 19
+      },
+      {
+        "a": 12,
+        "b": 22
+      },
+      {
+        "a": 13,
+        "b": 19
+      },
+      {
+        "a": 19,
+        "b": 20
+      },
+      {
+        "a": 19,
+        "b": 22
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 17,
+    "text": "DETECTED STRUCTURE (9 rooms, 10 doors, 17 windows):\nRooms by area (largest first):\n  A: 7.6% of plan area, located top-left\n  B: 7.3% of plan area, located top-center\n  C: 5.6% of plan area, located center\n  D: 3.2% of plan area, located top-center\n  E: 3.1% of plan area, located bottom-center\n  F: 3.1% of plan area, located top-right\n  G: 1.3% of plan area, located bottom-center\n  H: 1.2% of plan area, located bottom-center\n  I: 1.0% of plan area, located center\nConnections (rooms sharing a door):\n  H <-> C\n  G <-> I\n  A <-> D\n  D <-> C"
+  },
+  "3015": {
+    "rooms": [
+      {
+        "id": 27,
+        "area_pct": 4.4,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 4.0,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 3.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 3.2,
+        "position": "right"
+      },
+      {
+        "id": 23,
+        "area_pct": 3.2,
+        "position": "top-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 2.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 2.3,
+        "position": "right"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.3,
+        "position": "right"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.3,
+        "position": "center"
+      },
+      {
+        "id": 22,
+        "area_pct": 2.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 3,
+        "area_pct": 2.0,
+        "position": "left"
+      },
+      {
+        "id": 21,
+        "area_pct": 1.5,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 26,
+        "area_pct": 1.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.0,
+        "position": "left"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.5,
+        "position": "bottom-right"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 13,
+        "b": 15
+      },
+      {
+        "a": 14,
+        "b": 27
+      },
+      {
+        "a": 15,
+        "b": 17
+      },
+      {
+        "a": 15,
+        "b": 21
+      },
+      {
+        "a": 18,
+        "b": 19
+      },
+      {
+        "a": 19,
+        "b": 22
+      },
+      {
+        "a": 19,
+        "b": 26
+      },
+      {
+        "a": 23,
+        "b": 27
+      }
+    ],
+    "n_doors": 18,
+    "n_windows": 24,
+    "text": "DETECTED STRUCTURE (15 rooms, 18 doors, 24 windows):\nRooms by area (largest first):\n  A: 4.4% of plan area, located left\n  B: 4.0% of plan area, located center\n  C: 3.8% of plan area, located bottom-left\n  D: 3.2% of plan area, located right\n  E: 3.2% of plan area, located top-center\n  F: 2.6% of plan area, located bottom-center\n  G: 2.3% of plan area, located right\n  H: 2.3% of plan area, located right\n  I: 2.3% of plan area, located center\n  J: 2.3% of plan area, located bottom-left\n  K: 2.0% of plan area, located left\n  L: 1.5% of plan area, located bottom-right\n  M: 1.2% of plan area, located bottom-right\n  N: 1.2% of plan area, located bottom-left\n  O: 1.0% of plan area, located left\nConnections (rooms sharing a door):\n  G <-> M\n  I <-> D\n  B <-> A\n  D <-> L\n  O <-> C\n  C <-> J\n  C <-> N\n  E <-> A"
+  },
+  "5748": {
+    "rooms": [
+      {
+        "id": 12,
+        "area_pct": 10.2,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 9.1,
+        "position": "right"
+      },
+      {
+        "id": 7,
+        "area_pct": 5.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 5.0,
+        "position": "top-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 4.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 3.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.1,
+        "position": "center"
+      },
+      {
+        "id": 15,
+        "area_pct": 3.0,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 2.5,
+        "position": "top-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 2.3,
+        "position": "top-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 1.8,
+        "position": "top-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 1.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 17,
+        "area_pct": 1.2,
+        "position": "top-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.9,
+        "position": "left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.8,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.1,
+        "position": "top-center"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 1,
+        "b": 12
+      },
+      {
+        "a": 2,
+        "b": 12
+      },
+      {
+        "a": 4,
+        "b": 13
+      },
+      {
+        "a": 4,
+        "b": 17
+      },
+      {
+        "a": 5,
+        "b": 10
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 8
+      },
+      {
+        "a": 6,
+        "b": 15
+      },
+      {
+        "a": 7,
+        "b": 16
+      },
+      {
+        "a": 11,
+        "b": 15
+      },
+      {
+        "a": 12,
+        "b": 13
+      },
+      {
+        "a": 14,
+        "b": 15
+      }
+    ],
+    "n_doors": 11,
+    "n_windows": 13,
+    "text": "DETECTED STRUCTURE (13 rooms, 11 doors, 13 windows):\nRooms by area (largest first):\n  A: 10.2% of plan area, located center\n  B: 9.1% of plan area, located right\n  C: 5.3% of plan area, located bottom-center\n  D: 5.0% of plan area, located top-left\n  E: 4.9% of plan area, located bottom-center\n  F: 3.8% of plan area, located bottom-left\n  G: 3.1% of plan area, located center\n  H: 3.0% of plan area, located left\n  I: 2.5% of plan area, located top-right\n  J: 2.3% of plan area, located top-center\n  K: 1.8% of plan area, located top-right\n  L: 1.3% of plan area, located bottom-left\n  M: 1.2% of plan area, located top-center\nConnections (rooms sharing a door):\n  J <-> A\n  K <-> G\n  K <-> M\n  B <-> I\n  B <-> G\n  F <-> H\n  C <-> E\n  L <-> H\n  A <-> G"
+  },
+  "6244": {
+    "rooms": [
+      {
+        "id": 12,
+        "area_pct": 4.5,
+        "position": "center"
+      },
+      {
+        "id": 7,
+        "area_pct": 4.3,
+        "position": "top-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 4.3,
+        "position": "center"
+      },
+      {
+        "id": 4,
+        "area_pct": 4.0,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 3.3,
+        "position": "left"
+      },
+      {
+        "id": 15,
+        "area_pct": 2.3,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.2,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 1.5,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.9,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.8,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 3,
+        "b": 8
+      },
+      {
+        "a": 4,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 8
+      },
+      {
+        "a": 6,
+        "b": 11
+      },
+      {
+        "a": 7,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 15
+      },
+      {
+        "a": 8,
+        "b": 9
+      },
+      {
+        "a": 8,
+        "b": 11
+      },
+      {
+        "a": 8,
+        "b": 12
+      },
+      {
+        "a": 9,
+        "b": 15
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 7,
+    "text": "DETECTED STRUCTURE (8 rooms, 10 doors, 7 windows):\nRooms by area (largest first):\n  A: 4.5% of plan area, located center\n  B: 4.3% of plan area, located top-center\n  C: 4.3% of plan area, located center\n  D: 4.0% of plan area, located top-center\n  E: 3.3% of plan area, located left\n  F: 2.3% of plan area, located top-left\n  G: 2.2% of plan area, located left\n  H: 1.5% of plan area, located center\nConnections (rooms sharing a door):\n  D <-> B\n  B <-> G\n  B <-> F\n  E <-> G\n  E <-> H\n  E <-> A\n  G <-> F"
+  },
+  "7842": {
+    "rooms": [
+      {
+        "id": 5,
+        "area_pct": 13.8,
+        "position": "right"
+      },
+      {
+        "id": 9,
+        "area_pct": 8.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 8.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 8.4,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 7.2,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 4.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 3.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 7,
+        "area_pct": 2.2,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 2,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 6
+      },
+      {
+        "a": 3,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 9
+      }
+    ],
+    "n_doors": 5,
+    "n_windows": 10,
+    "text": "DETECTED STRUCTURE (8 rooms, 5 doors, 10 windows):\nRooms by area (largest first):\n  A: 13.8% of plan area, located right\n  B: 8.8% of plan area, located bottom-left\n  C: 8.7% of plan area, located bottom-center\n  D: 8.4% of plan area, located top-center\n  E: 7.2% of plan area, located left\n  F: 4.6% of plan area, located bottom-center\n  G: 3.8% of plan area, located bottom-right\n  H: 2.2% of plan area, located left\nConnections (rooms sharing a door):\n  G <-> F\n  D <-> A\n  F <-> C\n  F <-> B\n  H <-> B"
+  },
+  "555": {
+    "rooms": [
+      {
+        "id": 10,
+        "area_pct": 7.6,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 5.2,
+        "position": "top-right"
+      },
+      {
+        "id": 13,
+        "area_pct": 4.1,
+        "position": "bottom-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 3.8,
+        "position": "right"
+      },
+      {
+        "id": 20,
+        "area_pct": 3.2,
+        "position": "top-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 2.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.3,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 1.7,
+        "position": "bottom-right"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 28,
+        "area_pct": 1.2,
+        "position": "center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.9,
+        "position": "right"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.8,
+        "position": "top-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.6,
+        "position": "center"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.1,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.1,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 14
+      },
+      {
+        "a": 1,
+        "b": 28
+      },
+      {
+        "a": 6,
+        "b": 20
+      },
+      {
+        "a": 7,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 28
+      },
+      {
+        "a": 12,
+        "b": 28
+      }
+    ],
+    "n_doors": 6,
+    "n_windows": 7,
+    "text": "DETECTED STRUCTURE (12 rooms, 6 doors, 7 windows):\nRooms by area (largest first):\n  A: 7.6% of plan area, located center\n  B: 5.2% of plan area, located top-right\n  C: 4.1% of plan area, located bottom-left\n  D: 3.8% of plan area, located right\n  E: 3.2% of plan area, located top-center\n  F: 2.5% of plan area, located bottom-left\n  G: 2.3% of plan area, located center\n  H: 1.7% of plan area, located bottom-right\n  I: 1.6% of plan area, located bottom-center\n  J: 1.2% of plan area, located bottom-right\n  K: 1.2% of plan area, located bottom-center\n  L: 1.2% of plan area, located center\nConnections (rooms sharing a door):\n  D <-> L\n  B <-> E\n  J <-> K\n  J <-> L"
+  },
+  "9885": {
+    "rooms": [
+      {
+        "id": 13,
+        "area_pct": 3.4,
+        "position": "top-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 2.4,
+        "position": "top-right"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.5,
+        "position": "right"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 14,
+        "area_pct": 1.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.1,
+        "position": "left"
+      },
+      {
+        "id": 24,
+        "area_pct": 1.1,
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 1.0,
+        "position": "top-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 1.0,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.8,
+        "position": "center"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.7,
+        "position": "center"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.4,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 3,
+        "b": 23
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 15
+      },
+      {
+        "a": 13,
+        "b": 17
+      },
+      {
+        "a": 13,
+        "b": 26
+      }
+    ],
+    "n_doors": 14,
+    "n_windows": 9,
+    "text": "DETECTED STRUCTURE (13 rooms, 14 doors, 9 windows):\nRooms by area (largest first):\n  A: 3.4% of plan area, located top-center\n  B: 2.4% of plan area, located top-right\n  C: 2.3% of plan area, located bottom-left\n  D: 1.5% of plan area, located right\n  E: 1.3% of plan area, located bottom-right\n  F: 1.1% of plan area, located bottom-center\n  G: 1.1% of plan area, located left\n  H: 1.1% of plan area, located left\n  I: 1.0% of plan area, located center\n  J: 1.0% of plan area, located top-left\n  K: 1.0% of plan area, located center\n  L: 1.0% of plan area, located top-center\n  M: 1.0% of plan area, located right\nConnections (rooms sharing a door):\n  D <-> M\n  J <-> A\n  A <-> L"
+  },
+  "6136": {
+    "rooms": [
+      {
+        "id": 4,
+        "area_pct": 9.5,
+        "position": "center"
+      },
+      {
+        "id": 33,
+        "area_pct": 4.9,
+        "position": "right"
+      },
+      {
+        "id": 9,
+        "area_pct": 3.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 35,
+        "area_pct": 3.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 23,
+        "area_pct": 3.0,
+        "position": "top-center"
+      },
+      {
+        "id": 34,
+        "area_pct": 3.0,
+        "position": "center"
+      },
+      {
+        "id": 27,
+        "area_pct": 2.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 28,
+        "area_pct": 2.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 29,
+        "area_pct": 2.3,
+        "position": "left"
+      },
+      {
+        "id": 6,
+        "area_pct": 2.1,
+        "position": "top-center"
+      },
+      {
+        "id": 32,
+        "area_pct": 2.0,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.7,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.1,
+        "position": "top-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.9,
+        "position": "top-right"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.7,
+        "position": "left"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.5,
+        "position": "left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.5,
+        "position": "top-right"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 30,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 7
+      },
+      {
+        "a": 1,
+        "b": 23
+      },
+      {
+        "a": 1,
+        "b": 26
+      },
+      {
+        "a": 3,
+        "b": 7
+      },
+      {
+        "a": 4,
+        "b": 25
+      },
+      {
+        "a": 4,
+        "b": 27
+      },
+      {
+        "a": 7,
+        "b": 26
+      },
+      {
+        "a": 7,
+        "b": 34
+      },
+      {
+        "a": 8,
+        "b": 15
+      },
+      {
+        "a": 9,
+        "b": 28
+      },
+      {
+        "a": 10,
+        "b": 23
+      },
+      {
+        "a": 15,
+        "b": 29
+      },
+      {
+        "a": 18,
+        "b": 25
+      },
+      {
+        "a": 23,
+        "b": 26
+      },
+      {
+        "a": 23,
+        "b": 34
+      }
+    ],
+    "n_doors": 20,
+    "n_windows": 12,
+    "text": "DETECTED STRUCTURE (14 rooms, 20 doors, 12 windows):\nRooms by area (largest first):\n  A: 9.5% of plan area, located center\n  B: 4.9% of plan area, located right\n  C: 3.5% of plan area, located bottom-center\n  D: 3.2% of plan area, located bottom-right\n  E: 3.0% of plan area, located top-center\n  F: 3.0% of plan area, located center\n  G: 2.5% of plan area, located bottom-left\n  H: 2.4% of plan area, located bottom-center\n  I: 2.3% of plan area, located left\n  J: 2.1% of plan area, located top-center\n  K: 2.0% of plan area, located center\n  L: 1.8% of plan area, located bottom-center\n  M: 1.7% of plan area, located right\n  N: 1.1% of plan area, located top-right\nConnections (rooms sharing a door):\n  A <-> G\n  M <-> F\n  C <-> H\n  N <-> E\n  E <-> F"
+  },
+  "1611": {
+    "rooms": [
+      {
+        "id": 3,
+        "area_pct": 18.8,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 11.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 8.2,
+        "position": "top-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 5.9,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.1,
+        "position": "bottom-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 1,
+        "b": 6
+      },
+      {
+        "a": 3,
+        "b": 7
+      },
+      {
+        "a": 4,
+        "b": 6
+      }
+    ],
+    "n_doors": 4,
+    "n_windows": 2,
+    "text": "DETECTED STRUCTURE (5 rooms, 4 doors, 2 windows):\nRooms by area (largest first):\n  A: 18.8% of plan area, located center\n  B: 11.2% of plan area, located bottom-center\n  C: 8.2% of plan area, located top-left\n  D: 5.9% of plan area, located left\n  E: 2.8% of plan area, located bottom-left\nConnections (rooms sharing a door):\n  D <-> B\n  A <-> C"
+  },
+  "8154": {
+    "rooms": [
+      {
+        "id": 10,
+        "area_pct": 21.6,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 13.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 8.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 7.2,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 4.2,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 3.8,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 3.3,
+        "position": "left"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.7,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 11
+      },
+      {
+        "a": 1,
+        "b": 12
+      },
+      {
+        "a": 2,
+        "b": 12
+      },
+      {
+        "a": 10,
+        "b": 12
+      },
+      {
+        "a": 12,
+        "b": 13
+      }
+    ],
+    "n_doors": 5,
+    "n_windows": 4,
+    "text": "DETECTED STRUCTURE (7 rooms, 5 doors, 4 windows):\nRooms by area (largest first):\n  A: 21.6% of plan area, located top-center\n  B: 13.1% of plan area, located bottom-center\n  C: 8.2% of plan area, located bottom-right\n  D: 7.2% of plan area, located right\n  E: 4.2% of plan area, located left\n  F: 3.8% of plan area, located left\n  G: 3.3% of plan area, located left\nConnections (rooms sharing a door):\n  F <-> G\n  F <-> D\n  C <-> D\n  A <-> D\n  D <-> B"
+  },
+  "6257": {
+    "rooms": [
+      {
+        "id": 5,
+        "area_pct": 17.5,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 12.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 4.9,
+        "position": "top-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 4.8,
+        "position": "top-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.5,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 4.3,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 3.7,
+        "position": "bottom-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.3,
+        "position": "center"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 1,
+        "b": 5
+      },
+      {
+        "a": 2,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 9
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 5,
+        "b": 9
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 10,
+        "b": 11
+      }
+    ],
+    "n_doors": 6,
+    "n_windows": 10,
+    "text": "DETECTED STRUCTURE (7 rooms, 6 doors, 10 windows):\nRooms by area (largest first):\n  A: 17.5% of plan area, located center\n  B: 12.2% of plan area, located bottom-center\n  C: 4.9% of plan area, located top-left\n  D: 4.8% of plan area, located top-right\n  E: 4.5% of plan area, located left\n  F: 4.3% of plan area, located right\n  G: 3.7% of plan area, located bottom-right\nConnections (rooms sharing a door):\n  E <-> A\n  D <-> A\n  A <-> C\n  A <-> B\n  B <-> G\n  G <-> F"
+  },
+  "6339": {
+    "rooms": [
+      {
+        "id": 6,
+        "area_pct": 13.5,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 4.4,
+        "position": "right"
+      },
+      {
+        "id": 2,
+        "area_pct": 4.3,
+        "position": "top-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 4.1,
+        "position": "top-center"
+      },
+      {
+        "id": 9,
+        "area_pct": 4.0,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 3.9,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 3.1,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.1,
+        "position": "top-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 1.7,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.5,
+        "position": "right"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.1,
+        "position": "center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 2,
+        "b": 12
+      },
+      {
+        "a": 3,
+        "b": 12
+      },
+      {
+        "a": 4,
+        "b": 6
+      },
+      {
+        "a": 4,
+        "b": 11
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 5,
+        "b": 8
+      },
+      {
+        "a": 6,
+        "b": 11
+      },
+      {
+        "a": 7,
+        "b": 12
+      },
+      {
+        "a": 9,
+        "b": 12
+      },
+      {
+        "a": 10,
+        "b": 12
+      }
+    ],
+    "n_doors": 9,
+    "n_windows": 9,
+    "text": "DETECTED STRUCTURE (11 rooms, 9 doors, 9 windows):\nRooms by area (largest first):\n  A: 13.5% of plan area, located left\n  B: 4.4% of plan area, located right\n  C: 4.3% of plan area, located top-right\n  D: 4.2% of plan area, located bottom-center\n  E: 4.1% of plan area, located top-center\n  F: 4.0% of plan area, located center\n  G: 3.9% of plan area, located center\n  H: 3.1% of plan area, located top-left\n  I: 2.1% of plan area, located top-center\n  J: 1.7% of plan area, located center\n  K: 1.5% of plan area, located right\nConnections (rooms sharing a door):\n  D <-> J\n  C <-> G\n  B <-> G\n  J <-> A\n  H <-> A\n  H <-> I\n  E <-> G\n  F <-> G\n  K <-> G"
+  },
+  "1241": {
+    "rooms": [
+      {
+        "id": 1,
+        "area_pct": 9.7,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 8.0,
+        "position": "right"
+      },
+      {
+        "id": 9,
+        "area_pct": 5.9,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 4.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 4.0,
+        "position": "top-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 4.0,
+        "position": "center"
+      },
+      {
+        "id": 7,
+        "area_pct": 3.2,
+        "position": "right"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.0,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.6,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 3,
+        "b": 6
+      },
+      {
+        "a": 4,
+        "b": 11
+      },
+      {
+        "a": 4,
+        "b": 12
+      },
+      {
+        "a": 6,
+        "b": 7
+      },
+      {
+        "a": 6,
+        "b": 12
+      },
+      {
+        "a": 7,
+        "b": 10
+      }
+    ],
+    "n_doors": 7,
+    "n_windows": 7,
+    "text": "DETECTED STRUCTURE (10 rooms, 7 doors, 7 windows):\nRooms by area (largest first):\n  A: 9.7% of plan area, located left\n  B: 8.0% of plan area, located right\n  C: 5.9% of plan area, located left\n  D: 4.4% of plan area, located bottom-right\n  E: 4.0% of plan area, located top-left\n  F: 4.0% of plan area, located center\n  G: 3.2% of plan area, located right\n  H: 2.1% of plan area, located bottom-center\n  I: 2.0% of plan area, located center\n  J: 1.6% of plan area, located right\nConnections (rooms sharing a door):\n  A <-> E\n  B <-> F\n  H <-> D\n  H <-> I\n  F <-> G\n  F <-> I\n  G <-> J"
+  },
+  "3164": {
+    "rooms": [
+      {
+        "id": 2,
+        "area_pct": 9.4,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 9.4,
+        "position": "top-center"
+      },
+      {
+        "id": 25,
+        "area_pct": 6.2,
+        "position": "right"
+      },
+      {
+        "id": 15,
+        "area_pct": 4.1,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 3.7,
+        "position": "center"
+      },
+      {
+        "id": 3,
+        "area_pct": 2.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.1,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 2.0,
+        "position": "top-right"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.9,
+        "position": "bottom-right"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.6,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.5,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 2,
+        "b": 5
+      },
+      {
+        "a": 2,
+        "b": 8
+      },
+      {
+        "a": 2,
+        "b": 9
+      },
+      {
+        "a": 3,
+        "b": 13
+      },
+      {
+        "a": 3,
+        "b": 17
+      },
+      {
+        "a": 4,
+        "b": 13
+      },
+      {
+        "a": 5,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 25
+      },
+      {
+        "a": 6,
+        "b": 13
+      },
+      {
+        "a": 7,
+        "b": 10
+      },
+      {
+        "a": 8,
+        "b": 15
+      },
+      {
+        "a": 13,
+        "b": 18
+      },
+      {
+        "a": 19,
+        "b": 25
+      }
+    ],
+    "n_doors": 17,
+    "n_windows": 10,
+    "text": "DETECTED STRUCTURE (13 rooms, 17 doors, 10 windows):\nRooms by area (largest first):\n  A: 9.4% of plan area, located center\n  B: 9.4% of plan area, located top-center\n  C: 6.2% of plan area, located right\n  D: 4.1% of plan area, located left\n  E: 3.7% of plan area, located center\n  F: 2.7% of plan area, located bottom-left\n  G: 2.5% of plan area, located bottom-left\n  H: 2.4% of plan area, located bottom-center\n  I: 2.4% of plan area, located bottom-center\n  J: 2.1% of plan area, located center\n  K: 2.0% of plan area, located top-right\n  L: 1.5% of plan area, located bottom-center\n  M: 1.0% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  E <-> A\n  A <-> J\n  A <-> B\n  A <-> I\n  F <-> G\n  H <-> G\n  J <-> L\n  J <-> C\n  B <-> D\n  G <-> M\n  K <-> C"
+  },
+  "5566": {
+    "rooms": [
+      {
+        "id": 4,
+        "area_pct": 12.6,
+        "position": "top-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 6.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 17,
+        "area_pct": 6.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 5.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 5.5,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 4.0,
+        "position": "left"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.4,
+        "position": "top-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 1.9,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.6,
+        "position": "right"
+      },
+      {
+        "id": 16,
+        "area_pct": 1.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.3,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.2,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 1,
+        "b": 15
+      },
+      {
+        "a": 2,
+        "b": 19
+      },
+      {
+        "a": 3,
+        "b": 17
+      },
+      {
+        "a": 5,
+        "b": 7
+      },
+      {
+        "a": 6,
+        "b": 7
+      },
+      {
+        "a": 7,
+        "b": 15
+      },
+      {
+        "a": 7,
+        "b": 17
+      },
+      {
+        "a": 7,
+        "b": 18
+      },
+      {
+        "a": 16,
+        "b": 18
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 10,
+    "text": "DETECTED STRUCTURE (15 rooms, 12 doors, 10 windows):\nRooms by area (largest first):\n  A: 12.6% of plan area, located top-center\n  B: 6.4% of plan area, located bottom-right\n  C: 6.2% of plan area, located bottom-left\n  D: 5.6% of plan area, located bottom-left\n  E: 5.5% of plan area, located center\n  F: 4.0% of plan area, located left\n  G: 3.4% of plan area, located top-left\n  H: 1.9% of plan area, located center\n  I: 1.6% of plan area, located right\n  J: 1.6% of plan area, located bottom-center\n  K: 1.6% of plan area, located bottom-center\n  L: 1.3% of plan area, located left\n  M: 1.3% of plan area, located center\n  N: 1.2% of plan area, located left\n  O: 1.1% of plan area, located right\nConnections (rooms sharing a door):\n  O <-> I\n  O <-> H\n  D <-> N\n  L <-> C\n  M <-> E\n  B <-> E\n  E <-> H\n  E <-> C\n  E <-> K\n  J <-> K"
+  },
+  "6675": {
+    "rooms": [
+      {
+        "id": 6,
+        "area_pct": 6.8,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 5.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.1,
+        "position": "right"
+      },
+      {
+        "id": 17,
+        "area_pct": 4.1,
+        "position": "top-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 3.8,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 3.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.3,
+        "position": "center"
+      },
+      {
+        "id": 20,
+        "area_pct": 3.2,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 1.6,
+        "position": "right"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 15,
+        "area_pct": 1.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.8,
+        "position": "left"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.7,
+        "position": "bottom-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.5,
+        "position": "top-right"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "top-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 6
+      },
+      {
+        "a": 1,
+        "b": 11
+      },
+      {
+        "a": 2,
+        "b": 20
+      },
+      {
+        "a": 3,
+        "b": 14
+      },
+      {
+        "a": 3,
+        "b": 20
+      },
+      {
+        "a": 4,
+        "b": 20
+      },
+      {
+        "a": 6,
+        "b": 7
+      },
+      {
+        "a": 6,
+        "b": 17
+      },
+      {
+        "a": 7,
+        "b": 17
+      },
+      {
+        "a": 8,
+        "b": 9
+      },
+      {
+        "a": 8,
+        "b": 21
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 11
+      },
+      {
+        "a": 15,
+        "b": 20
+      },
+      {
+        "a": 18,
+        "b": 20
+      }
+    ],
+    "n_doors": 15,
+    "n_windows": 21,
+    "text": "DETECTED STRUCTURE (12 rooms, 15 doors, 21 windows):\nRooms by area (largest first):\n  A: 6.8% of plan area, located center\n  B: 5.4% of plan area, located bottom-center\n  C: 4.1% of plan area, located right\n  D: 4.1% of plan area, located top-right\n  E: 3.8% of plan area, located left\n  F: 3.5% of plan area, located bottom-left\n  G: 3.3% of plan area, located center\n  H: 3.2% of plan area, located center\n  I: 2.3% of plan area, located bottom-right\n  J: 1.6% of plan area, located right\n  K: 1.1% of plan area, located right\n  L: 1.0% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  C <-> A\n  C <-> J\n  G <-> H\n  E <-> H\n  F <-> H\n  A <-> D\n  I <-> B\n  I <-> J\n  L <-> H"
+  },
+  "6302": {
+    "rooms": [
+      {
+        "id": 8,
+        "area_pct": 11.0,
+        "position": "top-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 9.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 8.5,
+        "position": "top-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 7.2,
+        "position": "top-right"
+      },
+      {
+        "id": 20,
+        "area_pct": 6.4,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 5.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 5.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.1,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.8,
+        "position": "right"
+      },
+      {
+        "id": 21,
+        "area_pct": 1.0,
+        "position": "top-right"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.5,
+        "position": "top-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.1,
+        "position": "top-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "top-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 13
+      },
+      {
+        "a": 2,
+        "b": 13
+      },
+      {
+        "a": 4,
+        "b": 8
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 10
+      },
+      {
+        "a": 6,
+        "b": 14
+      },
+      {
+        "a": 6,
+        "b": 20
+      },
+      {
+        "a": 7,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 12
+      },
+      {
+        "a": 7,
+        "b": 20
+      },
+      {
+        "a": 12,
+        "b": 20
+      },
+      {
+        "a": 14,
+        "b": 20
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 6,
+    "text": "DETECTED STRUCTURE (10 rooms, 10 doors, 6 windows):\nRooms by area (largest first):\n  A: 11.0% of plan area, located top-left\n  B: 9.2% of plan area, located bottom-left\n  C: 8.5% of plan area, located top-center\n  D: 7.2% of plan area, located top-right\n  E: 6.4% of plan area, located center\n  F: 5.5% of plan area, located bottom-center\n  G: 5.4% of plan area, located bottom-right\n  H: 3.1% of plan area, located right\n  I: 2.8% of plan area, located right\n  J: 1.0% of plan area, located top-right\nConnections (rooms sharing a door):\n  D <-> H\n  G <-> H\n  B <-> A\n  I <-> H\n  C <-> F\n  C <-> E"
+  },
+  "6272": {
+    "rooms": [
+      {
+        "id": 11,
+        "area_pct": 9.0,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 5.5,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 5.4,
+        "position": "right"
+      },
+      {
+        "id": 4,
+        "area_pct": 5.3,
+        "position": "right"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.8,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 2.5,
+        "position": "top-left"
+      },
+      {
+        "id": 3,
+        "area_pct": 2.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 2.2,
+        "position": "top-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.4,
+        "position": "left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.4,
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 3,
+        "b": 8
+      },
+      {
+        "a": 4,
+        "b": 11
+      },
+      {
+        "a": 4,
+        "b": 18
+      },
+      {
+        "a": 7,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 11
+      },
+      {
+        "a": 7,
+        "b": 16
+      },
+      {
+        "a": 8,
+        "b": 13
+      },
+      {
+        "a": 8,
+        "b": 18
+      },
+      {
+        "a": 9,
+        "b": 16
+      },
+      {
+        "a": 10,
+        "b": 11
+      },
+      {
+        "a": 11,
+        "b": 18
+      },
+      {
+        "a": 13,
+        "b": 18
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 14,
+    "text": "DETECTED STRUCTURE (10 rooms, 10 doors, 14 windows):\nRooms by area (largest first):\n  A: 9.0% of plan area, located center\n  B: 5.5% of plan area, located center\n  C: 5.4% of plan area, located right\n  D: 5.3% of plan area, located right\n  E: 2.8% of plan area, located left\n  F: 2.5% of plan area, located top-left\n  G: 2.2% of plan area, located bottom-left\n  H: 2.2% of plan area, located top-left\n  I: 1.7% of plan area, located bottom-left\n  J: 1.4% of plan area, located left\nConnections (rooms sharing a door):\n  I <-> G\n  G <-> J\n  D <-> A\n  D <-> B\n  H <-> A\n  J <-> E\n  J <-> B\n  F <-> A\n  A <-> B\n  E <-> B"
+  },
+  "24": {
+    "rooms": [
+      {
+        "id": 23,
+        "area_pct": 3.0,
+        "position": "left"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.5,
+        "position": "left"
+      },
+      {
+        "id": 29,
+        "area_pct": 2.1,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 2.0,
+        "position": "top-center"
+      },
+      {
+        "id": 30,
+        "area_pct": 1.8,
+        "position": "right"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.7,
+        "position": "center"
+      },
+      {
+        "id": 33,
+        "area_pct": 1.6,
+        "position": "left"
+      },
+      {
+        "id": 20,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 21,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 36,
+        "area_pct": 1.3,
+        "position": "right"
+      },
+      {
+        "id": 32,
+        "area_pct": 1.0,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.8,
+        "position": "left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.8,
+        "position": "top-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.7,
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.5,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.3,
+        "position": "center"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.2,
+        "position": "center"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.2,
+        "position": "center"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 34,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 35,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 3,
+        "b": 18
+      },
+      {
+        "a": 5,
+        "b": 18
+      },
+      {
+        "a": 13,
+        "b": 33
+      },
+      {
+        "a": 18,
+        "b": 20
+      },
+      {
+        "a": 30,
+        "b": 36
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 13,
+    "text": "DETECTED STRUCTURE (12 rooms, 12 doors, 13 windows):\nRooms by area (largest first):\n  A: 3.0% of plan area, located left\n  B: 2.5% of plan area, located left\n  C: 2.1% of plan area, located right\n  D: 2.0% of plan area, located top-center\n  E: 1.8% of plan area, located right\n  F: 1.7% of plan area, located center\n  G: 1.6% of plan area, located left\n  H: 1.4% of plan area, located center\n  I: 1.4% of plan area, located center\n  J: 1.3% of plan area, located center\n  K: 1.3% of plan area, located right\n  L: 1.0% of plan area, located right\nConnections (rooms sharing a door):\n  D <-> F\n  F <-> H\n  E <-> K"
+  },
+  "1089": {
+    "rooms": [
+      {
+        "id": 11,
+        "area_pct": 12.7,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 9.0,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 5.4,
+        "position": "top-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 5.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 5.1,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.4,
+        "position": "bottom-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 2.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 11
+      },
+      {
+        "a": 2,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 11
+      },
+      {
+        "a": 4,
+        "b": 5
+      }
+    ],
+    "n_doors": 7,
+    "n_windows": 3,
+    "text": "DETECTED STRUCTURE (8 rooms, 7 doors, 3 windows):\nRooms by area (largest first):\n  A: 12.7% of plan area, located center\n  B: 9.0% of plan area, located right\n  C: 5.4% of plan area, located top-center\n  D: 5.4% of plan area, located bottom-center\n  E: 5.1% of plan area, located left\n  F: 2.4% of plan area, located bottom-left\n  G: 2.1% of plan area, located bottom-right\n  H: 1.5% of plan area, located bottom-left\nConnections (rooms sharing a door):\n  B <-> A\n  G <-> D\n  C <-> A\n  F <-> D"
+  },
+  "4972": {
+    "rooms": [
+      {
+        "id": 2,
+        "area_pct": 11.4,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 10.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 5,
+        "area_pct": 8.6,
+        "position": "top-left"
+      },
+      {
+        "id": 10,
+        "area_pct": 5.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 4.3,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 4.2,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 3.2,
+        "position": "right"
+      },
+      {
+        "id": 14,
+        "area_pct": 2.6,
+        "position": "top-right"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.5,
+        "position": "left"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 1.2,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 1,
+        "b": 10
+      },
+      {
+        "a": 2,
+        "b": 14
+      },
+      {
+        "a": 5,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 7,
+        "b": 13
+      },
+      {
+        "a": 8,
+        "b": 10
+      },
+      {
+        "a": 8,
+        "b": 11
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 11,
+        "b": 12
+      }
+    ],
+    "n_doors": 9,
+    "n_windows": 11,
+    "text": "DETECTED STRUCTURE (12 rooms, 9 doors, 11 windows):\nRooms by area (largest first):\n  A: 11.4% of plan area, located right\n  B: 10.0% of plan area, located bottom-left\n  C: 8.6% of plan area, located top-left\n  D: 5.8% of plan area, located bottom-center\n  E: 4.3% of plan area, located top-center\n  F: 4.2% of plan area, located center\n  G: 3.2% of plan area, located right\n  H: 2.6% of plan area, located top-right\n  I: 2.5% of plan area, located left\n  J: 1.6% of plan area, located bottom-right\n  K: 1.4% of plan area, located bottom-right\n  L: 1.2% of plan area, located bottom-right\nConnections (rooms sharing a door):\n  B <-> I\n  B <-> D\n  A <-> H\n  C <-> E\n  C <-> F\n  E <-> F\n  G <-> D\n  G <-> L\n  J <-> D\n  L <-> K"
+  },
+  "1107": {
+    "rooms": [
+      {
+        "id": 17,
+        "area_pct": 6.5,
+        "position": "center"
+      },
+      {
+        "id": 21,
+        "area_pct": 5.0,
+        "position": "top-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 3.3,
+        "position": "top-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 2.9,
+        "position": "bottom-right"
+      },
+      {
+        "id": 23,
+        "area_pct": 2.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 27,
+        "area_pct": 2.3,
+        "position": "right"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.9,
+        "position": "bottom-left"
+      },
+      {
+        "id": 20,
+        "area_pct": 1.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.7,
+        "position": "top-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 1.6,
+        "position": "top-right"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 1.6,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.4,
+        "position": "top-right"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.8,
+        "position": "top-left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.4,
+        "position": "left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 4,
+        "b": 21
+      },
+      {
+        "a": 10,
+        "b": 20
+      },
+      {
+        "a": 13,
+        "b": 27
+      },
+      {
+        "a": 17,
+        "b": 22
+      },
+      {
+        "a": 21,
+        "b": 27
+      },
+      {
+        "a": 23,
+        "b": 27
+      }
+    ],
+    "n_doors": 13,
+    "n_windows": 26,
+    "text": "DETECTED STRUCTURE (14 rooms, 13 doors, 26 windows):\nRooms by area (largest first):\n  A: 6.5% of plan area, located center\n  B: 5.0% of plan area, located top-right\n  C: 3.3% of plan area, located top-center\n  D: 2.9% of plan area, located bottom-right\n  E: 2.8% of plan area, located bottom-right\n  F: 2.3% of plan area, located right\n  G: 1.9% of plan area, located bottom-left\n  H: 1.8% of plan area, located bottom-center\n  I: 1.7% of plan area, located top-left\n  J: 1.6% of plan area, located top-right\n  K: 1.6% of plan area, located bottom-left\n  L: 1.6% of plan area, located center\n  M: 1.4% of plan area, located top-right\n  N: 1.1% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  J <-> B\n  K <-> H\n  L <-> F\n  A <-> C\n  B <-> F\n  E <-> F"
+  },
+  "6655": {
+    "rooms": [
+      {
+        "id": 1,
+        "area_pct": 22.5,
+        "position": "top-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 10.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 9.0,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 6.6,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 4.6,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.6,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 3,
+        "b": 6
+      },
+      {
+        "a": 4,
+        "b": 7
+      },
+      {
+        "a": 6,
+        "b": 7
+      }
+    ],
+    "n_doors": 6,
+    "n_windows": 4,
+    "text": "DETECTED STRUCTURE (6 rooms, 6 doors, 4 windows):\nRooms by area (largest first):\n  A: 22.5% of plan area, located top-center\n  B: 10.7% of plan area, located bottom-center\n  C: 9.0% of plan area, located right\n  D: 6.6% of plan area, located left\n  E: 4.6% of plan area, located center\n  F: 1.6% of plan area, located bottom-right\nConnections (rooms sharing a door):\n  A <-> D\n  C <-> E\n  C <-> F\n  E <-> B\n  F <-> B"
+  },
+  "259": {
+    "rooms": [
+      {
+        "id": 25,
+        "area_pct": 7.5,
+        "position": "bottom-right"
+      },
+      {
+        "id": 36,
+        "area_pct": 7.4,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.7,
+        "position": "top-left"
+      },
+      {
+        "id": 31,
+        "area_pct": 2.2,
+        "position": "left"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 26,
+        "area_pct": 2.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.8,
+        "position": "left"
+      },
+      {
+        "id": 32,
+        "area_pct": 1.8,
+        "position": "center"
+      },
+      {
+        "id": 34,
+        "area_pct": 1.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.9,
+        "position": "top-left"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.6,
+        "position": "top-left"
+      },
+      {
+        "id": 30,
+        "area_pct": 0.6,
+        "position": "left"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.5,
+        "position": "top-left"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.4,
+        "position": "bottom-left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.3,
+        "position": "left"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.3,
+        "position": "left"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.1,
+        "position": "center"
+      },
+      {
+        "id": 44,
+        "area_pct": 0.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 35,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 40,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 41,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 42,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 43,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 2,
+        "b": 14
+      },
+      {
+        "a": 4,
+        "b": 10
+      },
+      {
+        "a": 13,
+        "b": 36
+      },
+      {
+        "a": 14,
+        "b": 30
+      },
+      {
+        "a": 25,
+        "b": 26
+      },
+      {
+        "a": 31,
+        "b": 36
+      }
+    ],
+    "n_doors": 20,
+    "n_windows": 16,
+    "text": "DETECTED STRUCTURE (10 rooms, 20 doors, 16 windows):\nRooms by area (largest first):\n  A: 7.5% of plan area, located bottom-right\n  B: 7.4% of plan area, located center\n  C: 2.8% of plan area, located bottom-left\n  D: 2.7% of plan area, located top-left\n  E: 2.2% of plan area, located left\n  F: 2.1% of plan area, located bottom-center\n  G: 2.0% of plan area, located bottom-right\n  H: 1.8% of plan area, located left\n  I: 1.8% of plan area, located center\n  J: 1.4% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  F <-> B\n  A <-> G\n  E <-> B"
+  },
+  "361": {
+    "rooms": [
+      {
+        "id": 2,
+        "area_pct": 4.6,
+        "position": "right"
+      },
+      {
+        "id": 24,
+        "area_pct": 4.3,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 3.8,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 3.6,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 3.6,
+        "position": "top-left"
+      },
+      {
+        "id": 29,
+        "area_pct": 3.5,
+        "position": "left"
+      },
+      {
+        "id": 12,
+        "area_pct": 3.4,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 3.4,
+        "position": "left"
+      },
+      {
+        "id": 23,
+        "area_pct": 2.4,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 1.8,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 21,
+        "area_pct": 1.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.2,
+        "position": "left"
+      },
+      {
+        "id": 22,
+        "area_pct": 1.2,
+        "position": "top-center"
+      },
+      {
+        "id": 15,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 28,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.7,
+        "position": "top-center"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.6,
+        "position": "center"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.1,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 22
+      },
+      {
+        "a": 2,
+        "b": 15
+      },
+      {
+        "a": 12,
+        "b": 24
+      },
+      {
+        "a": 13,
+        "b": 22
+      },
+      {
+        "a": 13,
+        "b": 29
+      },
+      {
+        "a": 14,
+        "b": 24
+      },
+      {
+        "a": 16,
+        "b": 18
+      },
+      {
+        "a": 19,
+        "b": 20
+      },
+      {
+        "a": 21,
+        "b": 24
+      },
+      {
+        "a": 23,
+        "b": 29
+      },
+      {
+        "a": 24,
+        "b": 28
+      },
+      {
+        "a": 25,
+        "b": 29
+      },
+      {
+        "a": 26,
+        "b": 29
+      }
+    ],
+    "n_doors": 15,
+    "n_windows": 21,
+    "text": "DETECTED STRUCTURE (16 rooms, 15 doors, 21 windows):\nRooms by area (largest first):\n  A: 4.6% of plan area, located right\n  B: 4.3% of plan area, located right\n  C: 3.8% of plan area, located left\n  D: 3.6% of plan area, located center\n  E: 3.6% of plan area, located top-left\n  F: 3.5% of plan area, located left\n  G: 3.4% of plan area, located center\n  H: 3.4% of plan area, located left\n  I: 2.4% of plan area, located center\n  J: 1.8% of plan area, located center\n  K: 1.3% of plan area, located bottom-left\n  L: 1.3% of plan area, located bottom-right\n  M: 1.2% of plan area, located left\n  N: 1.2% of plan area, located top-center\n  O: 1.1% of plan area, located right\n  P: 1.1% of plan area, located right\nConnections (rooms sharing a door):\n  A <-> O\n  G <-> B\n  J <-> N\n  J <-> F\n  D <-> B\n  L <-> B\n  I <-> F\n  B <-> P\n  H <-> F"
+  },
+  "282": {
+    "rooms": [
+      {
+        "id": 5,
+        "area_pct": 12.2,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 5.9,
+        "position": "right"
+      },
+      {
+        "id": 2,
+        "area_pct": 5.6,
+        "position": "left"
+      },
+      {
+        "id": 8,
+        "area_pct": 5.2,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 4.9,
+        "position": "top-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 2.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.9,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.9,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 1,
+        "b": 5
+      },
+      {
+        "a": 1,
+        "b": 7
+      },
+      {
+        "a": 1,
+        "b": 11
+      },
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 5,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 8
+      },
+      {
+        "a": 5,
+        "b": 9
+      },
+      {
+        "a": 5,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 12
+      }
+    ],
+    "n_doors": 9,
+    "n_windows": 7,
+    "text": "DETECTED STRUCTURE (10 rooms, 9 doors, 7 windows):\nRooms by area (largest first):\n  A: 12.2% of plan area, located center\n  B: 5.9% of plan area, located right\n  C: 5.6% of plan area, located left\n  D: 5.2% of plan area, located right\n  E: 4.9% of plan area, located top-left\n  F: 2.9% of plan area, located bottom-center\n  G: 2.7% of plan area, located bottom-left\n  H: 1.8% of plan area, located bottom-center\n  I: 1.3% of plan area, located bottom-left\n  J: 1.1% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  F <-> G\n  F <-> A\n  I <-> G\n  A <-> D\n  A <-> B\n  A <-> E\n  B <-> J"
+  },
+  "642": {
+    "rooms": [
+      {
+        "id": 26,
+        "area_pct": 10.8,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 7.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 21,
+        "area_pct": 7.2,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 5.5,
+        "position": "top-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 4.8,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 4.2,
+        "position": "top-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 3.7,
+        "position": "top-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 3.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 24,
+        "area_pct": 3.2,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 3.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 17,
+        "area_pct": 2.1,
+        "position": "top-right"
+      },
+      {
+        "id": 23,
+        "area_pct": 1.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 25,
+        "area_pct": 1.6,
+        "position": "right"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.2,
+        "position": "center"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.6,
+        "position": "left"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.6,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.1,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 3,
+        "b": 14
+      },
+      {
+        "a": 6,
+        "b": 26
+      },
+      {
+        "a": 7,
+        "b": 8
+      },
+      {
+        "a": 8,
+        "b": 24
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 12
+      },
+      {
+        "a": 10,
+        "b": 12
+      },
+      {
+        "a": 12,
+        "b": 15
+      },
+      {
+        "a": 12,
+        "b": 16
+      },
+      {
+        "a": 13,
+        "b": 15
+      },
+      {
+        "a": 13,
+        "b": 17
+      },
+      {
+        "a": 14,
+        "b": 26
+      },
+      {
+        "a": 15,
+        "b": 21
+      },
+      {
+        "a": 19,
+        "b": 23
+      },
+      {
+        "a": 19,
+        "b": 24
+      },
+      {
+        "a": 20,
+        "b": 24
+      },
+      {
+        "a": 22,
+        "b": 24
+      },
+      {
+        "a": 25,
+        "b": 26
+      }
+    ],
+    "n_doors": 18,
+    "n_windows": 17,
+    "text": "DETECTED STRUCTURE (16 rooms, 18 doors, 17 windows):\nRooms by area (largest first):\n  A: 10.8% of plan area, located right\n  B: 7.8% of plan area, located bottom-center\n  C: 7.2% of plan area, located top-center\n  D: 5.5% of plan area, located top-left\n  E: 4.8% of plan area, located center\n  F: 4.2% of plan area, located top-center\n  G: 3.7% of plan area, located top-right\n  H: 3.5% of plan area, located bottom-left\n  I: 3.2% of plan area, located left\n  J: 3.1% of plan area, located bottom-center\n  K: 2.1% of plan area, located top-right\n  L: 1.6% of plan area, located bottom-left\n  M: 1.6% of plan area, located right\n  N: 1.3% of plan area, located center\n  O: 1.2% of plan area, located center\n  P: 1.0% of plan area, located bottom-left\nConnections (rooms sharing a door):\n  B <-> J\n  G <-> A\n  D <-> I\n  O <-> N\n  N <-> E\n  F <-> E\n  F <-> K\n  J <-> A\n  E <-> C\n  P <-> L\n  P <-> I\n  H <-> I\n  M <-> A"
+  },
+  "9088": {
+    "rooms": [
+      {
+        "id": 34,
+        "area_pct": 11.6,
+        "position": "top-center"
+      },
+      {
+        "id": 26,
+        "area_pct": 10.1,
+        "position": "right"
+      },
+      {
+        "id": 14,
+        "area_pct": 6.4,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.3,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 3.2,
+        "position": "top-center"
+      },
+      {
+        "id": 28,
+        "area_pct": 3.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.9,
+        "position": "top-right"
+      },
+      {
+        "id": 30,
+        "area_pct": 2.6,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.9,
+        "position": "bottom-left"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.4,
+        "position": "bottom-left"
+      },
+      {
+        "id": 29,
+        "area_pct": 1.4,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.3,
+        "position": "top-center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 9
+      },
+      {
+        "a": 1,
+        "b": 14
+      },
+      {
+        "a": 1,
+        "b": 17
+      },
+      {
+        "a": 2,
+        "b": 14
+      },
+      {
+        "a": 5,
+        "b": 9
+      },
+      {
+        "a": 5,
+        "b": 10
+      },
+      {
+        "a": 6,
+        "b": 30
+      },
+      {
+        "a": 7,
+        "b": 26
+      },
+      {
+        "a": 7,
+        "b": 30
+      },
+      {
+        "a": 8,
+        "b": 34
+      },
+      {
+        "a": 9,
+        "b": 14
+      },
+      {
+        "a": 14,
+        "b": 17
+      },
+      {
+        "a": 14,
+        "b": 28
+      },
+      {
+        "a": 26,
+        "b": 30
+      },
+      {
+        "a": 29,
+        "b": 30
+      }
+    ],
+    "n_doors": 13,
+    "n_windows": 13,
+    "text": "DETECTED STRUCTURE (14 rooms, 13 doors, 13 windows):\nRooms by area (largest first):\n  A: 11.6% of plan area, located top-center\n  B: 10.1% of plan area, located right\n  C: 6.4% of plan area, located center\n  D: 4.6% of plan area, located bottom-right\n  E: 3.3% of plan area, located center\n  F: 3.2% of plan area, located top-center\n  G: 3.2% of plan area, located bottom-center\n  H: 2.9% of plan area, located top-right\n  I: 2.6% of plan area, located center\n  J: 2.5% of plan area, located bottom-center\n  K: 1.9% of plan area, located bottom-left\n  L: 1.4% of plan area, located bottom-left\n  M: 1.4% of plan area, located left\n  N: 1.3% of plan area, located top-center\nConnections (rooms sharing a door):\n  D <-> J\n  D <-> C\n  E <-> C\n  K <-> J\n  K <-> L\n  F <-> I\n  N <-> B\n  N <-> I\n  H <-> A\n  J <-> C\n  C <-> G\n  B <-> I\n  M <-> I"
+  },
+  "9001": {
+    "rooms": [
+      {
+        "id": 11,
+        "area_pct": 11.0,
+        "position": "left"
+      },
+      {
+        "id": 27,
+        "area_pct": 4.3,
+        "position": "top-center"
+      },
+      {
+        "id": 28,
+        "area_pct": 3.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.8,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.7,
+        "position": "top-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.7,
+        "position": "top-right"
+      },
+      {
+        "id": 16,
+        "area_pct": 2.6,
+        "position": "right"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.2,
+        "position": "right"
+      },
+      {
+        "id": 7,
+        "area_pct": 2.0,
+        "position": "top-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 1.7,
+        "position": "top-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.5,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.5,
+        "position": "top-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.4,
+        "position": "right"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.4,
+        "position": "right"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.2,
+        "position": "right"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.1,
+        "position": "right"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.1,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 2,
+        "b": 11
+      },
+      {
+        "a": 4,
+        "b": 8
+      },
+      {
+        "a": 4,
+        "b": 10
+      },
+      {
+        "a": 5,
+        "b": 16
+      },
+      {
+        "a": 6,
+        "b": 16
+      },
+      {
+        "a": 6,
+        "b": 27
+      },
+      {
+        "a": 8,
+        "b": 16
+      },
+      {
+        "a": 9,
+        "b": 16
+      },
+      {
+        "a": 11,
+        "b": 13
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 11,
+    "text": "DETECTED STRUCTURE (12 rooms, 12 doors, 11 windows):\nRooms by area (largest first):\n  A: 11.0% of plan area, located left\n  B: 4.3% of plan area, located top-center\n  C: 3.8% of plan area, located bottom-right\n  D: 3.2% of plan area, located bottom-center\n  E: 2.8% of plan area, located center\n  F: 2.7% of plan area, located top-right\n  G: 2.7% of plan area, located top-right\n  H: 2.6% of plan area, located right\n  I: 2.2% of plan area, located right\n  J: 2.0% of plan area, located top-center\n  K: 1.7% of plan area, located top-left\n  L: 1.2% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  D <-> A\n  I <-> E\n  F <-> H\n  E <-> H\n  G <-> H"
+  },
+  "9296": {
+    "rooms": [
+      {
+        "id": 4,
+        "area_pct": 17.3,
+        "position": "top-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 9.7,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 9.0,
+        "position": "top-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 6.7,
+        "position": "bottom-right"
+      },
+      {
+        "id": 7,
+        "area_pct": 4.3,
+        "position": "top-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 4.2,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 2.5,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 3,
+        "b": 5
+      },
+      {
+        "a": 3,
+        "b": 6
+      },
+      {
+        "a": 4,
+        "b": 7
+      }
+    ],
+    "n_doors": 7,
+    "n_windows": 5,
+    "text": "DETECTED STRUCTURE (7 rooms, 7 doors, 5 windows):\nRooms by area (largest first):\n  A: 17.3% of plan area, located top-center\n  B: 9.7% of plan area, located center\n  C: 9.0% of plan area, located top-right\n  D: 6.7% of plan area, located bottom-right\n  E: 4.3% of plan area, located top-left\n  F: 4.2% of plan area, located right\n  G: 2.5% of plan area, located bottom-right\nConnections (rooms sharing a door):\n  G <-> D\n  C <-> D\n  D <-> A\n  D <-> B\n  D <-> F\n  A <-> E"
+  },
+  "7677": {
+    "rooms": [
+      {
+        "id": 26,
+        "area_pct": 6.8,
+        "position": "center"
+      },
+      {
+        "id": 15,
+        "area_pct": 6.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 5.3,
+        "position": "center"
+      },
+      {
+        "id": 7,
+        "area_pct": 2.8,
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "area_pct": 2.5,
+        "position": "top-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 2.5,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.4,
+        "position": "top-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 2.2,
+        "position": "right"
+      },
+      {
+        "id": 17,
+        "area_pct": 2.2,
+        "position": "right"
+      },
+      {
+        "id": 28,
+        "area_pct": 2.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.6,
+        "position": "left"
+      },
+      {
+        "id": 30,
+        "area_pct": 1.2,
+        "position": "top-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.0,
+        "position": "top-left"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.7,
+        "position": "top-left"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.5,
+        "position": "top-left"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.5,
+        "position": "right"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.3,
+        "position": "right"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.2,
+        "position": "top-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.1,
+        "position": "top-left"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 2,
+        "b": 16
+      },
+      {
+        "a": 3,
+        "b": 26
+      },
+      {
+        "a": 4,
+        "b": 7
+      },
+      {
+        "a": 4,
+        "b": 9
+      },
+      {
+        "a": 8,
+        "b": 26
+      },
+      {
+        "a": 9,
+        "b": 18
+      },
+      {
+        "a": 15,
+        "b": 16
+      },
+      {
+        "a": 15,
+        "b": 26
+      },
+      {
+        "a": 15,
+        "b": 28
+      },
+      {
+        "a": 16,
+        "b": 17
+      },
+      {
+        "a": 16,
+        "b": 28
+      },
+      {
+        "a": 17,
+        "b": 29
+      },
+      {
+        "a": 17,
+        "b": 32
+      },
+      {
+        "a": 29,
+        "b": 32
+      }
+    ],
+    "n_doors": 16,
+    "n_windows": 15,
+    "text": "DETECTED STRUCTURE (13 rooms, 16 doors, 15 windows):\nRooms by area (largest first):\n  A: 6.8% of plan area, located center\n  B: 6.1% of plan area, located bottom-center\n  C: 5.3% of plan area, located center\n  D: 2.8% of plan area, located left\n  E: 2.5% of plan area, located top-right\n  F: 2.5% of plan area, located top-center\n  G: 2.4% of plan area, located top-center\n  H: 2.2% of plan area, located right\n  I: 2.2% of plan area, located right\n  J: 2.0% of plan area, located bottom-right\n  K: 1.6% of plan area, located left\n  L: 1.2% of plan area, located top-left\n  M: 1.0% of plan area, located top-left\nConnections (rooms sharing a door):\n  E <-> H\n  F <-> A\n  C <-> D\n  C <-> K\n  G <-> A\n  B <-> H\n  B <-> A\n  B <-> J\n  H <-> I\n  H <-> J"
+  },
+  "9603": {
+    "rooms": [
+      {
+        "id": 4,
+        "area_pct": 12.0,
+        "position": "top-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 9.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 10,
+        "area_pct": 7.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 7.8,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 7.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 6.5,
+        "position": "center"
+      },
+      {
+        "id": 14,
+        "area_pct": 2.6,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 2.5,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 2.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.3,
+        "position": "right"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 16,
+        "area_pct": 1.1,
+        "position": "top-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 9
+      },
+      {
+        "a": 3,
+        "b": 9
+      },
+      {
+        "a": 4,
+        "b": 5
+      },
+      {
+        "a": 4,
+        "b": 16
+      },
+      {
+        "a": 5,
+        "b": 16
+      },
+      {
+        "a": 7,
+        "b": 14
+      },
+      {
+        "a": 8,
+        "b": 9
+      },
+      {
+        "a": 8,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 11
+      },
+      {
+        "a": 9,
+        "b": 13
+      },
+      {
+        "a": 11,
+        "b": 14
+      },
+      {
+        "a": 12,
+        "b": 13
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 9,
+    "text": "DETECTED STRUCTURE (13 rooms, 10 doors, 9 windows):\nRooms by area (largest first):\n  A: 12.0% of plan area, located top-right\n  B: 9.3% of plan area, located bottom-left\n  C: 7.9% of plan area, located bottom-center\n  D: 7.8% of plan area, located top-center\n  E: 7.8% of plan area, located bottom-right\n  F: 6.5% of plan area, located center\n  G: 2.6% of plan area, located left\n  H: 2.5% of plan area, located left\n  I: 2.0% of plan area, located top-left\n  J: 1.6% of plan area, located bottom-center\n  K: 1.3% of plan area, located right\n  L: 1.1% of plan area, located right\n  M: 1.1% of plan area, located top-center\nConnections (rooms sharing a door):\n  B <-> F\n  K <-> F\n  A <-> M\n  I <-> G\n  J <-> F\n  J <-> C\n  F <-> H\n  F <-> E\n  H <-> G\n  L <-> E"
+  },
+  "3096": {
+    "rooms": [
+      {
+        "id": 15,
+        "area_pct": 9.8,
+        "position": "top-center"
+      },
+      {
+        "id": 16,
+        "area_pct": 7.0,
+        "position": "center"
+      },
+      {
+        "id": 3,
+        "area_pct": 6.6,
+        "position": "top-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 6.6,
+        "position": "top-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 4.8,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 4.8,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 4.2,
+        "position": "top-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.3,
+        "position": "right"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.3,
+        "position": "right"
+      },
+      {
+        "id": 6,
+        "area_pct": 2.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 20,
+        "area_pct": 1.7,
+        "position": "top-right"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.1,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.8,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "top-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 11
+      },
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 2,
+        "b": 8
+      },
+      {
+        "a": 2,
+        "b": 13
+      },
+      {
+        "a": 3,
+        "b": 20
+      },
+      {
+        "a": 4,
+        "b": 11
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 6,
+        "b": 11
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 11
+      },
+      {
+        "a": 11,
+        "b": 12
+      },
+      {
+        "a": 11,
+        "b": 16
+      },
+      {
+        "a": 13,
+        "b": 16
+      }
+    ],
+    "n_doors": 14,
+    "n_windows": 16,
+    "text": "DETECTED STRUCTURE (14 rooms, 14 doors, 16 windows):\nRooms by area (largest first):\n  A: 9.8% of plan area, located top-center\n  B: 7.0% of plan area, located center\n  C: 6.6% of plan area, located top-right\n  D: 6.6% of plan area, located top-left\n  E: 4.8% of plan area, located left\n  F: 4.8% of plan area, located center\n  G: 4.2% of plan area, located top-left\n  H: 3.3% of plan area, located right\n  I: 3.3% of plan area, located bottom-right\n  J: 2.4% of plan area, located bottom-center\n  K: 2.3% of plan area, located right\n  L: 2.0% of plan area, located bottom-center\n  M: 1.7% of plan area, located top-right\n  N: 1.1% of plan area, located left\nConnections (rooms sharing a door):\n  H <-> C\n  H <-> K\n  H <-> I\n  C <-> M\n  E <-> F\n  J <-> L\n  L <-> F\n  D <-> N\n  D <-> F\n  F <-> G\n  F <-> B\n  I <-> B"
+  },
+  "1646": {
+    "rooms": [
+      {
+        "id": 1,
+        "area_pct": 11.7,
+        "position": "top-left"
+      },
+      {
+        "id": 23,
+        "area_pct": 7.9,
+        "position": "top-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 5.6,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 5.0,
+        "position": "center"
+      },
+      {
+        "id": 20,
+        "area_pct": 4.6,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 4.1,
+        "position": "right"
+      },
+      {
+        "id": 9,
+        "area_pct": 2.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.8,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.5,
+        "position": "bottom-left"
+      },
+      {
+        "id": 6,
+        "area_pct": 2.3,
+        "position": "right"
+      },
+      {
+        "id": 21,
+        "area_pct": 1.7,
+        "position": "left"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.3,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.1,
+        "position": "bottom-left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.9,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.9,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.7,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.7,
+        "position": "bottom-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.6,
+        "position": "bottom-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 10
+      },
+      {
+        "a": 3,
+        "b": 6
+      },
+      {
+        "a": 3,
+        "b": 11
+      },
+      {
+        "a": 3,
+        "b": 13
+      },
+      {
+        "a": 5,
+        "b": 21
+      },
+      {
+        "a": 7,
+        "b": 14
+      },
+      {
+        "a": 9,
+        "b": 21
+      },
+      {
+        "a": 12,
+        "b": 21
+      },
+      {
+        "a": 14,
+        "b": 21
+      },
+      {
+        "a": 19,
+        "b": 20
+      },
+      {
+        "a": 19,
+        "b": 25
+      }
+    ],
+    "n_doors": 14,
+    "n_windows": 12,
+    "text": "DETECTED STRUCTURE (13 rooms, 14 doors, 12 windows):\nRooms by area (largest first):\n  A: 11.7% of plan area, located top-left\n  B: 7.9% of plan area, located top-right\n  C: 5.6% of plan area, located right\n  D: 5.0% of plan area, located center\n  E: 4.6% of plan area, located left\n  F: 4.1% of plan area, located right\n  G: 2.8% of plan area, located bottom-center\n  H: 2.8% of plan area, located right\n  I: 2.5% of plan area, located bottom-left\n  J: 2.3% of plan area, located right\n  K: 1.7% of plan area, located left\n  L: 1.3% of plan area, located left\n  M: 1.1% of plan area, located bottom-left\nConnections (rooms sharing a door):\n  A <-> D\n  F <-> J\n  F <-> H\n  I <-> K\n  G <-> K\n  L <-> E"
+  },
+  "638": {
+    "rooms": [
+      {
+        "id": 26,
+        "area_pct": 10.4,
+        "position": "top-left"
+      },
+      {
+        "id": 30,
+        "area_pct": 10.1,
+        "position": "top-right"
+      },
+      {
+        "id": 19,
+        "area_pct": 8.9,
+        "position": "bottom-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 6.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 11,
+        "area_pct": 5.0,
+        "position": "top-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 4.5,
+        "position": "right"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.7,
+        "position": "center"
+      },
+      {
+        "id": 20,
+        "area_pct": 2.3,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.2,
+        "position": "left"
+      },
+      {
+        "id": 28,
+        "area_pct": 2.0,
+        "position": "left"
+      },
+      {
+        "id": 23,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 1.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 27,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 1.3,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.1,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 22
+      },
+      {
+        "a": 11,
+        "b": 18
+      },
+      {
+        "a": 11,
+        "b": 26
+      },
+      {
+        "a": 12,
+        "b": 23
+      },
+      {
+        "a": 12,
+        "b": 28
+      },
+      {
+        "a": 13,
+        "b": 16
+      },
+      {
+        "a": 13,
+        "b": 20
+      },
+      {
+        "a": 13,
+        "b": 21
+      },
+      {
+        "a": 13,
+        "b": 23
+      },
+      {
+        "a": 13,
+        "b": 27
+      },
+      {
+        "a": 16,
+        "b": 21
+      },
+      {
+        "a": 16,
+        "b": 23
+      },
+      {
+        "a": 18,
+        "b": 26
+      },
+      {
+        "a": 19,
+        "b": 20
+      },
+      {
+        "a": 20,
+        "b": 22
+      },
+      {
+        "a": 20,
+        "b": 24
+      },
+      {
+        "a": 20,
+        "b": 27
+      },
+      {
+        "a": 21,
+        "b": 23
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 8,
+    "text": "DETECTED STRUCTURE (15 rooms, 10 doors, 8 windows):\nRooms by area (largest first):\n  A: 10.4% of plan area, located top-left\n  B: 10.1% of plan area, located top-right\n  C: 8.9% of plan area, located bottom-right\n  D: 6.8% of plan area, located bottom-left\n  E: 5.0% of plan area, located top-center\n  F: 4.5% of plan area, located right\n  G: 2.7% of plan area, located center\n  H: 2.3% of plan area, located center\n  I: 2.2% of plan area, located left\n  J: 2.0% of plan area, located left\n  K: 1.4% of plan area, located center\n  L: 1.4% of plan area, located bottom-center\n  M: 1.4% of plan area, located center\n  N: 1.3% of plan area, located right\n  O: 1.0% of plan area, located center\nConnections (rooms sharing a door):\n  O <-> D\n  E <-> N\n  E <-> A\n  I <-> K\n  I <-> J\n  G <-> H\n  G <-> K\n  G <-> M\n  N <-> A\n  C <-> H\n  H <-> D\n  H <-> L\n  H <-> M"
+  },
+  "8786": {
+    "rooms": [
+      {
+        "id": 4,
+        "area_pct": 6.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 18,
+        "area_pct": 5.7,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.2,
+        "position": "top-right"
+      },
+      {
+        "id": 17,
+        "area_pct": 4.0,
+        "position": "top-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.7,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 3.1,
+        "position": "top-left"
+      },
+      {
+        "id": 28,
+        "area_pct": 2.8,
+        "position": "left"
+      },
+      {
+        "id": 29,
+        "area_pct": 2.8,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 2.6,
+        "position": "top-right"
+      },
+      {
+        "id": 20,
+        "area_pct": 1.4,
+        "position": "bottom-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 30,
+        "area_pct": 1.2,
+        "position": "top-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 1.1,
+        "position": "left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.7,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.4,
+        "position": "top-left"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.4,
+        "position": "top-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.2,
+        "position": "left"
+      },
+      {
+        "id": 8,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 1,
+        "b": 21
+      },
+      {
+        "a": 2,
+        "b": 5
+      },
+      {
+        "a": 2,
+        "b": 29
+      },
+      {
+        "a": 3,
+        "b": 28
+      },
+      {
+        "a": 4,
+        "b": 28
+      },
+      {
+        "a": 8,
+        "b": 21
+      },
+      {
+        "a": 11,
+        "b": 17
+      },
+      {
+        "a": 12,
+        "b": 28
+      },
+      {
+        "a": 26,
+        "b": 28
+      }
+    ],
+    "n_doors": 13,
+    "n_windows": 13,
+    "text": "DETECTED STRUCTURE (13 rooms, 13 doors, 13 windows):\nRooms by area (largest first):\n  A: 6.0% of plan area, located bottom-left\n  B: 5.7% of plan area, located center\n  C: 4.2% of plan area, located top-right\n  D: 4.0% of plan area, located top-center\n  E: 3.7% of plan area, located right\n  F: 3.1% of plan area, located top-left\n  G: 2.8% of plan area, located left\n  H: 2.8% of plan area, located right\n  I: 2.6% of plan area, located top-right\n  J: 1.4% of plan area, located bottom-left\n  K: 1.3% of plan area, located center\n  L: 1.2% of plan area, located top-center\n  M: 1.1% of plan area, located left\nConnections (rooms sharing a door):\n  C <-> E\n  E <-> I\n  E <-> H\n  F <-> G\n  A <-> G"
+  },
+  "9905": {
+    "rooms": [
+      {
+        "id": 11,
+        "area_pct": 8.0,
+        "position": "top-center"
+      },
+      {
+        "id": 8,
+        "area_pct": 6.9,
+        "position": "bottom-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 6.3,
+        "position": "right"
+      },
+      {
+        "id": 9,
+        "area_pct": 4.8,
+        "position": "top-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 3.7,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 3.3,
+        "position": "top-right"
+      },
+      {
+        "id": 15,
+        "area_pct": 2.6,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 2.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.8,
+        "position": "top-center"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.3,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 8
+      },
+      {
+        "a": 4,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 11
+      },
+      {
+        "a": 7,
+        "b": 15
+      },
+      {
+        "a": 10,
+        "b": 12
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 8,
+    "text": "DETECTED STRUCTURE (12 rooms, 10 doors, 8 windows):\nRooms by area (largest first):\n  A: 8.0% of plan area, located top-center\n  B: 6.9% of plan area, located bottom-left\n  C: 6.3% of plan area, located right\n  D: 4.8% of plan area, located top-left\n  E: 3.7% of plan area, located center\n  F: 3.3% of plan area, located top-right\n  G: 2.6% of plan area, located right\n  H: 2.5% of plan area, located bottom-center\n  I: 2.3% of plan area, located bottom-center\n  J: 1.8% of plan area, located top-center\n  K: 1.3% of plan area, located top-center\n  L: 1.0% of plan area, located center\nConnections (rooms sharing a door):\n  H <-> B\n  I <-> L\n  F <-> A\n  C <-> G\n  K <-> J"
+  },
+  "5625": {
+    "rooms": [
+      {
+        "id": 10,
+        "area_pct": 8.8,
+        "position": "top-center"
+      },
+      {
+        "id": 7,
+        "area_pct": 7.3,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 6.2,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 2.3,
+        "position": "left"
+      },
+      {
+        "id": 15,
+        "area_pct": 2.0,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 1.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 24,
+        "area_pct": 1.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 35,
+        "area_pct": 1.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.1,
+        "position": "left"
+      },
+      {
+        "id": 44,
+        "area_pct": 1.0,
+        "position": "left"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.8,
+        "position": "bottom-right"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.8,
+        "position": "right"
+      },
+      {
+        "id": 45,
+        "area_pct": 0.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 30,
+        "area_pct": 0.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.4,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.3,
+        "position": "right"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.3,
+        "position": "top-left"
+      },
+      {
+        "id": 42,
+        "area_pct": 0.3,
+        "position": "right"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.2,
+        "position": "bottom-left"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 48,
+        "area_pct": 0.2,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.1,
+        "position": "right"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.1,
+        "position": "left"
+      },
+      {
+        "id": 40,
+        "area_pct": 0.1,
+        "position": "right"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 34,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 36,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 41,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 43,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 46,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 47,
+        "area_pct": 0.0,
+        "position": "top-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 9
+      },
+      {
+        "a": 1,
+        "b": 24
+      },
+      {
+        "a": 2,
+        "b": 18
+      },
+      {
+        "a": 3,
+        "b": 9
+      },
+      {
+        "a": 3,
+        "b": 14
+      },
+      {
+        "a": 7,
+        "b": 15
+      },
+      {
+        "a": 7,
+        "b": 44
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 13
+      },
+      {
+        "a": 9,
+        "b": 14
+      },
+      {
+        "a": 15,
+        "b": 44
+      },
+      {
+        "a": 18,
+        "b": 44
+      },
+      {
+        "a": 26,
+        "b": 35
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 4,
+    "text": "DETECTED STRUCTURE (10 rooms, 10 doors, 4 windows):\nRooms by area (largest first):\n  A: 8.8% of plan area, located top-center\n  B: 7.3% of plan area, located top-left\n  C: 6.2% of plan area, located center\n  D: 2.3% of plan area, located left\n  E: 2.0% of plan area, located center\n  F: 1.6% of plan area, located bottom-center\n  G: 1.4% of plan area, located bottom-right\n  H: 1.2% of plan area, located bottom-left\n  I: 1.1% of plan area, located left\n  J: 1.0% of plan area, located left\nConnections (rooms sharing a door):\n  I <-> D\n  B <-> E\n  B <-> J\n  C <-> A\n  E <-> J\n  D <-> J"
+  },
+  "1052": {
+    "rooms": [
+      {
+        "id": 8,
+        "area_pct": 8.2,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 7.1,
+        "position": "top-right"
+      },
+      {
+        "id": 14,
+        "area_pct": 6.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 4.0,
+        "position": "right"
+      },
+      {
+        "id": 30,
+        "area_pct": 4.0,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 3.6,
+        "position": "left"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.2,
+        "position": "right"
+      },
+      {
+        "id": 22,
+        "area_pct": 3.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 29,
+        "area_pct": 3.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 27,
+        "area_pct": 2.8,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 2.5,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.2,
+        "position": "center"
+      },
+      {
+        "id": 25,
+        "area_pct": 2.1,
+        "position": "center"
+      },
+      {
+        "id": 31,
+        "area_pct": 1.3,
+        "position": "right"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.2,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 1,
+        "b": 15
+      },
+      {
+        "a": 2,
+        "b": 15
+      },
+      {
+        "a": 8,
+        "b": 11
+      },
+      {
+        "a": 9,
+        "b": 31
+      },
+      {
+        "a": 10,
+        "b": 27
+      },
+      {
+        "a": 11,
+        "b": 14
+      },
+      {
+        "a": 12,
+        "b": 27
+      },
+      {
+        "a": 13,
+        "b": 31
+      },
+      {
+        "a": 15,
+        "b": 22
+      },
+      {
+        "a": 15,
+        "b": 29
+      },
+      {
+        "a": 25,
+        "b": 27
+      }
+    ],
+    "n_doors": 14,
+    "n_windows": 23,
+    "text": "DETECTED STRUCTURE (15 rooms, 14 doors, 23 windows):\nRooms by area (largest first):\n  A: 8.2% of plan area, located top-left\n  B: 7.1% of plan area, located top-right\n  C: 6.6% of plan area, located bottom-left\n  D: 4.0% of plan area, located right\n  E: 4.0% of plan area, located left\n  F: 3.6% of plan area, located left\n  G: 3.2% of plan area, located right\n  H: 3.2% of plan area, located bottom-right\n  I: 3.2% of plan area, located bottom-right\n  J: 2.8% of plan area, located center\n  K: 2.5% of plan area, located center\n  L: 2.2% of plan area, located center\n  M: 2.1% of plan area, located center\n  N: 1.3% of plan area, located right\n  O: 1.2% of plan area, located right\nConnections (rooms sharing a door):\n  O <-> D\n  A <-> F\n  B <-> N\n  K <-> J\n  F <-> C\n  L <-> J\n  G <-> N\n  D <-> H\n  D <-> I\n  M <-> J"
+  },
+  "4820": {
+    "rooms": [
+      {
+        "id": 1,
+        "area_pct": 15.0,
+        "position": "top-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 12.1,
+        "position": "bottom-left"
+      },
+      {
+        "id": 3,
+        "area_pct": 8.5,
+        "position": "top-right"
+      },
+      {
+        "id": 8,
+        "area_pct": 5.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 10,
+        "area_pct": 5.0,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 3.6,
+        "position": "right"
+      },
+      {
+        "id": 4,
+        "area_pct": 2.8,
+        "position": "right"
+      },
+      {
+        "id": 2,
+        "area_pct": 2.3,
+        "position": "top-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.6,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.9,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.9,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.7,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 6
+      },
+      {
+        "a": 2,
+        "b": 10
+      },
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 3,
+        "b": 10
+      },
+      {
+        "a": 3,
+        "b": 12
+      },
+      {
+        "a": 4,
+        "b": 8
+      },
+      {
+        "a": 4,
+        "b": 10
+      },
+      {
+        "a": 4,
+        "b": 12
+      },
+      {
+        "a": 5,
+        "b": 9
+      },
+      {
+        "a": 7,
+        "b": 10
+      },
+      {
+        "a": 8,
+        "b": 12
+      },
+      {
+        "a": 9,
+        "b": 11
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 14,
+    "text": "DETECTED STRUCTURE (9 rooms, 12 doors, 14 windows):\nRooms by area (largest first):\n  A: 15.0% of plan area, located top-left\n  B: 12.1% of plan area, located bottom-left\n  C: 8.5% of plan area, located top-right\n  D: 5.4% of plan area, located bottom-right\n  E: 5.0% of plan area, located center\n  F: 3.6% of plan area, located right\n  G: 2.8% of plan area, located right\n  H: 2.3% of plan area, located top-center\n  I: 1.6% of plan area, located center\nConnections (rooms sharing a door):\n  H <-> E\n  C <-> G\n  C <-> E\n  C <-> F\n  G <-> D\n  G <-> E\n  G <-> F\n  I <-> B\n  D <-> F"
+  },
+  "801": {
+    "rooms": [
+      {
+        "id": 14,
+        "area_pct": 9.2,
+        "position": "right"
+      },
+      {
+        "id": 6,
+        "area_pct": 8.3,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 7.1,
+        "position": "bottom-left"
+      },
+      {
+        "id": 5,
+        "area_pct": 7.0,
+        "position": "top-right"
+      },
+      {
+        "id": 4,
+        "area_pct": 6.8,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 6.5,
+        "position": "bottom-right"
+      },
+      {
+        "id": 1,
+        "area_pct": 4.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 13,
+        "area_pct": 1.7,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.1,
+        "position": "right"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.1,
+        "position": "bottom-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 0.0,
+        "position": "center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 1,
+        "b": 10
+      },
+      {
+        "a": 2,
+        "b": 7
+      },
+      {
+        "a": 2,
+        "b": 10
+      },
+      {
+        "a": 2,
+        "b": 14
+      },
+      {
+        "a": 4,
+        "b": 6
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 5,
+        "b": 14
+      },
+      {
+        "a": 6,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 14
+      },
+      {
+        "a": 7,
+        "b": 10
+      },
+      {
+        "a": 7,
+        "b": 14
+      },
+      {
+        "a": 8,
+        "b": 10
+      },
+      {
+        "a": 9,
+        "b": 10
+      },
+      {
+        "a": 10,
+        "b": 14
+      },
+      {
+        "a": 13,
+        "b": 14
+      }
+    ],
+    "n_doors": 8,
+    "n_windows": 8,
+    "text": "DETECTED STRUCTURE (10 rooms, 8 doors, 8 windows):\nRooms by area (largest first):\n  A: 9.2% of plan area, located right\n  B: 8.3% of plan area, located center\n  C: 7.1% of plan area, located bottom-left\n  D: 7.0% of plan area, located top-right\n  E: 6.8% of plan area, located left\n  F: 6.5% of plan area, located bottom-right\n  G: 4.5% of plan area, located bottom-center\n  H: 1.8% of plan area, located bottom-left\n  I: 1.7% of plan area, located center\n  J: 1.4% of plan area, located bottom-right\nConnections (rooms sharing a door):\n  G <-> H\n  G <-> F\n  E <-> B\n  D <-> B\n  D <-> I\n  D <-> A\n  B <-> I\n  B <-> A\n  J <-> F\n  C <-> F\n  F <-> A\n  I <-> A"
+  },
+  "9031": {
+    "rooms": [
+      {
+        "id": 3,
+        "area_pct": 15.1,
+        "position": "top-center"
+      },
+      {
+        "id": 12,
+        "area_pct": 12.5,
+        "position": "top-right"
+      },
+      {
+        "id": 4,
+        "area_pct": 7.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 2,
+        "area_pct": 4.6,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 4.6,
+        "position": "bottom-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.9,
+        "position": "bottom-left"
+      },
+      {
+        "id": 8,
+        "area_pct": 2.2,
+        "position": "center"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.5,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 7
+      },
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 3,
+        "b": 7
+      },
+      {
+        "a": 4,
+        "b": 7
+      },
+      {
+        "a": 7,
+        "b": 8
+      },
+      {
+        "a": 7,
+        "b": 12
+      }
+    ],
+    "n_doors": 8,
+    "n_windows": 4,
+    "text": "DETECTED STRUCTURE (9 rooms, 8 doors, 4 windows):\nRooms by area (largest first):\n  A: 15.1% of plan area, located top-center\n  B: 12.5% of plan area, located top-right\n  C: 7.3% of plan area, located bottom-right\n  D: 4.6% of plan area, located top-left\n  E: 4.6% of plan area, located bottom-center\n  F: 3.9% of plan area, located bottom-left\n  G: 2.2% of plan area, located center\n  H: 1.5% of plan area, located right\n  I: 1.1% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  H <-> E\n  D <-> A\n  A <-> E\n  C <-> E\n  E <-> G\n  E <-> B"
+  },
+  "7820": {
+    "rooms": [
+      {
+        "id": 29,
+        "area_pct": 4.6,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 20,
+        "area_pct": 3.9,
+        "position": "bottom-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 3.3,
+        "position": "bottom-left"
+      },
+      {
+        "id": 24,
+        "area_pct": 2.8,
+        "position": "top-center"
+      },
+      {
+        "id": 26,
+        "area_pct": 2.7,
+        "position": "top-center"
+      },
+      {
+        "id": 18,
+        "area_pct": 2.4,
+        "position": "right"
+      },
+      {
+        "id": 10,
+        "area_pct": 2.0,
+        "position": "top-right"
+      },
+      {
+        "id": 28,
+        "area_pct": 1.9,
+        "position": "bottom-right"
+      },
+      {
+        "id": 8,
+        "area_pct": 1.3,
+        "position": "top-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.1,
+        "position": "top-left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.8,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 0.7,
+        "position": "center"
+      },
+      {
+        "id": 11,
+        "area_pct": 0.6,
+        "position": "center"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.5,
+        "position": "top-center"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.4,
+        "position": "top-right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.4,
+        "position": "bottom-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 0.3,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.2,
+        "position": "top-left"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.2,
+        "position": "right"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 15,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "top-center"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 2,
+        "b": 7
+      },
+      {
+        "a": 13,
+        "b": 16
+      },
+      {
+        "a": 16,
+        "b": 17
+      },
+      {
+        "a": 16,
+        "b": 20
+      },
+      {
+        "a": 24,
+        "b": 26
+      },
+      {
+        "a": 25,
+        "b": 29
+      }
+    ],
+    "n_doors": 15,
+    "n_windows": 12,
+    "text": "DETECTED STRUCTURE (11 rooms, 15 doors, 12 windows):\nRooms by area (largest first):\n  A: 4.6% of plan area, located center\n  B: 3.9% of plan area, located bottom-center\n  C: 3.9% of plan area, located bottom-left\n  D: 3.3% of plan area, located bottom-left\n  E: 2.8% of plan area, located top-center\n  F: 2.7% of plan area, located top-center\n  G: 2.4% of plan area, located right\n  H: 2.0% of plan area, located top-right\n  I: 1.9% of plan area, located bottom-right\n  J: 1.3% of plan area, located top-left\n  K: 1.1% of plan area, located top-left\nConnections (rooms sharing a door):\n  B <-> D\n  D <-> C\n  E <-> F"
+  },
+  "8425": {
+    "rooms": [
+      {
+        "id": 54,
+        "area_pct": 14.3,
+        "position": "top-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 3.4,
+        "position": "top-right"
+      },
+      {
+        "id": 10,
+        "area_pct": 3.1,
+        "position": "right"
+      },
+      {
+        "id": 20,
+        "area_pct": 2.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 15,
+        "area_pct": 2.2,
+        "position": "center"
+      },
+      {
+        "id": 71,
+        "area_pct": 2.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 1.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.7,
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 69,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 2,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 1.0,
+        "position": "left"
+      },
+      {
+        "id": 56,
+        "area_pct": 1.0,
+        "position": "center"
+      },
+      {
+        "id": 72,
+        "area_pct": 0.4,
+        "position": "bottom-right"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.3,
+        "position": "bottom-right"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.1,
+        "position": "left"
+      },
+      {
+        "id": 7,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 21,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 22,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 26,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 27,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 28,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 30,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 34,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 35,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 36,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 40,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 41,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 42,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 43,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 44,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 45,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 46,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 47,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 48,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 49,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 50,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 51,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 52,
+        "area_pct": 0.0,
+        "position": "left"
+      },
+      {
+        "id": 53,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 55,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 57,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 58,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 59,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 62,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 63,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 64,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 65,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 66,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 67,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 68,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 70,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 73,
+        "area_pct": 0.0,
+        "position": "right"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 10
+      },
+      {
+        "a": 2,
+        "b": 69
+      },
+      {
+        "a": 3,
+        "b": 71
+      },
+      {
+        "a": 6,
+        "b": 55
+      },
+      {
+        "a": 10,
+        "b": 12
+      },
+      {
+        "a": 10,
+        "b": 55
+      },
+      {
+        "a": 11,
+        "b": 23
+      },
+      {
+        "a": 13,
+        "b": 71
+      },
+      {
+        "a": 15,
+        "b": 69
+      },
+      {
+        "a": 20,
+        "b": 71
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 19,
+    "text": "DETECTED STRUCTURE (15 rooms, 12 doors, 19 windows):\nRooms by area (largest first):\n  A: 14.3% of plan area, located top-left\n  B: 3.4% of plan area, located top-right\n  C: 3.1% of plan area, located right\n  D: 2.8% of plan area, located bottom-left\n  E: 2.2% of plan area, located center\n  F: 2.0% of plan area, located bottom-center\n  G: 1.9% of plan area, located bottom-center\n  H: 1.7% of plan area, located right\n  I: 1.5% of plan area, located bottom-center\n  J: 1.4% of plan area, located center\n  K: 1.3% of plan area, located center\n  L: 1.3% of plan area, located bottom-right\n  M: 1.0% of plan area, located bottom-right\n  N: 1.0% of plan area, located left\n  O: 1.0% of plan area, located center\nConnections (rooms sharing a door):\n  H <-> C\n  K <-> J\n  I <-> F\n  C <-> L\n  G <-> F\n  E <-> J\n  D <-> F"
+  },
+  "6389": {
+    "rooms": [
+      {
+        "id": 3,
+        "area_pct": 8.1,
+        "position": "center"
+      },
+      {
+        "id": 15,
+        "area_pct": 6.9,
+        "position": "center"
+      },
+      {
+        "id": 18,
+        "area_pct": 5.3,
+        "position": "top-center"
+      },
+      {
+        "id": 21,
+        "area_pct": 5.1,
+        "position": "top-right"
+      },
+      {
+        "id": 14,
+        "area_pct": 4.2,
+        "position": "left"
+      },
+      {
+        "id": 27,
+        "area_pct": 3.7,
+        "position": "top-right"
+      },
+      {
+        "id": 26,
+        "area_pct": 3.3,
+        "position": "top-left"
+      },
+      {
+        "id": 4,
+        "area_pct": 3.2,
+        "position": "left"
+      },
+      {
+        "id": 11,
+        "area_pct": 3.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 24,
+        "area_pct": 2.6,
+        "position": "bottom-right"
+      },
+      {
+        "id": 13,
+        "area_pct": 2.2,
+        "position": "top-left"
+      },
+      {
+        "id": 22,
+        "area_pct": 2.1,
+        "position": "top-center"
+      },
+      {
+        "id": 28,
+        "area_pct": 1.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 19,
+        "area_pct": 1.5,
+        "position": "top-left"
+      },
+      {
+        "id": 10,
+        "area_pct": 1.4,
+        "position": "top-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 1.3,
+        "position": "top-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.8,
+        "position": "bottom-left"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.7,
+        "position": "top-left"
+      },
+      {
+        "id": 47,
+        "area_pct": 0.7,
+        "position": "top-left"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.5,
+        "position": "top-center"
+      },
+      {
+        "id": 45,
+        "area_pct": 0.4,
+        "position": "bottom-left"
+      },
+      {
+        "id": 34,
+        "area_pct": 0.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 36,
+        "area_pct": 0.2,
+        "position": "bottom-center"
+      },
+      {
+        "id": 44,
+        "area_pct": 0.2,
+        "position": "bottom-right"
+      },
+      {
+        "id": 43,
+        "area_pct": 0.1,
+        "position": "bottom-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.0,
+        "position": "bottom-left"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.0,
+        "position": "top-right"
+      },
+      {
+        "id": 31,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 35,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 40,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 41,
+        "area_pct": 0.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 42,
+        "area_pct": 0.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 46,
+        "area_pct": 0.0,
+        "position": "left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 3,
+        "b": 23
+      },
+      {
+        "a": 4,
+        "b": 14
+      },
+      {
+        "a": 10,
+        "b": 14
+      },
+      {
+        "a": 10,
+        "b": 20
+      },
+      {
+        "a": 10,
+        "b": 47
+      },
+      {
+        "a": 11,
+        "b": 27
+      },
+      {
+        "a": 12,
+        "b": 18
+      },
+      {
+        "a": 12,
+        "b": 25
+      },
+      {
+        "a": 13,
+        "b": 19
+      },
+      {
+        "a": 21,
+        "b": 27
+      },
+      {
+        "a": 24,
+        "b": 27
+      }
+    ],
+    "n_doors": 18,
+    "n_windows": 17,
+    "text": "DETECTED STRUCTURE (16 rooms, 18 doors, 17 windows):\nRooms by area (largest first):\n  A: 8.1% of plan area, located center\n  B: 6.9% of plan area, located center\n  C: 5.3% of plan area, located top-center\n  D: 5.1% of plan area, located top-right\n  E: 4.2% of plan area, located left\n  F: 3.7% of plan area, located top-right\n  G: 3.3% of plan area, located top-left\n  H: 3.2% of plan area, located left\n  I: 3.0% of plan area, located bottom-right\n  J: 2.6% of plan area, located bottom-right\n  K: 2.2% of plan area, located top-left\n  L: 2.1% of plan area, located top-center\n  M: 1.6% of plan area, located bottom-left\n  N: 1.5% of plan area, located top-left\n  O: 1.4% of plan area, located top-left\n  P: 1.3% of plan area, located top-center\nConnections (rooms sharing a door):\n  H <-> E\n  O <-> E\n  I <-> F\n  P <-> C\n  K <-> N\n  D <-> F\n  J <-> F"
+  },
+  "6387": {
+    "rooms": [
+      {
+        "id": 7,
+        "area_pct": 8.2,
+        "position": "center"
+      },
+      {
+        "id": 8,
+        "area_pct": 5.5,
+        "position": "left"
+      },
+      {
+        "id": 10,
+        "area_pct": 4.9,
+        "position": "bottom-right"
+      },
+      {
+        "id": 11,
+        "area_pct": 4.9,
+        "position": "right"
+      },
+      {
+        "id": 2,
+        "area_pct": 3.6,
+        "position": "top-right"
+      },
+      {
+        "id": 13,
+        "area_pct": 3.3,
+        "position": "bottom-center"
+      },
+      {
+        "id": 1,
+        "area_pct": 3.2,
+        "position": "center"
+      },
+      {
+        "id": 12,
+        "area_pct": 2.2,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 2.0,
+        "position": "left"
+      },
+      {
+        "id": 3,
+        "area_pct": 1.9,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 1.6,
+        "position": "bottom-left"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.8,
+        "position": "bottom-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.7,
+        "position": "bottom-center"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 1,
+        "b": 9
+      },
+      {
+        "a": 1,
+        "b": 10
+      },
+      {
+        "a": 1,
+        "b": 12
+      },
+      {
+        "a": 1,
+        "b": 13
+      },
+      {
+        "a": 2,
+        "b": 7
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 6,
+        "b": 8
+      },
+      {
+        "a": 6,
+        "b": 12
+      },
+      {
+        "a": 7,
+        "b": 8
+      }
+    ],
+    "n_doors": 10,
+    "n_windows": 9,
+    "text": "DETECTED STRUCTURE (11 rooms, 10 doors, 9 windows):\nRooms by area (largest first):\n  A: 8.2% of plan area, located center\n  B: 5.5% of plan area, located left\n  C: 4.9% of plan area, located bottom-right\n  D: 4.9% of plan area, located right\n  E: 3.6% of plan area, located top-right\n  F: 3.3% of plan area, located bottom-center\n  G: 3.2% of plan area, located center\n  H: 2.2% of plan area, located center\n  I: 2.0% of plan area, located left\n  J: 1.9% of plan area, located bottom-center\n  K: 1.6% of plan area, located bottom-left\nConnections (rooms sharing a door):\n  G <-> C\n  G <-> H\n  G <-> F\n  E <-> A\n  K <-> I\n  I <-> B\n  I <-> H\n  A <-> B"
+  },
+  "5981": {
+    "rooms": [
+      {
+        "id": 36,
+        "area_pct": 4.2,
+        "position": "left"
+      },
+      {
+        "id": 12,
+        "area_pct": 3.8,
+        "position": "right"
+      },
+      {
+        "id": 8,
+        "area_pct": 3.7,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 3.2,
+        "position": "right"
+      },
+      {
+        "id": 22,
+        "area_pct": 3.2,
+        "position": "center"
+      },
+      {
+        "id": 30,
+        "area_pct": 3.0,
+        "position": "left"
+      },
+      {
+        "id": 15,
+        "area_pct": 2.9,
+        "position": "left"
+      },
+      {
+        "id": 34,
+        "area_pct": 2.6,
+        "position": "top-left"
+      },
+      {
+        "id": 1,
+        "area_pct": 1.6,
+        "position": "left"
+      },
+      {
+        "id": 28,
+        "area_pct": 1.4,
+        "position": "center"
+      },
+      {
+        "id": 31,
+        "area_pct": 1.4,
+        "position": "top-left"
+      },
+      {
+        "id": 41,
+        "area_pct": 1.3,
+        "position": "center"
+      },
+      {
+        "id": 27,
+        "area_pct": 1.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 26,
+        "area_pct": 1.0,
+        "position": "bottom-center"
+      },
+      {
+        "id": 23,
+        "area_pct": 0.8,
+        "position": "left"
+      },
+      {
+        "id": 18,
+        "area_pct": 0.7,
+        "position": "top-center"
+      },
+      {
+        "id": 29,
+        "area_pct": 0.5,
+        "position": "right"
+      },
+      {
+        "id": 25,
+        "area_pct": 0.4,
+        "position": "top-center"
+      },
+      {
+        "id": 4,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 5,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 6,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 9,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 13,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 16,
+        "area_pct": 0.0,
+        "position": "right"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 20,
+        "area_pct": 0.0,
+        "position": "center"
+      },
+      {
+        "id": 24,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 32,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 33,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 35,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 37,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 38,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 39,
+        "area_pct": 0.0,
+        "position": "top-left"
+      },
+      {
+        "id": 40,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 23
+      },
+      {
+        "a": 1,
+        "b": 30
+      },
+      {
+        "a": 6,
+        "b": 8
+      },
+      {
+        "a": 6,
+        "b": 41
+      },
+      {
+        "a": 8,
+        "b": 12
+      },
+      {
+        "a": 8,
+        "b": 41
+      },
+      {
+        "a": 12,
+        "b": 17
+      },
+      {
+        "a": 12,
+        "b": 29
+      },
+      {
+        "a": 15,
+        "b": 23
+      },
+      {
+        "a": 15,
+        "b": 31
+      },
+      {
+        "a": 15,
+        "b": 36
+      },
+      {
+        "a": 18,
+        "b": 28
+      },
+      {
+        "a": 20,
+        "b": 22
+      },
+      {
+        "a": 20,
+        "b": 28
+      },
+      {
+        "a": 22,
+        "b": 25
+      },
+      {
+        "a": 22,
+        "b": 27
+      },
+      {
+        "a": 22,
+        "b": 28
+      },
+      {
+        "a": 22,
+        "b": 36
+      }
+    ],
+    "n_doors": 16,
+    "n_windows": 14,
+    "text": "DETECTED STRUCTURE (14 rooms, 16 doors, 14 windows):\nRooms by area (largest first):\n  A: 4.2% of plan area, located left\n  B: 3.8% of plan area, located right\n  C: 3.7% of plan area, located center\n  D: 3.2% of plan area, located right\n  E: 3.2% of plan area, located center\n  F: 3.0% of plan area, located left\n  G: 2.9% of plan area, located left\n  H: 2.6% of plan area, located top-left\n  I: 1.6% of plan area, located left\n  J: 1.4% of plan area, located center\n  K: 1.4% of plan area, located top-left\n  L: 1.3% of plan area, located center\n  M: 1.1% of plan area, located bottom-center\n  N: 1.0% of plan area, located bottom-center\nConnections (rooms sharing a door):\n  I <-> F\n  C <-> B\n  C <-> L\n  B <-> D\n  G <-> K\n  G <-> A\n  E <-> M\n  E <-> J\n  E <-> A"
+  },
+  "1699": {
+    "rooms": [
+      {
+        "id": 16,
+        "area_pct": 9.4,
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "area_pct": 8.9,
+        "position": "top-center"
+      },
+      {
+        "id": 13,
+        "area_pct": 7.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 11,
+        "area_pct": 5.0,
+        "position": "top-center"
+      },
+      {
+        "id": 2,
+        "area_pct": 4.8,
+        "position": "top-right"
+      },
+      {
+        "id": 9,
+        "area_pct": 3.9,
+        "position": "top-left"
+      },
+      {
+        "id": 12,
+        "area_pct": 3.5,
+        "position": "bottom-center"
+      },
+      {
+        "id": 15,
+        "area_pct": 3.1,
+        "position": "bottom-center"
+      },
+      {
+        "id": 5,
+        "area_pct": 3.0,
+        "position": "bottom-right"
+      },
+      {
+        "id": 18,
+        "area_pct": 2.6,
+        "position": "center"
+      },
+      {
+        "id": 6,
+        "area_pct": 1.7,
+        "position": "right"
+      },
+      {
+        "id": 7,
+        "area_pct": 1.1,
+        "position": "right"
+      },
+      {
+        "id": 1,
+        "area_pct": 0.8,
+        "position": "center"
+      },
+      {
+        "id": 17,
+        "area_pct": 0.8,
+        "position": "center"
+      },
+      {
+        "id": 10,
+        "area_pct": 0.7,
+        "position": "bottom-center"
+      },
+      {
+        "id": 19,
+        "area_pct": 0.7,
+        "position": "top-left"
+      },
+      {
+        "id": 14,
+        "area_pct": 0.0,
+        "position": "top-left"
+      }
+    ],
+    "adjacency": [
+      {
+        "a": 1,
+        "b": 18
+      },
+      {
+        "a": 2,
+        "b": 4
+      },
+      {
+        "a": 4,
+        "b": 13
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 5,
+        "b": 13
+      },
+      {
+        "a": 6,
+        "b": 7
+      },
+      {
+        "a": 9,
+        "b": 14
+      },
+      {
+        "a": 9,
+        "b": 19
+      },
+      {
+        "a": 10,
+        "b": 15
+      },
+      {
+        "a": 10,
+        "b": 18
+      },
+      {
+        "a": 11,
+        "b": 17
+      },
+      {
+        "a": 12,
+        "b": 18
+      },
+      {
+        "a": 14,
+        "b": 19
+      }
+    ],
+    "n_doors": 12,
+    "n_windows": 20,
+    "text": "DETECTED STRUCTURE (12 rooms, 12 doors, 20 windows):\nRooms by area (largest first):\n  A: 9.4% of plan area, located left\n  B: 8.9% of plan area, located top-center\n  C: 7.7% of plan area, located bottom-center\n  D: 5.0% of plan area, located top-center\n  E: 4.8% of plan area, located top-right\n  F: 3.9% of plan area, located top-left\n  G: 3.5% of plan area, located bottom-center\n  H: 3.1% of plan area, located bottom-center\n  I: 3.0% of plan area, located bottom-right\n  J: 2.6% of plan area, located center\n  K: 1.7% of plan area, located right\n  L: 1.1% of plan area, located right\nConnections (rooms sharing a door):\n  E <-> B\n  B <-> C\n  I <-> K\n  I <-> C\n  K <-> L\n  G <-> J"
+  }
+}

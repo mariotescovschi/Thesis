@@ -1,0 +1,187 @@
+{
+  "prompt": "This is one drawing sheet of a single-family Finnish house showing several storeys side by side. Labels are Finnish abbreviations.\nFinnish glossary: MH=bedroom, OH=living room, K/KEITTIO=kitchen, RUOKAILUTILA/RUOKATILA=dining, KPH/PESUH=bathroom, WC=toilet, ET=entry hall, AULA=hall/landing, S/SAUNA=sauna, PUKUH=changing room, VH/KHH=utility room, TK=technical closet, VARASTO/VARAS=storage, AUTOTALLI=garage, PARVEKE=balcony, TERASSI=terrace, KELLARI=cellar, KATTILAHUONE=boiler room, TAKKAHUONE=fireplace room, VESIVARAAJA=water heater, ALKOVI=alcove, HALLI=hall. Floor labels: KELLARIKERROS=basement floor, (I/II) KERROS / KRS=storey, VINTTIKERROS=attic floor, POHJA=plan.\n\nExtract a STRICT structured representation. For every storey list its rooms with a coarse relative position. Identify vertical circulation (staircases that connect storeys). For the main/ground storey give a room adjacency list (which rooms are directly connected by a door or opening). Return ONLY JSON matching exactly:\n{\n  \"building_type\": \"single_family_house\",\n  \"floors\": [{\"level_index\": <int, 0=lowest>, \"floor_label_original\": \"...\",\n    \"floor_role\": \"basement|ground|upper|attic\",\n    \"rooms\": [{\"label\": \"...\", \"type_en\": \"...\", \"position\": \"top-left|top|top-right|left|center|right|bottom-left|bottom|bottom-right\"}]}],\n  \"vertical_connections\": [{\"via\": \"staircase\", \"connects_levels\": [<int>, <int>]}],\n  \"ground_floor_adjacency\": [{\"from\": \"...\", \"to\": \"...\", \"via\": \"door|opening\"}]\n}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"single_family_house\",\n  \"floors\": [\n    {\n      \"level_index\": 0,\n      \"floor_label_original\": \"KELLARIKERROS\",\n      \"floor_role\": \"basement\",\n      \"rooms\": [\n        {\n          \"label\": \"MH 1\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"MH 2\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top\"\n        },\n        {\n          \"label\": \"ET 2\",\n          \"type_en\": \"entry hall\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"KPH 2\",\n          \"type_en\": \"bathroom\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"WC 2\",\n          \"type_en\": \"toilet\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"AULA\",\n          \"type_en\": \"hall/landing\",\n          \"position\": \"bottom\"\n        }\n      ]\n    },\n    {\n      \"level_index\": 1,\n      \"floor_label_original\": \"(I) KERROS / KRS\",\n      \"floor_role\": \"ground\",\n      \"rooms\": [\n        {\n          \"label\": \"OH\",\n          \"type_en\": \"living room\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"K/KEITTIO\",\n          \"type_en\": \"kitchen\",\n          \"position\": \"top\"\n        },\n        {\n          \"label\": \"RUOKAILUTILA\",\n          \"type_en\": \"dining\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"ET\",\n          \"type_en\": \"entry hall\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"AULA\",\n          \"type_en\": \"hall/landing\",\n          \"position\": \"bottom\"\n        }\n      ]\n    },\n    {\n      \"level_index\": 2,\n      \"floor_label_original\": \"(II) KERROS / KRS\",\n      \"floor_role\": \"upper\",\n      \"rooms\": [\n        {\n          \"label\": \"MH 3\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"MH 4\",\n          \"type_en\": \"bedroom\",\n          \"position\": \"top\"\n        },\n        {\n          \"label\": \"KPH 3\",\n          \"type_en\": \"bathroom\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"WC 3\",\n          \"type_en\": \"toilet\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"AULA\",\n          \"type_en\": \"hall/landing\",\n          \"position\": \"bottom\"\n        }\n      ]\n    },\n    {\n      \"level_index\": 3,\n      \"floor_label_original\": \"VINTTIKERROS\",\n      \"floor_role\": \"attic\",\n      \"rooms\": [\n        {\n          \"label\": \"VARASTO\",\n          \"type_en\": \"storage\",\n          \"position\": \"top-left\"\n        },\n        {\n          \"label\": \"AUTOTALLI\",\n          \"type_en\": \"garage\",\n          \"position\": \"top\"\n        },\n        {\n          \"label\": \"PARVEKE\",\n          \"type_en\": \"balcony\",\n          \"position\": \"left\"\n        },\n        {\n          \"label\": \"TERASSI\",\n          \"type_en\": \"terrace\",\n          \"position\": \"center\"\n        },\n        {\n          \"label\": \"TK\",\n          \"type_en\": \"technical closet\",\n          \"position\": \"bottom\"\n        }\n      ]\n    }\n  ],\n  \"vertical_connections\": [\n    {\n      \"via\": \"staircase\",\n      \"connects_levels\": [0, 1]\n    },\n    {\n      \"via\": \"staircase\",\n      \"connects_levels\": [1, 2]\n    },\n    {\n      \"via\": \"staircase\",\n      \"connects_levels\": [2, 3]\n    }\n  ],\n  \"ground_floor_adjacency\": [\n    {\n      \"from\": \"OH\",\n      \"to\": \"K/KEITTIO\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"K/KEITTIO\",\n      \"to\": \"RUOKAILUTILA\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"RUOKAILUTILA\",\n      \"to\": \"ET\",\n      \"via\": \"door\"\n    },\n    {\n      \"from\": \"ET\",\n      \"to\": \"AULA\",\n      \"via\": \"door\"\n    }\n  ]\n}",
+  "parsed": {
+    "building_type": "single_family_house",
+    "floors": [
+      {
+        "level_index": 0,
+        "floor_label_original": "KELLARIKERROS",
+        "floor_role": "basement",
+        "rooms": [
+          {
+            "label": "MH 1",
+            "type_en": "bedroom",
+            "position": "top-left"
+          },
+          {
+            "label": "MH 2",
+            "type_en": "bedroom",
+            "position": "top"
+          },
+          {
+            "label": "ET 2",
+            "type_en": "entry hall",
+            "position": "left"
+          },
+          {
+            "label": "KPH 2",
+            "type_en": "bathroom",
+            "position": "center"
+          },
+          {
+            "label": "WC 2",
+            "type_en": "toilet",
+            "position": "center"
+          },
+          {
+            "label": "AULA",
+            "type_en": "hall/landing",
+            "position": "bottom"
+          }
+        ]
+      },
+      {
+        "level_index": 1,
+        "floor_label_original": "(I) KERROS / KRS",
+        "floor_role": "ground",
+        "rooms": [
+          {
+            "label": "OH",
+            "type_en": "living room",
+            "position": "top-left"
+          },
+          {
+            "label": "K/KEITTIO",
+            "type_en": "kitchen",
+            "position": "top"
+          },
+          {
+            "label": "RUOKAILUTILA",
+            "type_en": "dining",
+            "position": "left"
+          },
+          {
+            "label": "ET",
+            "type_en": "entry hall",
+            "position": "center"
+          },
+          {
+            "label": "AULA",
+            "type_en": "hall/landing",
+            "position": "bottom"
+          }
+        ]
+      },
+      {
+        "level_index": 2,
+        "floor_label_original": "(II) KERROS / KRS",
+        "floor_role": "upper",
+        "rooms": [
+          {
+            "label": "MH 3",
+            "type_en": "bedroom",
+            "position": "top-left"
+          },
+          {
+            "label": "MH 4",
+            "type_en": "bedroom",
+            "position": "top"
+          },
+          {
+            "label": "KPH 3",
+            "type_en": "bathroom",
+            "position": "left"
+          },
+          {
+            "label": "WC 3",
+            "type_en": "toilet",
+            "position": "center"
+          },
+          {
+            "label": "AULA",
+            "type_en": "hall/landing",
+            "position": "bottom"
+          }
+        ]
+      },
+      {
+        "level_index": 3,
+        "floor_label_original": "VINTTIKERROS",
+        "floor_role": "attic",
+        "rooms": [
+          {
+            "label": "VARASTO",
+            "type_en": "storage",
+            "position": "top-left"
+          },
+          {
+            "label": "AUTOTALLI",
+            "type_en": "garage",
+            "position": "top"
+          },
+          {
+            "label": "PARVEKE",
+            "type_en": "balcony",
+            "position": "left"
+          },
+          {
+            "label": "TERASSI",
+            "type_en": "terrace",
+            "position": "center"
+          },
+          {
+            "label": "TK",
+            "type_en": "technical closet",
+            "position": "bottom"
+          }
+        ]
+      }
+    ],
+    "vertical_connections": [
+      {
+        "via": "staircase",
+        "connects_levels": [
+          0,
+          1
+        ]
+      },
+      {
+        "via": "staircase",
+        "connects_levels": [
+          1,
+          2
+        ]
+      },
+      {
+        "via": "staircase",
+        "connects_levels": [
+          2,
+          3
+        ]
+      }
+    ],
+    "ground_floor_adjacency": [
+      {
+        "from": "OH",
+        "to": "K/KEITTIO",
+        "via": "door"
+      },
+      {
+        "from": "K/KEITTIO",
+        "to": "RUOKAILUTILA",
+        "via": "door"
+      },
+      {
+        "from": "RUOKAILUTILA",
+        "to": "ET",
+        "via": "door"
+      },
+      {
+        "from": "ET",
+        "to": "AULA",
+        "via": "door"
+      }
+    ]
+  }
+}

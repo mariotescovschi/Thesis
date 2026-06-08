@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+/* Design tokens: industrial/utilitarian IDE: near-black surfaces, sharp amber accent.
+   @theme generates the matching utilities (bg-background, border-border, text-primary…). */
+@theme {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: oklch(0.165 0.004 247);
+  --color-foreground: oklch(0.92 0.005 247);
+
+  --color-card: oklch(0.205 0.005 247);
+  --color-card-foreground: oklch(0.92 0.005 247);
+
+  --color-popover: oklch(0.21 0.005 247);
+  --color-popover-foreground: oklch(0.92 0.005 247);
+
+  --color-primary: oklch(0.74 0.155 60);
+  --color-primary-foreground: oklch(0.18 0.03 60);
+
+  --color-secondary: oklch(0.255 0.006 247);
+  --color-secondary-foreground: oklch(0.92 0.005 247);
+
+  --color-muted: oklch(0.235 0.005 247);
+  --color-muted-foreground: oklch(0.64 0.006 247);
+
+  --color-accent: oklch(0.275 0.006 247);
+  --color-accent-foreground: oklch(0.96 0.005 247);
+
+  --color-destructive: oklch(0.58 0.2 25);
+  --color-destructive-foreground: oklch(0.98 0 0);
+
+  --color-border: oklch(0.28 0.006 247);
+  --color-input: oklch(0.3 0.006 247);
+  --color-ring: oklch(0.74 0.155 60);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  * {
+    border-color: var(--color-border);
+    outline-color: var(--color-ring);
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Subtle layered gradient for empty stages. */
+@utility stage-grain {
+  background-image: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      color-mix(in oklch, var(--color-primary) 8%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(ellipse 60% 50% at 50% 120%, oklch(0.22 0.005 247), transparent 70%);
+}

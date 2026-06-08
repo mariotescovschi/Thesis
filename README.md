@@ -1,114 +1,69 @@
-# RL-Based Traffic Signal Optimization — Iași
+# Image → Structured CAD
 
-Bachelor's thesis project. The goal is to train a Reinforcement Learning agent (PPO) to optimize traffic signal
-timings in a realistic SUMO simulation of Iași, using real-world traffic flow data collected from TomTom.
+A pipeline that takes floor plan images and produces structured CAD output through spatial understanding — not just segmentation, but full comprehension of elements, dimensions, and spatial relationships.
 
-No real deployment. The platform is validated entirely in simulation.
+## Approach
 
----
+Fine-tune **Qwen3-VL-32B** (QLoRA 4-bit) on the ResPlan dataset (17K floor plans with topological graphs) to generate structured JSON directly from images. The JSON is then converted to executable ForgeCAD code for validation and visualization.
 
-## What this project does
+Benchmark against generalist VLMs (GPT-4V, Claude, GLM-4.5V) used zero-shot to demonstrate the value of domain-specific fine-tuning on spatial understanding tasks.
 
-1. Collects real traffic flow data from TomTom APIs (automated via GitHub Actions)
-2. Builds a calibrated SUMO road network for Iași (OpenStreetMap + manual refinement)
-3. Generates realistic Origin-Destination traffic flows from the collected data
-4. Trains a PPO agent (stable-baselines3) to control traffic lights
-5. Compares RL-controlled vs. static signal timing on metrics: delay, queue length, average speed
-
----
-
-## Repository structure
+## Pipeline
 
 ```
-.
-├── data/                        # Raw and processed data
-│   └── tomtom/                  # TomTom flow snapshots (moved from iasi_data_complete/)
-├── sumo/                        # SUMO network and simulation configs
-│   ├── network/                 # .net.xml, .nod.xml, .edg.xml files
-│   ├── routes/                  # .rou.xml — generated O/D flows
-│   └── config/                  # .sumocfg files
-├── rl/                          # RL environment and training
-│   ├── env/                     # Gymnasium environment wrapping SUMO via TraCI
-│   └── train/                   # PPO training scripts
-├── scripts/                     # Data collection and preprocessing utilities
-│   ├── collect_speed_data.py    # TomTom Flow Segment API collector
-│   └── collect_all_data.py      # Full TomTom data collector (tiles, incidents, POIs)
-├── docs/                        # Project documentation
-│   ├── SCOPE.md                 # Objectives and boundaries
-│   ├── PIPELINE.md              # End-to-end pipeline description
-│   ├── CHECKPOINTS.md           # Milestones and done criteria
-│   └── DATA.md                  # Data inventory and format reference
-├── RelevantStudies/             # Papers and references
-├── iasi_data_complete/          # Raw TomTom data (legacy location, to be migrated)
-├── .github/workflows/           # GitHub Actions — automated data collection
-└── visualize_traffic.py         # Quick visualization of collected data
+Image (floor plan) → Qwen3-VL fine-tuned → Structured JSON → ForgeCAD .forge.js → Validate & Render
 ```
 
----
+## Current Status
 
-## How to run each module
+**Phase 3** — Training in progress. Qwen3-VL-32B-Instruct fine-tuning running on Prime Intellect (1x A100 80GB). ~8h run, 421 steps, 3361 training samples from CubiCasa5k.
 
-### 1. Data collection (automated)
+## Project Structure
 
-Runs automatically via GitHub Actions on a weekly schedule. To run manually:
+```
+training/
+├── config.json              # Hyperparameters (QLoRA, LoRA, training)
+├── requirements.txt         # Pinned dependencies (working versions)
+├── prepare_data.py          # CubiCasa5k SVG → Qwen3-VL chat format
+├── train.py                 # Main training script (QLoRA + SFTTrainer)
+├── checkpoint.py            # Upload/download checkpoints to HuggingFace Hub
+├── modal_train.py           # Modal.com serverless deployment
+├── visualize.py             # Generate HTML training report
+├── training_explained.html  # Full explainer (open in browser)
+└── TRAINING_LOG.md          # Run log with all issues & fixes
 
-```bash
-cp .env.example .env  # add your TOMTOM_API_KEY
-pip install -r requirements.txt
-python scripts/collect_speed_data.py
+studies/
+├── papers/                  # 9 reference papers (LoRA, QLoRA, Qwen2-VL, SAM2, etc.)
+└── lora_finetuning.md       # LoRA research summary
+
+docs/
+└── references.md            # All papers, tools, datasets index
 ```
 
-### 2. SUMO network
+## Training Strategy
 
-Requires SUMO installed (`sumo`, `netconvert`, `netedit`).
+Split training across platforms to use available credits:
+1. **Prime Intellect** ($44 credits) — 1x A100 80GB @ $1.5/h
+2. **Modal** ($30 credits) — 1x A100 80GB @ $2.5/h
 
-```bash
-# Import OSM data and generate network
-netconvert --osm-files sumo/network/iasi.osm -o sumo/network/iasi.net.xml
+Checkpoints saved to HuggingFace Hub between runs for seamless resume.
 
-# Open in editor
-netedit sumo/network/iasi.net.xml
-```
+## Benchmarks
 
-### 3. Generate traffic flows
+Round-trip fidelity: CAD ground truth → render as image → our pipeline → CAD output → compare.
 
-```bash
-python scripts/generate_od_flows.py  # (to be implemented)
-```
+Models compared:
+- **Ours**: Qwen3-VL-32B + QLoRA (fine-tuned on ResPlan)
+- GPT-4V / Claude (zero-shot)
+- GLM-4.5V (zero-shot)
+- SAM2 + OpenCV baseline (modular)
 
-### 4. Run simulation
+Metrics: IoU (walls), Chamfer Distance, Graph Edit Distance (topology), SSIG.
 
-```bash
-sumo-gui -c sumo/config/iasi.sumocfg
-```
+## Stack
 
-### 5. Train RL agent
-
-```bash
-python rl/train/train_ppo.py  # (to be implemented)
-```
-
----
-
-## Key decisions
-
-- **Algorithm**: PPO (stable-baselines3) — stable, no hyperparameter hell, standard in traffic RL literature
-- **Simulator**: SUMO + TraCI — open source, scriptable, well-documented
-- **Data source**: TomTom Flow Segment API — real speed/freeflow data for Iași road segments
-- **Traffic lights**: approximated from OSM; timings to be calibrated manually or via on-site observation
-- **Scope**: single intersection or small corridor first, then scale if time allows
-
----
-
-## Status
-
-See [docs/CHECKPOINTS.md](docs/CHECKPOINTS.md) for current progress.
-
----
-
-## References
-
-- [SUMO Documentation](https://sumo.dlr.de/docs/)
-- [stable-baselines3](https://stable-baselines3.readthedocs.io/)
-- [TomTom Traffic API](https://developer.tomtom.com/traffic-api/documentation)
-- RelevantStudies/ — papers on dataset effects, RL for traffic control
+- **Model**: Qwen3-VL-32B, QLoRA 4-bit NF4, LoRA r=64
+- **Training data**: CubiCasa5k (5K), eval on FPBench-2K
+- **Validation**: ForgeCAD CLI
+- **Training**: HuggingFace Transformers + PEFT + TRL
+- **Compute**: Prime Intellect + Modal (A100 80GB)

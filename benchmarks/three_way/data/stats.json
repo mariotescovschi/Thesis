@@ -1,0 +1,32 @@
+{
+  "semantics": {
+    "n": 50,
+    "qwen_mean": 0.45079193617253016,
+    "qwen_std": 0.22417330520795375,
+    "claude_mean": 0.5203172971778751,
+    "claude_std": 0.16049181115718691,
+    "delta_mean": -0.06952536100534494,
+    "wilcoxon_stat": 294.5,
+    "wilcoxon_p": 0.011831044036995881,
+    "bootstrap_ci_95": [
+      -0.1163837657351135,
+      -0.028408171685641893
+    ],
+    "significant_at_0.05": true,
+    "ci_excludes_zero": true
+  },
+  "geometry": {
+    "n_claude_val": 50,
+    "claude_val_room_iou": {
+      "mean": 0.6719799999999999,
+      "std": 0.13941122403793427
+    },
+    "claude_val_wall_iou": {
+      "mean": 0.24814,
+      "std": 0.10180193053780703
+    },
+    "pipeline_test_room_iou_mean": 0.889,
+    "pipeline_test_wall_iou_mean": 0.749,
+    "note": "Claude on val split, pipeline on test split -> NOT identical plans. Descriptive only; no paired test."
+  }
+}

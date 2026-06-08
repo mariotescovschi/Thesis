@@ -1,52 +1,32 @@
-# Environment variables
 .env
-.env.local
-.env.*.local
-
-# Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-venv/
-ENV/
-env/
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+*.pyc
 .DS_Store
-
-# Logs and temp files
 *.log
-*.tmp
-*.cache
+*.zip
+*.tar.gz
+*.pth
+*.pkl
+output/
+venv/
+vendor/
+.ruff_cache/
+skeleton_output/
+unified_dataset/
+.kiro/
+.idea/
 
-# Generated images
-traffic_visualization.png
+# Training outputs (keep scripts, not results)
+training/viz/
+training/archive/
+training/*_output*
+training/train_log.txt
+training/inference_results.json
 
+# Ephemeral
+tmp/
+
+# Large files
+CubiCasa5k/
+*.svg
+!training/sagemaker/Dockerfile

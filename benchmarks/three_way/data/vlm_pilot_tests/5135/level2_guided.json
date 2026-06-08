@@ -1,0 +1,149 @@
+{
+  "prompt": "This drawing is a single-family RESIDENTIAL house. The SAME sheet contains MULTIPLE FLOOR LEVELS drawn side by side — each separate sub-drawing is one storey of the same house. Room labels are Finnish abbreviations.\nFinnish glossary: MH=bedroom, OH=living room, K/KEITTIO=kitchen, RUOKAILUTILA/RUOKATILA=dining, KPH/PESUH=bathroom, WC=toilet, ET=entry hall, AULA=hall/landing, S/SAUNA=sauna, PUKUH=changing room, VH/KHH=utility room, TK=technical closet, VARASTO/VARAS=storage, AUTOTALLI=garage, PARVEKE=balcony, TERASSI=terrace, KELLARI=cellar, KATTILAHUONE=boiler room, TAKKAHUONE=fireplace room, VESIVARAAJA=water heater, ALKOVI=alcove, HALLI=hall. Floor labels: KELLARIKERROS=basement floor, (I/II) KERROS / KRS=storey, VINTTIKERROS=attic floor, POHJA=plan.\n\nIdentify each storey and its rooms. Return ONLY JSON:\n{\"building_type\": \"...\", \"num_floors\": <int>, \"floors\": [{\"floor_label_original\": \"...\", \"floor_role\": \"basement|ground|upper|attic\", \"rooms\": [{\"label_original\": \"...\", \"type_en\": \"...\"}]}], \"notes\": [\"...\"]}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"RESIDENTIAL\",\n  \"num_floors\": 3,\n  \"floors\": [\n    {\n      \"floor_label_original\": \"KELLARIKERROS\",\n      \"floor_role\": \"basement\",\n      \"rooms\": [\n        {\n          \"label_original\": \"MH 1\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"MH 2\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"ET 2\",\n          \"type_en\": \"entry hall\"\n        },\n        {\n          \"label_original\": \"KPH\",\n          \"type_en\": \"bathroom\"\n        },\n        {\n          \"label_original\": \"WC\",\n          \"type_en\": \"toilet\"\n        },\n        {\n          \"label_original\": \"AULA\",\n          \"type_en\": \"hall/landing\"\n        },\n        {\n          \"label_original\": \"K/KEITTIO\",\n          \"type_en\": \"kitchen\"\n        },\n        {\n          \"label_original\": \"RUOKAILUTILA\",\n          \"type_en\": \"dining room\"\n        },\n        {\n          \"label_original\": \"TK\",\n          \"type_en\": \"technical closet\"\n        },\n        {\n          \"label_original\": \"VARASTO\",\n          \"type_en\": \"storage\"\n        }\n      ]\n    },\n    {\n      \"floor_label_original\": \"I KERROS\",\n      \"floor_role\": \"ground\",\n      \"rooms\": [\n        {\n          \"label_original\": \"OH\",\n          \"type_en\": \"living room\"\n        },\n        {\n          \"label_original\": \"K/KEITTIO\",\n          \"type_en\": \"kitchen\"\n        },\n        {\n          \"label_original\": \"RUOKAILUTILA\",\n          \"type_en\": \"dining room\"\n        },\n        {\n          \"label_original\": \"AULA\",\n          \"type_en\": \"hall/landing\"\n        },\n        {\n          \"label_original\": \"MH 3\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"MH 4\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"KPH\",\n          \"type_en\": \"bathroom\"\n        },\n        {\n          \"label_original\": \"WC\",\n          \"type_en\": \"toilet\"\n        },\n        {\n          \"label_original\": \"AUTOTALLI\",\n          \"type_en\": \"garage\"\n        },\n        {\n          \"label_original\": \"PARVEKE\",\n          \"type_en\": \"balcony\"\n        }\n      ]\n    },\n    {\n      \"floor_label_original\": \"II KERROS\",\n      \"floor_role\": \"upper\",\n      \"rooms\": [\n        {\n          \"label_original\": \"OH\",\n          \"type_en\": \"living room\"\n        },\n        {\n          \"label_original\": \"K/KEITTIO\",\n          \"type_en\": \"kitchen\"\n        },\n        {\n          \"label_original\": \"RUOKAILUTILA\",\n          \"type_en\": \"dining room\"\n        },\n        {\n          \"label_original\": \"AULA\",\n          \"type_en\": \"hall/landing\"\n        },\n        {\n          \"label_original\": \"MH 5\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"MH 6\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"KPH\",\n          \"type_en\": \"bathroom\"\n        },\n        {\n          \"label_original\": \"WC\",\n          \"type_en\": \"toilet\"\n        },\n        {\n          \"label_original\": \"TK\",\n          \"type_en\": \"technical closet\"\n        },\n        {\n          \"label_original\": \"VARASTO\",\n          \"type_en\": \"storage\"\n        }\n      ]\n    }\n  ],\n  \"notes\": []\n}",
+  "parsed": {
+    "building_type": "RESIDENTIAL",
+    "num_floors": 3,
+    "floors": [
+      {
+        "floor_label_original": "KELLARIKERROS",
+        "floor_role": "basement",
+        "rooms": [
+          {
+            "label_original": "MH 1",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "MH 2",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "ET 2",
+            "type_en": "entry hall"
+          },
+          {
+            "label_original": "KPH",
+            "type_en": "bathroom"
+          },
+          {
+            "label_original": "WC",
+            "type_en": "toilet"
+          },
+          {
+            "label_original": "AULA",
+            "type_en": "hall/landing"
+          },
+          {
+            "label_original": "K/KEITTIO",
+            "type_en": "kitchen"
+          },
+          {
+            "label_original": "RUOKAILUTILA",
+            "type_en": "dining room"
+          },
+          {
+            "label_original": "TK",
+            "type_en": "technical closet"
+          },
+          {
+            "label_original": "VARASTO",
+            "type_en": "storage"
+          }
+        ]
+      },
+      {
+        "floor_label_original": "I KERROS",
+        "floor_role": "ground",
+        "rooms": [
+          {
+            "label_original": "OH",
+            "type_en": "living room"
+          },
+          {
+            "label_original": "K/KEITTIO",
+            "type_en": "kitchen"
+          },
+          {
+            "label_original": "RUOKAILUTILA",
+            "type_en": "dining room"
+          },
+          {
+            "label_original": "AULA",
+            "type_en": "hall/landing"
+          },
+          {
+            "label_original": "MH 3",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "MH 4",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "KPH",
+            "type_en": "bathroom"
+          },
+          {
+            "label_original": "WC",
+            "type_en": "toilet"
+          },
+          {
+            "label_original": "AUTOTALLI",
+            "type_en": "garage"
+          },
+          {
+            "label_original": "PARVEKE",
+            "type_en": "balcony"
+          }
+        ]
+      },
+      {
+        "floor_label_original": "II KERROS",
+        "floor_role": "upper",
+        "rooms": [
+          {
+            "label_original": "OH",
+            "type_en": "living room"
+          },
+          {
+            "label_original": "K/KEITTIO",
+            "type_en": "kitchen"
+          },
+          {
+            "label_original": "RUOKAILUTILA",
+            "type_en": "dining room"
+          },
+          {
+            "label_original": "AULA",
+            "type_en": "hall/landing"
+          },
+          {
+            "label_original": "MH 5",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "MH 6",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "KPH",
+            "type_en": "bathroom"
+          },
+          {
+            "label_original": "WC",
+            "type_en": "toilet"
+          },
+          {
+            "label_original": "TK",
+            "type_en": "technical closet"
+          },
+          {
+            "label_original": "VARASTO",
+            "type_en": "storage"
+          }
+        ]
+      }
+    ],
+    "notes": []
+  }
+}

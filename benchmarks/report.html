@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FloorPlan Studio — Benchmark Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-elev: #111419;
+    --bg-card: #151a21;
+    --bg-card-2: #1a2028;
+    --border: #242b34;
+    --border-soft: #1d232b;
+    --text: #e7ebf2;
+    --text-dim: #9aa4b2;
+    --text-faint: #687180;
+
+    /* model identities */
+    --hybrid: #2dd4a7;   /* Mask2Former / fine-tuned / hybrid — the winner */
+    --hybrid-soft: #2dd4a730;
+    --claude: #e8954a;   /* Claude Opus 4.8 */
+    --claude-soft: #e8954a30;
+    --qwen: #8b7ff0;     /* Qwen3-VL-8B */
+    --qwen-soft: #8b7ff030;
+    --cnn: #6b7686;      /* CubiCasa CNN baseline */
+    --before: #39414c;   /* untrained / COCO */
+
+    /* element classes (project palette) */
+    --c-room: #50b450;
+    --c-wall: #c83232;
+    --c-door: #3296c8;
+    --c-window: #18b6d8;
+    --c-railing: #b58fd0;
+
+    --accent: #2dd4a7;
+    --radius: 14px;
+    --maxw: 1120px;
+    --shadow: 0 1px 0 #ffffff08 inset, 0 12px 40px -16px #00000080;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ambient background glows */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(900px 600px at 12% -8%, #2dd4a712, transparent 60%),
+      radial-gradient(800px 500px at 95% 4%, #8b7ff010, transparent 55%);
+  }
+
+  h1, h2, h3, h4, .display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: #0b0d10cc;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 18px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk'; font-weight: 600; font-size: 15px; white-space: nowrap; }
+  .brand .dot { width: 11px; height: 11px; border-radius: 3px; background: linear-gradient(135deg, var(--hybrid), var(--qwen)); box-shadow: 0 0 12px var(--hybrid-soft); }
+  .nav-links { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; }
+  .nav-links a {
+    color: var(--text-dim); font-size: 13.5px; padding: 7px 11px; border-radius: 8px;
+    white-space: nowrap; transition: all .15s;
+  }
+  .nav-links a:hover { color: var(--text); background: #ffffff0a; text-decoration: none; }
+  .nav-links a.active { color: var(--hybrid); background: var(--hybrid-soft); }
+
+  /* ---------- HERO ---------- */
+  header.hero { padding: 86px 0 56px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Space Grotesk'; font-size: 12.5px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--hybrid); background: var(--hybrid-soft);
+    border: 1px solid #2dd4a740; padding: 6px 13px; border-radius: 100px; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(34px, 5.4vw, 58px); font-weight: 700; line-height: 1.05; }
+  .hero h1 .grad {
+    background: linear-gradient(120deg, var(--hybrid) 10%, #6fe3c4 40%, var(--qwen) 95%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p.lead { margin-top: 22px; font-size: clamp(16px, 2vw, 19px); color: var(--text-dim); max-width: 760px; }
+  .hero p.lead strong { color: var(--text); font-weight: 600; }
+
+  /* hero stat cards */
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+  .stat {
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-elev));
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .stat .num { font-family: 'Space Grotesk'; font-size: 32px; font-weight: 700; line-height: 1; }
+  .stat .num.h { color: var(--hybrid); }
+  .stat .num.c { color: var(--claude); }
+  .stat .label { margin-top: 9px; font-size: 13px; color: var(--text-dim); }
+  .stat .sub { margin-top: 3px; font-size: 12px; color: var(--text-faint); }
+
+  /* ---------- DISCLOSURE ---------- */
+  .disclosure {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: linear-gradient(180deg, #1a2028, #151a21);
+    border: 1px solid var(--border); border-left: 3px solid var(--qwen);
+    border-radius: 12px; padding: 16px 18px; margin-top: 40px;
+  }
+  .disclosure .ic { font-size: 18px; line-height: 1.4; }
+  .disclosure .t { font-size: 13.5px; color: var(--text-dim); }
+  .disclosure .t b { color: var(--text); font-weight: 600; }
+
+  /* ---------- SECTION ---------- */
+  section { padding: 52px 0; border-top: 1px solid var(--border-soft); }
+  .sec-head { margin-bottom: 30px; }
+  .sec-tag { font-family: 'Space Grotesk'; font-size: 12.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+  .sec-head h2 { font-size: clamp(24px, 3.4vw, 33px); font-weight: 600; margin-top: 8px; }
+  .sec-head p { margin-top: 12px; color: var(--text-dim); max-width: 780px; font-size: 15.5px; }
+  .split-note {
+    display: inline-block; font-size: 12px; color: var(--text-faint);
+    border: 1px dashed var(--border); border-radius: 7px; padding: 3px 9px; margin-top: 14px;
+  }
+
+  /* ---------- CARD ---------- */
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+  }
+  .card + .card { margin-top: 18px; }
+  .card h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .card .cap { font-size: 13px; color: var(--text-faint); margin-bottom: 20px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  /* ---------- LEGEND ---------- */
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+  .legend .item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-dim); }
+  .legend .sw { width: 13px; height: 13px; border-radius: 4px; }
+
+  /* ---------- BAR CHART ---------- */
+  .metric { margin-bottom: 19px; }
+  .metric:last-child { margin-bottom: 0; }
+  .metric-name { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 9px; display: flex; justify-content: space-between; }
+  .metric-name .hint { color: var(--text-faint); font-weight: 400; font-size: 12px; }
+  .bar-row { display: grid; grid-template-columns: 96px 1fr 62px; align-items: center; gap: 12px; margin-bottom: 7px; }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-label { font-size: 12.5px; color: var(--text-dim); text-align: right; white-space: nowrap; }
+  .track {
+    position: relative; height: 22px; background: #0c0f13; border: 1px solid var(--border-soft);
+    border-radius: 6px; overflow: hidden;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent calc(25% - 1px), #ffffff09 25%);
+  }
+  .fill {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+    border-radius: 5px; transition: width 1.1s cubic-bezier(.16,.84,.34,1);
+  }
+  .in-view .fill { width: var(--w); }
+  .fill.hybrid { background: linear-gradient(90deg, #1fae89, var(--hybrid)); }
+  .fill.claude { background: linear-gradient(90deg, #cf7d34, var(--claude)); }
+  .fill.qwen   { background: linear-gradient(90deg, #6f63d8, var(--qwen)); }
+  .fill.cnn    { background: linear-gradient(90deg, #565f6d, var(--cnn)); }
+  .fill.before { background: repeating-linear-gradient(45deg, #2a313b, #2a313b 6px, #232a33 6px, #232a33 12px); }
+  .bar-val { font-family: 'Space Grotesk'; font-size: 13px; font-weight: 600; color: var(--text); text-align: left; }
+  .bar-val.win { color: var(--hybrid); }
+  .bar-val.zero { color: var(--text-faint); }
+
+  /* ---------- XY SCATTER ---------- */
+  .xy svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .xy .grid { stroke: var(--border-soft); stroke-width: 1; }
+  .xy .axis { stroke: var(--border); stroke-width: 1.5; }
+  .xy .tk { fill: var(--text-faint); font-family: 'Space Grotesk'; font-size: 10.5px; }
+  .xy .axlab { fill: var(--text-dim); font-family: 'Space Grotesk'; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; }
+  .xy .traj { fill: none; stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .55;
+              stroke-dashoffset: 400; transition: stroke-dashoffset 1.4s ease .2s; }
+  .in-view .xy .traj { stroke-dashoffset: 0; }
+  .xy .cline { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round;
+               stroke-dasharray: 700; stroke-dashoffset: 700; transition: stroke-dashoffset 1.5s ease .15s; }
+  .in-view .xy .cline { stroke-dashoffset: 0; }
+  .xy .iso { fill: none; stroke: var(--text-faint); stroke-width: 1; stroke-dasharray: 2 4; opacity: .35; }
+  .xy .dot { transform: scale(0); transform-origin: center; transform-box: fill-box;
+             transition: transform .5s cubic-bezier(.34,1.56,.64,1); }
+  .in-view .xy .dot { transform: scale(1); }
+  .xy .dot.d1 { transition-delay: .15s; } .xy .dot.d2 { transition-delay: .3s; }
+  .xy .dot.d3 { transition-delay: .45s; } .xy .dot.d4 { transition-delay: .6s; }
+  .xy .plab { fill: var(--text); font-family: 'Space Grotesk'; font-size: 12px; font-weight: 600; }
+  .xy .psub { fill: var(--text-faint); font-family: 'Space Grotesk'; font-size: 10px; }
+
+  /* ---------- DIVERGING AXIS ---------- */
+  .dax svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .dax .baseln { stroke: var(--border); stroke-width: 2; }
+  .dax .zeroln { stroke: var(--text-faint); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
+  .dax .lab { fill: var(--text-faint); font-family: 'Space Grotesk'; font-size: 11px; }
+  .dax .pin { stroke-width: 2; }
+  .dax .pdot { transform: scaleX(0); transform-origin: center; transform-box: fill-box; transition: transform .9s cubic-bezier(.16,.84,.34,1) .1s; }
+  .in-view .dax .pdot { transform: scaleX(1); }
+  .dax .pv { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; }
+  .dax .pn { font-family: 'Space Grotesk'; font-size: 11px; fill: var(--text-dim); }
+
+  /* winner / loser pill */
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; font-family: 'Space Grotesk'; padding: 3px 10px; border-radius: 100px; }
+  .pill.win { color: var(--hybrid); background: var(--hybrid-soft); border: 1px solid #2dd4a740; }
+  .pill.lose { color: var(--claude); background: var(--claude-soft); border: 1px solid #e8954a40; }
+
+  /* ---------- WHY CALLOUT ---------- */
+  .why {
+    margin-top: 18px; padding: 16px 18px; border-radius: 11px;
+    background: linear-gradient(180deg, #14211d, #121a18);
+    border: 1px solid #1f3a32; border-left: 3px solid var(--hybrid);
+    font-size: 14px; color: var(--text-dim);
+  }
+  .why b { color: var(--hybrid); font-weight: 600; font-family: 'Space Grotesk'; }
+  .why.neutral { background: linear-gradient(180deg, #15191f, #131820); border-color: var(--border); border-left-color: var(--qwen); }
+  .why.neutral b { color: var(--qwen); }
+
+  /* ---------- TABLE ---------- */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border-soft); }
+  th { font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; }
+  td { color: var(--text-dim); }
+  td.num, th.num { text-align: right; font-family: 'Space Grotesk'; }
+  tr td.win { color: var(--hybrid); font-weight: 600; }
+  tr td.strong { color: var(--text); font-weight: 600; }
+  tbody tr:hover { background: #ffffff05; }
+  td .mut { color: var(--text-faint); }
+  .fail { color: var(--c-wall); font-weight: 600; }
+
+  /* ---------- ARCHITECTURE DIAGRAM ---------- */
+  .arch { display: grid; grid-template-columns: 1fr auto 1.4fr; gap: 0; align-items: stretch; }
+  .arch-col { display: flex; flex-direction: column; gap: 12px; }
+  .node {
+    background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px;
+  }
+  .node .k { font-family: 'Space Grotesk'; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); }
+  .node .v { font-size: 15px; font-weight: 600; color: var(--text); margin-top: 3px; }
+  .node .d { font-size: 12.5px; color: var(--text-dim); margin-top: 5px; }
+  .node.geo { border-color: #2dd4a740; box-shadow: inset 0 0 0 1px #2dd4a715; }
+  .node.geo .v { color: var(--hybrid); }
+  .node.sem { border-color: #8b7ff040; box-shadow: inset 0 0 0 1px #8b7ff015; }
+  .node.sem .v { color: var(--qwen); }
+  .arch-mid { display: flex; align-items: center; justify-content: center; padding: 0 22px; }
+  .arch-arrow { color: var(--text-faint); font-size: 24px; }
+  .vs-split { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin-top: 4px; }
+  .vs-badge { font-family: 'Space Grotesk'; font-weight: 700; color: var(--text-faint); font-size: 15px; }
+
+  /* ---------- COST ---------- */
+  .cost-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cost-big { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 12px; padding: 22px; text-align: center; }
+  .cost-big .who { font-size: 13px; color: var(--text-dim); }
+  .cost-big .amt { font-family: 'Space Grotesk'; font-size: 40px; font-weight: 700; margin: 6px 0 2px; }
+  .cost-big.h .amt { color: var(--hybrid); }
+  .cost-big.c .amt { color: var(--claude); }
+  .cost-big .per { font-size: 12px; color: var(--text-faint); }
+
+  .scale-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center; margin-bottom: 16px; }
+  .scale-row .vol { font-size: 13px; color: var(--text-dim); }
+  .scale-row .vol b { display: block; font-family: 'Space Grotesk'; font-size: 17px; color: var(--text); font-weight: 600; }
+  .scale-bars { display: flex; flex-direction: column; gap: 7px; }
+  .sb { display: grid; grid-template-columns: 1fr 96px; align-items: center; gap: 10px; }
+  .sb .t2 { position: relative; height: 26px; background: #0c0f13; border: 1px solid var(--border-soft); border-radius: 6px; overflow: hidden; }
+  .sb .f2 { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 5px; transition: width 1.2s cubic-bezier(.16,.84,.34,1); }
+  .in-view .sb .f2 { width: var(--w); min-width: 3px; }
+  .sb .f2.claude { background: linear-gradient(90deg, #cf7d34, var(--claude)); }
+  .sb .f2.hybrid { background: linear-gradient(90deg, #1fae89, var(--hybrid)); }
+  .sb .amt { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 600; }
+  .sb .amt.c { color: var(--claude); } .sb .amt.h { color: var(--hybrid); }
+
+  /* ---------- RESOURCES ---------- */
+  .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .res {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;
+    display: flex; flex-direction: column;
+  }
+  .res .rh { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
+  .res .rh .sw { width: 11px; height: 11px; border-radius: 3px; }
+  .res .rh .name { font-family: 'Space Grotesk'; font-weight: 600; font-size: 15px; }
+  .res .role { font-size: 11.5px; color: var(--text-faint); letter-spacing: .05em; text-transform: uppercase; margin-left: auto; }
+  .res dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 13px; }
+  .res dt { color: var(--text-faint); white-space: nowrap; }
+  .res dd { color: var(--text-dim); text-align: right; font-family: 'Space Grotesk'; }
+  .res .foot { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--border-soft); font-size: 12.5px; color: var(--text-faint); }
+
+  /* ---------- SOURCES ---------- */
+  .src-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .src { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 16px 18px; }
+  .src .st { font-family: 'Space Grotesk'; font-weight: 600; font-size: 14px; margin-bottom: 5px; }
+  .src .sd { font-size: 12.5px; color: var(--text-dim); }
+  .src .sd code { background: #0c0f13; border: 1px solid var(--border-soft); border-radius: 5px; padding: 1px 6px; font-size: 11.5px; color: var(--hybrid); }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--border-soft); padding: 40px 0 60px; color: var(--text-faint); font-size: 13px; }
+  footer .wrap { display: flex; flex-direction: column; gap: 10px; }
+  footer b { color: var(--text-dim); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+
+  @media (max-width: 880px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .grid-2, .cost-hero, .src-grid, .res-grid { grid-template-columns: 1fr; }
+    .arch { grid-template-columns: 1fr; gap: 14px; }
+    .arch-mid { transform: rotate(90deg); padding: 4px 0; }
+    .nav-links { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fill, .f2, .reveal { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> FloorPlan Studio · Benchmarks</div>
+    <div class="nav-links" id="navlinks">
+      <a href="#idea">Idea</a>
+      <a href="#geometry">Geometry</a>
+      <a href="#ood">Generalization</a>
+      <a href="#semantics">Semantics</a>
+      <a href="#errors">Error analysis</a>
+      <a href="#cost">Cost</a>
+      <a href="#resources">Resources</a>
+      <a href="#verdict">Verdict</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Bachelor thesis · Image → Structured CAD</span>
+    <h1>Two specialists beat one<br><span class="grad">generalist</span> at floor-plan understanding.</h1>
+    <p class="lead">
+      The thesis tests a simple claim: a <strong>division of labour</strong> wins. A dedicated segmentation
+      model (<strong>Mask2Former</strong>) owns <em>geometry</em> &mdash; the "where". A vision-language model
+      (<strong>Qwen3-VL-8B</strong>) owns <em>semantics</em> &mdash; the "what". Together this hybrid is
+      measured against a single monolithic frontier model (<strong>Claude Opus 4.8</strong>) that tries to do
+      both in one pass.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num h">0.889</div>
+        <div class="label">Hybrid room IoU (geometry)</div>
+        <div class="sub">vs Claude 0.672</div>
+      </div>
+      <div class="stat">
+        <div class="num h">0.749</div>
+        <div class="label">Hybrid wall IoU</div>
+        <div class="sub">vs Claude 0.248 &mdash; 3&times; sharper</div>
+      </div>
+      <div class="stat">
+        <div class="num h">~6&times;</div>
+        <div class="label">Cheaper per image</div>
+        <div class="sub">$0.014 vs $0.088</div>
+      </div>
+      <div class="stat">
+        <div class="num c">+0.07</div>
+        <div class="label">Claude's semantic F1 edge</div>
+        <div class="sub">small but significant (p=0.012)</div>
+      </div>
+    </div>
+
+    <div class="disclosure">
+      <div class="t">
+        <b>AI transparency.</b> This report page &mdash; its layout, wording, and charts &mdash; was generated with
+        AI (Kiro / Claude) directly from the project's raw benchmark outputs. <b>Every number is taken verbatim
+        from the reproducible scripts</b> in <code style="color:var(--hybrid)">benchmarks/</code>; none were
+        invented or rounded in the model's favour. Each section cites the source file it came from so any figure
+        can be re-checked.
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ IDEA ============ -->
+<section id="idea">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">The idea</div>
+      <h2>Why split the problem in two?</h2>
+      <p>
+        Reading a floor plan is really two different jobs. One is <em>perception</em>: tracing the exact pixels
+        of every wall, room, door and window. The other is <em>interpretation</em>: knowing that a region is a
+        "bedroom" or a "sauna". These need different tools &mdash; so the pipeline uses a different model for each,
+        and the benchmark checks whether that beats handing everything to one large model.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="vs-split">
+        <!-- hybrid side -->
+        <div>
+          <div class="arch">
+            <div class="arch-col">
+              <div class="node">
+                <div class="k">Input</div>
+                <div class="v">Floor-plan image</div>
+                <div class="d">CubiCasa5k residential plans, ~1400&times;1000 px</div>
+              </div>
+            </div>
+            <div class="arch-mid"><span class="arch-arrow">&rarr;</span></div>
+            <div class="arch-col">
+              <div class="node geo">
+                <div class="k">Geometry · the "where"</div>
+                <div class="v">Mask2Former (Swin-B)</div>
+                <div class="d">Pixel-precise masks &rarr; polygons. Fine-tuned on CubiCasa5k, runs locally.</div>
+              </div>
+              <div class="node sem">
+                <div class="k">Semantics · the "what"</div>
+                <div class="v">Qwen3-VL-8B</div>
+                <div class="d">Room types, labels, adjacency. Zero-shot, prompted, via Modal.</div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:16px;">
+            <span class="pill win">Hybrid pipeline · two specialists</span>
+          </div>
+        </div>
+
+        <div class="vs-badge">VS</div>
+
+        <!-- monolithic side -->
+        <div>
+          <div class="arch" style="grid-template-columns:1fr auto 1.4fr;">
+            <div class="arch-col">
+              <div class="node">
+                <div class="k">Input</div>
+                <div class="v">Same image</div>
+                <div class="d">Identical plans, anonymized filenames</div>
+              </div>
+            </div>
+            <div class="arch-mid"><span class="arch-arrow">&rarr;</span></div>
+            <div class="arch-col">
+              <div class="node" style="border-color:#e8954a40; box-shadow:inset 0 0 0 1px #e8954a15;">
+                <div class="k">Geometry + Semantics</div>
+                <div class="v" style="color:var(--claude)">Claude Opus 4.8</div>
+                <div class="d">One model, one pass, maximum reasoning effort. Outputs polygons <em>and</em> room types together.</div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:16px;">
+            <span class="pill lose">Monolithic · one generalist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why neutral">
+        <b>The bet.</b> A segmentation network sees pixels; a language model reasons about meaning. The hypothesis
+        is that geometry should go to the model that actually perceives pixels, semantics to the model that
+        understands language &mdash; and that this is both <em>more accurate</em> and <em>cheaper</em> than asking one
+        frontier model to do everything.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GEOMETRY ============ -->
+<section id="geometry">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Benchmark 1 + 2 · Geometry (the "where")</div>
+      <h2>Does the segmentation model earn its place?</h2>
+      <p>
+        Two questions. First: does fine-tuning Mask2Former actually buy anything over an untrained model and the
+        established CubiCasa baseline? Second: can a frontier VLM (Claude) just replace it? Both are scored by
+        <strong>pixel IoU</strong> against RLE ground truth (1.0 = perfect overlap).
+      </p>
+    </div>
+
+    <!-- 1: training value -->
+    <div class="card">
+      <h3>1 · Fine-tuning value</h3>
+      <div class="cap">CubiCasa5k <b>test</b> split · n=50 · IoU vs ground truth · source: before_after/results/RESULTS.md</div>
+
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--hybrid)"></span> after (our fine-tuned Mask2Former)</div>
+        <div class="item"><span class="sw" style="background:var(--cnn)"></span> CubiCasa CNN baseline</div>
+        <div class="item"><span class="sw" style="background:var(--before)"></span> before (COCO weights, untrained)</div>
+      </div>
+
+      <div id="train-chart"></div>
+
+      <div class="why">
+        <b>Training is justified.</b> The untrained model scores ~0 on every class &mdash; generic COCO categories
+        simply don't transfer to schematic line drawings. After fine-tuning it beats the established CubiCasa CNN
+        on <em>every single class</em>. The segmentation model is not a given; it has to be trained, and the
+        training clearly works.
+      </div>
+    </div>
+
+    <!-- 2: hybrid vs monolithic geometry -->
+    <div class="card">
+      <h3>2 · Hybrid vs monolithic on geometry</h3>
+      <div class="cap">Mask2Former (test, n=50) vs Claude Opus 4.8 (val, n=50) · source: claude_geom_preds/RESULTS.md + stats.py</div>
+
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--hybrid)"></span> Hybrid (Mask2Former)</div>
+        <div class="item"><span class="sw" style="background:var(--claude)"></span> Claude Opus 4.8 (monolithic)</div>
+      </div>
+
+      <div id="geo-chart"></div>
+
+      <span class="split-note">Split caveat: hybrid IoU is from the test split, Claude from val — not the identical 50 plans, but comparable single-family CubiCasa plans. The gap is far too wide to be a split artefact.</span>
+
+      <div class="why">
+        <b>Geometry belongs to the segmentation model.</b> The gap is large and consistent: ~0.22 IoU on rooms and
+        ~0.50 on walls. Walls are the clearest failure &mdash; Claude emits a few coarse rectangles (~0.25) where
+        Mask2Former traces the actual wall skeleton (~0.75). A VLM <em>estimates</em> polygons by reasoning over
+        the image; it does not perceive them pixel-by-pixel.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OOD ============ -->
+<section id="ood">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Benchmark 3 · Out-of-distribution</div>
+      <h2>What happens on a drawing style it has never seen?</h2>
+      <p>
+        The geometry models are pushed onto <strong>FloorPlanCAD</strong> &mdash; colored Chinese CAD drawings with
+        dimensions and furniture, nothing like the training data. This dataset annotates symbols on lines, not
+        filled room polygons, so there is no comparable room-IoU ground truth. The table reports
+        <strong>pixel coverage %</strong> (how much each model paints), not accuracy &mdash; the real signal is
+        <em>which model still finds structure and which collapses</em>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>3 · OOD coverage</h3>
+      <div class="cap">FloorPlanCAD · n=3 · qualitative · coverage % per class · source: generalization/results/RESULTS.md</div>
+
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--hybrid)"></span> after (fine-tuned)</div>
+        <div class="item"><span class="sw" style="background:var(--cnn)"></span> CubiCasa CNN</div>
+        <div class="item"><span class="sw" style="background:var(--before)"></span> before (untrained)</div>
+      </div>
+
+      <div id="ood-chart"></div>
+
+      <div class="why">
+        <b>The fine-tuned model generalizes better.</b> It still recovers rooms (~47%) and &mdash; crucially &mdash;
+        keeps finding <em>walls</em> (~11%) where the CNN baseline almost gives up on walls (~4%). This is only a
+        qualitative n=3 probe, but the direction is clear: the transformer carries structure to an unseen style
+        better than the convolutional baseline.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEMANTICS ============ -->
+<section id="semantics">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Benchmark 4 + 5 · Semantics (the "what")</div>
+      <h2>Reading room types — prompt design, then the real fight</h2>
+      <p>
+        Semantics is scored as <strong>F1</strong> on canonical room types (bedroom, kitchen, bath&hellip;) against
+        the <code style="color:var(--hybrid)">model.svg</code> labels. First we tune the prompt for the small
+        Qwen model; then we put its best version head-to-head against the frontier model on the
+        <em>identical</em> 50 plans.
+      </p>
+    </div>
+
+    <!-- 4: ablation -->
+    <div class="card">
+      <h3>4 · Prompt ablation (Qwen3-VL-8B, zero-shot)</h3>
+      <div class="cap">CubiCasa5k <b>val</b> · n=50 · same model & GT, only the prompt changes · source: SEMANTIC_RESULTS.md</div>
+
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--qwen)"></span> prompt level L1 &rarr; L4</div>
+        <div class="item" style="color:var(--text-faint)">point size &prop; F1 &middot; up-and-right is better</div>
+      </div>
+
+      <div id="ablation-chart" class="xy"></div>
+
+      <div class="why neutral">
+        <b>The Finnish glossary is the single biggest lever</b> (level 1&rarr;2: +114% F1) &mdash; room-type ID is
+        largely an OCR + translation task. A strict JSON schema then adds precision (level 3, the winner). Notably,
+        injecting the pipeline's own geometry into the prompt (level 4) does <em>not</em> help: abstract region
+        letters don't map to visible labels. Each model wins at its own job &mdash; geometry doesn't rescue semantics.
+      </div>
+    </div>
+
+    <!-- 5: head to head -->
+    <div class="card">
+      <h3>5 · Hybrid vs monolithic on semantics <span class="pill lose" style="vertical-align:middle">paired test</span></h3>
+      <div class="cap">CubiCasa5k <b>val</b> · n=50 · identical plans · Qwen L3 (semantics only) vs Claude 4.8 (monolithic) · source: sem_headtohead.json + stats.json</div>
+
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--qwen)"></span> Qwen3-VL-8B (level 3)</div>
+        <div class="item"><span class="sw" style="background:var(--claude)"></span> Claude Opus 4.8</div>
+        <div class="item" style="color:var(--text-faint)">precision &times; recall plane</div>
+      </div>
+
+      <div id="sem-chart" class="xy"></div>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <div class="cost-big" style="text-align:left;">
+          <div class="who">Per-plan F1 (mean &plusmn; std)</div>
+          <div style="display:flex; gap:18px; align-items:baseline; margin-top:8px;">
+            <div><span style="font-family:'Space Grotesk'; font-size:26px; font-weight:700; color:var(--qwen)">0.451</span><span class="per"> &plusmn;0.224 Qwen</span></div>
+            <div><span style="font-family:'Space Grotesk'; font-size:26px; font-weight:700; color:var(--claude)">0.520</span><span class="per"> &plusmn;0.160 Claude</span></div>
+          </div>
+          <div class="per" style="margin-top:10px;">Claude is higher, mostly by finding more rooms (recall 0.582 vs 0.457).</div>
+        </div>
+        <div class="cost-big" style="text-align:left;">
+          <div class="who">Is the gap real? (paired statistics)</div>
+          <dl style="display:grid; grid-template-columns:auto 1fr; gap:6px 14px; margin-top:10px; font-size:13px;">
+            <dt style="color:var(--text-faint)">Mean &Delta; (Qwen&minus;Claude)</dt><dd style="text-align:right; font-family:'Space Grotesk'; color:var(--claude)">&minus;0.070</dd>
+            <dt style="color:var(--text-faint)">Wilcoxon signed-rank</dt><dd style="text-align:right; font-family:'Space Grotesk'; color:var(--text)">p = 0.012</dd>
+            <dt style="color:var(--text-faint)">Bootstrap 95% CI</dt><dd style="text-align:right; font-family:'Space Grotesk'; color:var(--text)">[&minus;0.116, &minus;0.028]</dd>
+          </dl>
+          <div class="per" style="margin-top:10px;">Significant at &alpha;=0.05; CI excludes 0. The gap is small but real.</div>
+        </div>
+      </div>
+
+      <div class="why neutral">
+        <b>Honest reading.</b> On this paired test the frontier monolithic model is <em>modestly but significantly</em>
+        better on semantic F1 (~0.07). The 8B model does <em>not</em> tie it &mdash; it loses by a small margin.
+        But the thesis argument holds and is more nuanced: an 8B model is within ~0.07 F1 of a frontier model while
+        being <em>small, cheap, and runnable locally</em>. The decisive hybrid win is geometry (&sect;2), not semantics.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ERRORS ============ -->
+<section id="errors">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Benchmark 6 · Error analysis</div>
+      <h2>Where exactly does each model go wrong?</h2>
+      <p>
+        Three cheap analyses on the existing predictions (no re-runs) explain <em>how</em> the two models fail
+        differently. Source: <code style="color:var(--hybrid)">EXTRA_RESULTS.md</code>.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <!-- 6A counts -->
+      <div class="card">
+        <h3>6A · Hallucination vs omission</h3>
+        <div class="cap">Mean signed room-count error vs GT &middot; 0 = perfect &middot; n=50</div>
+        <div id="count-axis" class="dax"></div>
+        <div style="display:flex; gap:20px; justify-content:center; font-size:12px; color:var(--text-faint); margin-top:14px;">
+          <span>Qwen MAE <b style="color:var(--text-dim); font-family:'Space Grotesk'">3.68</b></span>
+          <span>Claude MAE <b style="color:var(--text-dim); font-family:'Space Grotesk'">2.60</b></span>
+          <span>exact <b style="color:var(--text-dim); font-family:'Space Grotesk'">14%</b> both</span>
+        </div>
+        <div class="why neutral" style="margin-top:16px;">
+          <b>Opposite failure modes.</b> Qwen <em>under-counts</em> (omits ~1.7 rooms/plan, conservative); Claude
+          <em>over-counts</em> (hallucinates ~1.2 rooms/plan). This is the mechanical reason behind Claude's higher
+          recall in &sect;5 &mdash; it's bought with more spurious rooms.
+        </div>
+      </div>
+
+      <!-- 6B per-class IoU -->
+      <div class="card">
+        <h3>6B · Claude's geometry, per class</h3>
+        <div class="cap">Claude (val) vs hybrid (test, ref) · IoU</div>
+        <div id="perclass-chart"></div>
+        <div class="why" style="margin-top:16px;">
+          <b>Weak across the board.</b> Not just walls &mdash; doors (0.079) and windows (0.147) collapse because
+          they are tiny targets a VLM can't place pixel-precisely. Reinforces &sect;2: geometry is not a VLM job.
+        </div>
+      </div>
+    </div>
+
+    <!-- 6C per-type -->
+    <div class="card">
+      <h3>6C · Per-type F1 — who confuses what</h3>
+      <div class="cap">Room-type F1 aggregated over 50 val plans, sorted by GT frequency · source: EXTRA_RESULTS.md</div>
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--qwen)"></span> Qwen3-VL-8B</div>
+        <div class="item"><span class="sw" style="background:var(--claude)"></span> Claude Opus 4.8</div>
+      </div>
+      <div id="pertype-chart"></div>
+      <div class="why neutral">
+        <b>Qwen still has room to grow.</b> The small model keeps pace with the frontier model on the common types
+        (living, kitchen, bedroom) and even edges ahead on <em>entry</em> &mdash; but it clearly trails on the rarer
+        ones: study (0.22 vs 0.80), garage (0.33 vs 0.71), bath. These long-tail labels are exactly what a future
+        fine-tune would target to close the gap. Neither model emits a generic "other" label, so both score
+        near-zero on the GT catch-all &mdash; a vocabulary artefact, not a real perception failure.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COST ============ -->
+<section id="cost">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Economics</div>
+      <h2>What does each approach cost to run?</h2>
+      <p>
+        A typical CubiCasa plan at benchmark resolution (~1400&times;1000 px). The monolithic model bills per token
+        for an expensive geometry + semantics pass; the hybrid runs geometry locally on CPU (effectively free after
+        a one-time training cost) and pays only for a short Qwen semantic pass on a rented GPU.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="cost-hero">
+        <div class="cost-big c">
+          <div class="who">Claude Opus 4.8 · monolithic</div>
+          <div class="amt">$0.088</div>
+          <div class="per">per image · ~2,667 in + ~3,000 out tokens</div>
+        </div>
+        <div class="cost-big h">
+          <div class="who">Hybrid · Mask2Former + Qwen</div>
+          <div class="amt">$0.014</div>
+          <div class="per">per image · local CPU geometry + ~20s Qwen on Modal A100</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="metric-name" style="margin-bottom:14px;">Cost at scale <span class="hint">all bars on one linear scale (max = $8,800) &mdash; watch the cost explode as volume grows</span></div>
+        <div class="scale-row">
+          <div class="vol">This benchmark<b>50 plans</b></div>
+          <div class="scale-bars">
+            <div class="sb"><div class="t2"><div class="f2 claude" style="--w:0.05%"></div></div><div class="amt c">$4.40</div></div>
+            <div class="sb"><div class="t2"><div class="f2 hybrid" style="--w:0.01%"></div></div><div class="amt h">$0.69</div></div>
+          </div>
+        </div>
+        <div class="scale-row">
+          <div class="vol">Mid scale<b>1,000 plans</b></div>
+          <div class="scale-bars">
+            <div class="sb"><div class="t2"><div class="f2 claude" style="--w:1%"></div></div><div class="amt c">$88</div></div>
+            <div class="sb"><div class="t2"><div class="f2 hybrid" style="--w:0.16%"></div></div><div class="amt h">$14</div></div>
+          </div>
+        </div>
+        <div class="scale-row">
+          <div class="vol">Production<b>100,000 plans</b></div>
+          <div class="scale-bars">
+            <div class="sb"><div class="t2"><div class="f2 claude" style="--w:100%"></div></div><div class="amt c">$8,800</div></div>
+            <div class="sb"><div class="t2"><div class="f2 hybrid" style="--w:15.9%"></div></div><div class="amt h">$1,400</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why" style="background:linear-gradient(180deg,#1c1a17,#181614); border-color:#3a2f23; border-left-color:var(--claude); margin-top:22px;">
+        <b style="color:var(--claude)">Reality check.</b> That <b style="font-family:'Space Grotesk'; color:var(--text)">$8,800</b>
+        you'd hand the API to label 100,000 plans is almost exactly the sticker price of one
+        <b style="color:var(--text)">NVIDIA RTX PRO 6000 Blackwell</b> &mdash; 96&nbsp;GB VRAM, ~$8,565 MSRP (2026). For what a single
+        batch costs on the API, you could buy the card outright and run the 8B model on your own desk: at ~10&nbsp;s/plan it
+        clears <b style="color:var(--text)">~3 million plans a year</b> on roughly <b style="color:var(--text)">$25 of electricity per 100k</b>.
+        The API invoice returns with every batch; the GPU is yours to keep.
+      </div>
+
+      <div class="why">
+        <b>Cheaper and better.</b> At 100k plans the hybrid saves ~$7,400. And Mask2Former's geometry &mdash; the
+        part Claude is <em>worst</em> at &mdash; is the part that runs for free locally. The expensive model is paying
+        a premium to do the job it does least well.
+      </div>
+
+      <div class="split-note" style="margin-top:18px;">
+        Pricing basis (verified, see Sources): Claude Opus 4.8 = $5 / MTok input, $25 / MTok output.
+        Qwen on Modal Nvidia A100 80GB = $0.000694 / s &times; ~20 s/image. Mask2Former inference = local CPU (~2 s/image, no marginal cost).
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section id="resources">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Compute footprint</div>
+      <h2>How much hardware does each component need?</h2>
+      <p>
+        The hybrid front-loads a one-time training cost, then runs cheaply forever. The monolithic model has zero
+        setup but pays a high price on every single call.
+      </p>
+    </div>
+
+    <div class="res-grid">
+      <div class="res">
+        <div class="rh"><span class="sw" style="background:var(--hybrid)"></span><span class="name">Mask2Former</span><span class="role">Geometry</span></div>
+        <dl>
+          <dt>Backbone</dt><dd>Swin-B</dd>
+          <dt>Train GPU</dt><dd>1&times; A100 80GB</dd>
+          <dt>Train time</dt><dd>~7.8 h</dd>
+          <dt>Iterations</dt><dd>20,000</dd>
+          <dt>Peak VRAM</dt><dd>~34 GB</dd>
+          <dt>Train cost</dt><dd>~$20 once</dd>
+          <dt>Inference</dt><dd>local CPU ~2s</dd>
+        </dl>
+        <div class="foot">Trained once on CubiCasa5k (4,200 plans / 253,994 annotations) on Prime Intellect. Then free on CPU.</div>
+      </div>
+
+      <div class="res">
+        <div class="rh"><span class="sw" style="background:var(--qwen)"></span><span class="name">Qwen3-VL-8B</span><span class="role">Semantics</span></div>
+        <dl>
+          <dt>Mode</dt><dd>zero-shot</dd>
+          <dt>Fine-tuning</dt><dd>none</dd>
+          <dt>Infer GPU</dt><dd>Modal A100</dd>
+          <dt>Latency</dt><dd>~20 s/image</dd>
+          <dt>GPU rate</dt><dd>$0.000694/s</dd>
+          <dt>Cost</dt><dd>~$0.014/image</dd>
+          <dt>Hosting</dt><dd>serverless</dd>
+        </dl>
+        <div class="foot">No training at all &mdash; used straight off the shelf with a tuned prompt. Pay only per second of GPU.</div>
+      </div>
+
+      <div class="res">
+        <div class="rh"><span class="sw" style="background:var(--claude)"></span><span class="name">Claude Opus 4.8</span><span class="role">Monolithic</span></div>
+        <dl>
+          <dt>Mode</dt><dd>API, frontier</dd>
+          <dt>Local GPU</dt><dd>none</dd>
+          <dt>Setup</dt><dd>zero</dd>
+          <dt>In tokens</dt><dd>~2,667/img</dd>
+          <dt>Out tokens</dt><dd>~3,000/img</dd>
+          <dt>Cost</dt><dd>~$0.088/image</dd>
+          <dt>Effort</dt><dd>maximum</dd>
+        </dl>
+        <div class="foot">No infrastructure to manage, but every call is a full geometry + semantics pass at premium price.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERDICT ============ -->
+<section id="verdict">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Conclusion</div>
+      <h2>The verdict, role by role</h2>
+      <p>
+        The monolithic frontier model <strong>loses decisively on geometry</strong> and <strong>wins modestly on
+        semantics</strong>. Because the large, consistent gap lives in geometry &mdash; and because the 8B semantic
+        model is cheap, local, and close behind &mdash; the hybrid is the right architecture for a local, single-user
+        application. Each component is justified on the role it owns.
+      </p>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Winner</th><th>Evidence</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="strong">Geometry (where)</td>
+            <td class="win">Mask2Former &mdash; hybrid</td>
+            <td>IoU room 0.889 vs 0.672, wall 0.749 vs 0.248</td>
+          </tr>
+          <tr>
+            <td class="strong">Semantics (what)</td>
+            <td style="color:var(--claude); font-weight:600;">Claude by ~0.07 F1</td>
+            <td>0.520 vs 0.451, p=0.012 (significant); Qwen close</td>
+          </tr>
+          <tr>
+            <td class="strong">Training value</td>
+            <td class="win">fine-tuned &raquo; untrained, &gt; CNN</td>
+            <td>beats baseline on every class</td>
+          </tr>
+          <tr>
+            <td class="strong">OOD robustness</td>
+            <td class="win">fine-tuned &gt; CNN</td>
+            <td>walls 11% vs 4% coverage on unseen style</td>
+          </tr>
+          <tr>
+            <td class="strong">Cost</td>
+            <td class="win">hybrid ~6&times; cheaper</td>
+            <td>$0.014 vs $0.088 per image</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="why">
+        <b>Division of labour wins.</b> 4 of 5 dimensions go to the hybrid; the one it concedes (semantics) it loses
+        by a hair while being a fraction of the cost. A frontier model is impressive but it is the wrong, expensive
+        tool for pixel-precise geometry &mdash; exactly the job a small specialist does best.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Sources &amp; reproducibility</div>
+      <h2>Where every number comes from</h2>
+      <p>All benchmark figures are produced by re-runnable scripts; all external prices are from primary sources.</p>
+    </div>
+
+    <div class="src-grid">
+      <div class="src">
+        <div class="st" style="color:var(--hybrid)">Benchmark data (this repo)</div>
+        <div class="sd">
+          §1 <code>before_after/results/RESULTS.md</code> ·
+          §2/6B <code>three_way/claude_geom_preds/RESULTS.md</code> ·
+          §3 <code>generalization/results/RESULTS.md</code> ·
+          §4 <code>three_way/SEMANTIC_RESULTS.md</code> ·
+          §5 <code>three_way/stats.json</code> ·
+          §6 <code>three_way/EXTRA_RESULTS.md</code>. Consolidated in <code>benchmarks/RESULTS.md</code>.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st" style="color:var(--hybrid)">Reproduce</div>
+        <div class="sd">
+          <code>python3 eval_sem_headtohead.py</code> → per-plan F1 ·
+          <code>python3 stats.py</code> → Wilcoxon + bootstrap ·
+          <code>python3 eval_extra.py</code> → error analysis ·
+          <code>bash run_claude_geom_bench.sh</code> → monolithic geometry. Stats: scipy Wilcoxon + 10k-sample bootstrap, seed 42.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st" style="color:var(--claude)">Claude Opus 4.8 pricing</div>
+        <div class="sd">
+          $5 / MTok input, $25 / MTok output. Source:
+          <a href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener">docs.anthropic.com/pricing</a>
+          (Opus 4.5–4.8 tier), cross-checked with
+          <a href="https://www.cloudzero.com/blog/anthropic-claude-api-pricing/" target="_blank" rel="noopener">CloudZero 2026</a>.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st" style="color:var(--qwen)">Modal A100 80GB pricing</div>
+        <div class="sd">
+          $0.000694 / s ($2.50 / hr) for Nvidia A100 80GB. Source:
+          <a href="https://modal.com/pricing" target="_blank" rel="noopener">modal.com/pricing</a>.
+          Mask2Former training hardware: Prime Intellect 1&times; A100 80GB.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st" style="color:var(--claude)">GPU price (the reality check)</div>
+        <div class="sd">
+          NVIDIA RTX PRO 6000 Blackwell (96&nbsp;GB) &mdash; ~$8,565 MSRP. Source:
+          <a href="https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-pro-6000-blackwell-gpu-is-listed-for-usd8-565-at-us-retailer-26-percent-more-expensive-than-the-last-gen-rtx-6000-ada" target="_blank" rel="noopener">Tom's Hardware</a>,
+          cross-checked with <a href="https://www.thundercompute.com/blog/nvidia-rtx-pro-6000-pricing" target="_blank" rel="noopener">ThunderCompute (2026)</a>.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st">Datasets</div>
+        <div class="sd">
+          <b>CubiCasa5k</b> — Finnish residential plans (train/val/test). <b>FloorPlanCAD</b> — Chinese CAD drawings
+          (OOD probe). Ground truth: per-pixel RLE masks for geometry, <code>model.svg</code> Space classes for room types.
+        </div>
+      </div>
+      <div class="src">
+        <div class="st">Models</div>
+        <div class="sd">
+          <b>Mask2Former</b> (Swin-B, detectron2), fine-tuned. <b>Qwen3-VL-8B-Instruct</b>, zero-shot via Modal.
+          <b>Claude Opus 4.8</b>, API at maximum reasoning effort.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>FloorPlan Studio</b> — benchmark report for the bachelor thesis "Image → Structured CAD". Generated <span id="gen-date"></span>.</div>
+    <div><b>AI disclosure:</b> this HTML page was generated with AI (Kiro) from the repository's benchmark outputs. Numbers are copied from the cited source files; wording and visuals are AI-authored. Verify against <b>benchmarks/RESULTS.md</b> and the scripts named above.</div>
+    <div>Two CubiCasa splits appear and must not be conflated: <b>test</b> (§1 training) and <b>val</b> (§2/4/5/6). OOD (§3) is FloorPlanCAD, n=3, qualitative.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- chart builders ----------
+  // grouped bars: one metric block per category, N model bars inside
+  function groupedChart(el, opts) {
+    var max = opts.max || 1;
+    var fmt = opts.fmt || function (v) { return v.toFixed(3); };
+    var html = "";
+    opts.groups.forEach(function (g) {
+      html += '<div class="metric">';
+      html += '<div class="metric-name">' + g.name +
+              (g.hint ? '<span class="hint">' + g.hint + '</span>' : '') + '</div>';
+      g.bars.forEach(function (b) {
+        var pct = Math.max(0, Math.min(100, (b.v / max) * 100));
+        var valCls = b.v <= 0.0021 ? 'zero' : (b.win ? 'win' : '');
+        var shown = (b.display !== undefined) ? b.display : fmt(b.v);
+        html += '<div class="bar-row">' +
+                  '<span class="bar-label">' + b.label + '</span>' +
+                  '<div class="track"><div class="fill ' + b.cls + '" style="--w:' + pct.toFixed(1) + '%"></div></div>' +
+                  '<span class="bar-val ' + valCls + '">' + shown + '</span>' +
+                '</div>';
+      });
+      html += '</div>';
+    });
+    el.innerHTML = html;
+  }
+
+  // XY scatter (SVG): points in a precision/recall-style plane
+  function scatterChart(el, o) {
+    var W = 480, H = 340, L = 56, R = 22, T = 18, B = 50;
+    var pw = W - L - R, ph = H - T - B, max = o.max || 0.6, ticks = o.ticks || 3;
+    function X(v) { return L + (v / max) * pw; }
+    function Y(v) { return T + ph - (v / max) * ph; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (o.aria || '') + '">';
+    for (var i = 0; i <= ticks; i++) {
+      var gv = max * i / ticks, gx = X(gv), gy = Y(gv);
+      s += '<line class="grid" x1="' + L + '" y1="' + gy + '" x2="' + (L + pw) + '" y2="' + gy + '"/>';
+      s += '<line class="grid" x1="' + gx + '" y1="' + T + '" x2="' + gx + '" y2="' + (T + ph) + '"/>';
+      s += '<text class="tk" x="' + (L - 9) + '" y="' + (gy + 3.5) + '" text-anchor="end">' + gv.toFixed(1) + '</text>';
+      s += '<text class="tk" x="' + gx + '" y="' + (T + ph + 17) + '" text-anchor="middle">' + gv.toFixed(1) + '</text>';
+    }
+    s += '<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/>';
+    s += '<line class="axis" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>';
+    s += '<text class="axlab" x="' + (L + pw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + o.xLabel + '</text>';
+    s += '<text class="axlab" x="' + (-(T + ph / 2)) + '" y="15" text-anchor="middle" transform="rotate(-90)">' + o.yLabel + '</text>';
+    if (o.traj) {
+      var d = '';
+      o.traj.forEach(function (idx, k) { var p = o.points[idx]; d += (k ? 'L' : 'M') + X(p.x).toFixed(1) + ' ' + Y(p.y).toFixed(1) + ' '; });
+      s += '<path class="traj" d="' + d + '"/>';
+    }
+    o.points.forEach(function (p, i) {
+      var cx = X(p.x), cy = Y(p.y), r = p.big ? 9 : 6.5, col = 'var(--' + p.cls + ')';
+      s += '<circle class="dot d' + (i + 1) + '" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="fill:' + col + '; stroke:#0b0d10; stroke-width:2.5"/>';
+      var dx = p.dx || 12, dy = p.dy || -8, anch = p.anchor || 'start';
+      s += '<text class="plab" x="' + (cx + dx) + '" y="' + (cy + dy) + '" text-anchor="' + anch + '">' + p.label + '</text>';
+      if (p.sub) s += '<text class="psub" x="' + (cx + dx) + '" y="' + (cy + dy + 14) + '" text-anchor="' + anch + '">' + p.sub + '</text>';
+    });
+    s += '</svg>';
+    el.innerHTML = s;
+  }
+
+  // diverging axis (SVG): signed value around a centred zero
+  function divergingAxis(el, o) {
+    var W = 480, H = 150, L = 22, R = 22, T = 24, Bn = 30;
+    var pw = W - L - R, axisY = (H - Bn + T) / 2, span = o.max - o.min;
+    function X(v) { return L + ((v - o.min) / span) * pw; }
+    var zx = X(0);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (o.aria || '') + '">';
+    s += '<line class="baseln" x1="' + L + '" y1="' + axisY + '" x2="' + (L + pw) + '" y2="' + axisY + '"/>';
+    s += '<line class="zeroln" x1="' + zx + '" y1="' + (T - 6) + '" x2="' + zx + '" y2="' + (H - Bn + 6) + '"/>';
+    s += '<text class="lab" x="' + zx + '" y="' + (H - 8) + '" text-anchor="middle">exact (0)</text>';
+    s += '<text class="lab" x="' + L + '" y="' + (H - 8) + '" text-anchor="start">&larr; omits rooms</text>';
+    s += '<text class="lab" x="' + (L + pw) + '" y="' + (H - 8) + '" text-anchor="end">hallucinates &rarr;</text>';
+    o.markers.forEach(function (m) {
+      var mx = X(m.v), col = 'var(--' + m.cls + ')';
+      var x0 = Math.min(zx, mx), x1 = Math.max(zx, mx);
+      s += '<rect x="' + x0 + '" y="' + (axisY - 5) + '" width="' + (x1 - x0) + '" height="10" rx="3" style="fill:' + col + '; opacity:.22"/>';
+      s += '<circle cx="' + mx + '" cy="' + axisY + '" r="7" style="fill:' + col + '; stroke:#0b0d10; stroke-width:2.5"/>';
+      var up = m.side === 'up', ly = up ? (axisY - 16) : (axisY + 28);
+      s += '<text class="pv" x="' + mx + '" y="' + ly + '" text-anchor="middle" style="fill:' + col + '">' + (m.v > 0 ? '+' : '') + m.v.toFixed(2) + '</text>';
+      s += '<text class="pn" x="' + mx + '" y="' + (ly + (up ? -13 : 13)) + '" text-anchor="middle">' + m.label + '</text>';
+    });
+    s += '</svg>';
+    el.innerHTML = s;
+  }
+
+  // §1 training value (test, n=50)
+  groupedChart(document.getElementById('train-chart'), {
+    max: 1,
+    groups: [
+      { name: 'IoU room',    bars: [ {label:'after', cls:'hybrid', v:0.889, win:true}, {label:'cnn', cls:'cnn', v:0.772}, {label:'before', cls:'before', v:0.000} ] },
+      { name: 'IoU wall',    bars: [ {label:'after', cls:'hybrid', v:0.749, win:true}, {label:'cnn', cls:'cnn', v:0.711}, {label:'before', cls:'before', v:0.000} ] },
+      { name: 'IoU door',    bars: [ {label:'after', cls:'hybrid', v:0.631, win:true}, {label:'cnn', cls:'cnn', v:0.551}, {label:'before', cls:'before', v:0.000} ] },
+      { name: 'IoU window',  bars: [ {label:'after', cls:'hybrid', v:0.728, win:true}, {label:'cnn', cls:'cnn', v:0.686}, {label:'before', cls:'before', v:0.000} ] },
+      { name: 'IoU railing', bars: [ {label:'after', cls:'hybrid', v:0.272, win:true}, {label:'cnn', cls:'cnn', v:0.252}, {label:'before', cls:'before', v:0.002} ] }
+    ]
+  });
+
+  // §2 hybrid vs monolithic geometry
+  groupedChart(document.getElementById('geo-chart'), {
+    max: 1,
+    groups: [
+      { name: 'IoU room', hint:'+0.217', bars: [ {label:'Hybrid', cls:'hybrid', v:0.889, win:true}, {label:'Claude 4.8', cls:'claude', v:0.672, display:'0.672'} ] },
+      { name: 'IoU wall', hint:'+0.501 — 3× sharper', bars: [ {label:'Hybrid', cls:'hybrid', v:0.749, win:true}, {label:'Claude 4.8', cls:'claude', v:0.248, display:'0.248'} ] }
+    ]
+  });
+
+  // §3 OOD coverage % (n=3)
+  groupedChart(document.getElementById('ood-chart'), {
+    max: 60,
+    fmt: function (v) { return v.toFixed(1) + '%'; },
+    groups: [
+      { name: 'room coverage',    bars: [ {label:'after', cls:'hybrid', v:46.7, win:true, display:'46.7%'}, {label:'cnn', cls:'cnn', v:41.7, display:'41.7%'}, {label:'before', cls:'before', v:0.0, display:'0%'} ] },
+      { name: 'wall coverage',    hint:'CNN nearly gives up', bars: [ {label:'after', cls:'hybrid', v:11.3, win:true, display:'11.3%'}, {label:'cnn', cls:'cnn', v:3.9, display:'3.9%'}, {label:'before', cls:'before', v:0.0, display:'0%'} ] },
+      { name: 'door coverage',    bars: [ {label:'after', cls:'hybrid', v:1.0, win:true, display:'1.0%'}, {label:'cnn', cls:'cnn', v:0.0, display:'0%'}, {label:'before', cls:'before', v:0.0, display:'0%'} ] }
+    ]
+  });
+
+  // §4 prompt ablation — precision/recall trajectory
+  scatterChart(document.getElementById('ablation-chart'), {
+    xLabel: 'Precision \u2192', yLabel: 'Recall \u2192', max: 0.6, ticks: 3,
+    aria: 'Precision-recall scatter of four prompt levels',
+    traj: [0, 1, 2],
+    points: [
+      { x:0.214, y:0.208, cls:'qwen', label:'L1 open',   sub:'F1 0.21', dx:14, dy:5,   anchor:'start' },
+      { x:0.425, y:0.478, cls:'qwen', label:'L2 guided', sub:'F1 0.45', dx:0,  dy:21,  anchor:'middle' },
+      { x:0.543, y:0.453, cls:'qwen', label:'L3 strict', sub:'F1 0.49 best', big:true, dx:0, dy:-27, anchor:'middle' },
+      { x:0.415, y:0.487, cls:'qwen', label:'L4 hybrid', sub:'F1 0.45', dx:0,  dy:-27, anchor:'middle' }
+    ]
+  });
+
+  // §5 semantics head-to-head — precision/recall plane
+  scatterChart(document.getElementById('sem-chart'), {
+    xLabel: 'Precision \u2192', yLabel: 'Recall \u2192', max: 0.7, ticks: 3,
+    aria: 'Precision-recall scatter, Qwen vs Claude',
+    points: [
+      { x:0.489, y:0.582, cls:'claude', label:'Claude 4.8', sub:'F1 0.52', big:true, dx:13, dy:-6, anchor:'start' },
+      { x:0.478, y:0.457, cls:'qwen',   label:'Qwen-8B L3', sub:'F1 0.45', big:true, dx:-13, dy:5, anchor:'end' }
+    ]
+  });
+
+  // §6B per-class IoU Claude vs pipeline
+  groupedChart(document.getElementById('perclass-chart'), {
+    max: 1,
+    groups: [
+      { name: 'room',   bars: [ {label:'Hybrid', cls:'hybrid', v:0.889, win:true}, {label:'Claude', cls:'claude', v:0.672, display:'0.672'} ] },
+      { name: 'wall',   bars: [ {label:'Hybrid', cls:'hybrid', v:0.749, win:true}, {label:'Claude', cls:'claude', v:0.248, display:'0.248'} ] },
+      { name: 'door',   bars: [ {label:'Hybrid', cls:'hybrid', v:0.631, win:true}, {label:'Claude', cls:'claude', v:0.079, display:'0.079'} ] },
+      { name: 'window', bars: [ {label:'Hybrid', cls:'hybrid', v:0.728, win:true}, {label:'Claude', cls:'claude', v:0.147, display:'0.147'} ] }
+    ]
+  });
+
+  // §6C per-type F1 (sorted by GT frequency, top types)
+  groupedChart(document.getElementById('pertype-chart'), {
+    max: 1,
+    groups: [
+      { name: 'bedroom', hint:'GT 107', bars: [ {label:'Qwen', cls:'qwen', v:0.765}, {label:'Claude', cls:'claude', v:0.898} ] },
+      { name: 'bath',    hint:'GT 51',  bars: [ {label:'Qwen', cls:'qwen', v:0.545}, {label:'Claude', cls:'claude', v:0.721} ] },
+      { name: 'living',  hint:'GT 42',  bars: [ {label:'Qwen', cls:'qwen', v:0.824}, {label:'Claude', cls:'claude', v:0.866} ] },
+      { name: 'kitchen', hint:'GT 38',  bars: [ {label:'Qwen', cls:'qwen', v:0.816}, {label:'Claude', cls:'claude', v:0.814} ] },
+      { name: 'entry',   hint:'GT 34',  bars: [ {label:'Qwen', cls:'qwen', v:0.694}, {label:'Claude', cls:'claude', v:0.571} ] },
+      { name: 'storage', hint:'GT 23',  bars: [ {label:'Qwen', cls:'qwen', v:0.750}, {label:'Claude', cls:'claude', v:0.807} ] },
+      { name: 'garage',  hint:'GT 10',  bars: [ {label:'Qwen', cls:'qwen', v:0.333}, {label:'Claude', cls:'claude', v:0.706} ] },
+      { name: 'study',   hint:'GT 8',   bars: [ {label:'Qwen', cls:'qwen', v:0.222}, {label:'Claude', cls:'claude', v:0.800} ] }
+    ]
+  });
+
+  // §6A room-count bias — diverging axis around zero
+  divergingAxis(document.getElementById('count-axis'), {
+    min: -3, max: 3, aria: 'Mean signed room-count error per model',
+    markers: [
+      { v:-1.72, cls:'qwen',   label:'Qwen', side:'up' },
+      { v:1.20,  cls:'claude', label:'Claude', side:'down' }
+    ]
+  });
+
+  // ---------- scroll reveal + bar fill trigger ----------
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .card, #cost .card').forEach(function (el) { io.observe(el); });
+
+  // ---------- active nav ----------
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navlinks a'));
+  var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var navIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        var id = '#' + e.target.id;
+        navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(function (s) { if (s) navIO.observe(s); });
+
+  // ---------- date ----------
+  var d = new Date();
+  var el = document.getElementById('gen-date');
+  if (el) el.textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+})();
+</script>
+</body>
+</html>

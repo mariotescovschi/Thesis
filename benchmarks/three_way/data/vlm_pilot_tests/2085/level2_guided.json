@@ -1,0 +1,79 @@
+{
+  "prompt": "This drawing is a single-family RESIDENTIAL house. The SAME sheet contains MULTIPLE FLOOR LEVELS drawn side by side — each separate sub-drawing is one storey of the same house. Room labels are Finnish abbreviations.\nFinnish glossary: MH=bedroom, OH=living room, K/KEITTIO=kitchen, RUOKAILUTILA/RUOKATILA=dining, KPH/PESUH=bathroom, WC=toilet, ET=entry hall, AULA=hall/landing, S/SAUNA=sauna, PUKUH=changing room, VH/KHH=utility room, TK=technical closet, VARASTO/VARAS=storage, AUTOTALLI=garage, PARVEKE=balcony, TERASSI=terrace, KELLARI=cellar, KATTILAHUONE=boiler room, TAKKAHUONE=fireplace room, VESIVARAAJA=water heater, ALKOVI=alcove, HALLI=hall. Floor labels: KELLARIKERROS=basement floor, (I/II) KERROS / KRS=storey, VINTTIKERROS=attic floor, POHJA=plan.\n\nIdentify each storey and its rooms. Return ONLY JSON:\n{\"building_type\": \"...\", \"num_floors\": <int>, \"floors\": [{\"floor_label_original\": \"...\", \"floor_role\": \"basement|ground|upper|attic\", \"rooms\": [{\"label_original\": \"...\", \"type_en\": \"...\"}]}], \"notes\": [\"...\"]}\nReturn valid JSON only, no prose.",
+  "raw": "{\n  \"building_type\": \"RESIDENTIAL\",\n  \"num_floors\": 2,\n  \"floors\": [\n    {\n      \"floor_label_original\": \"POHJA I KRS\",\n      \"floor_role\": \"ground\",\n      \"rooms\": [\n        {\n          \"label_original\": \"MH\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"OH\",\n          \"type_en\": \"living room\"\n        },\n        {\n          \"label_original\": \"K\",\n          \"type_en\": \"kitchen\"\n        },\n        {\n          \"label_original\": \"ET\",\n          \"type_en\": \"entry hall\"\n        },\n        {\n          \"label_original\": \"TK\",\n          \"type_en\": \"technical closet\"\n        },\n        {\n          \"label_original\": \"WC\",\n          \"type_en\": \"toilet\"\n        },\n        {\n          \"label_original\": \"VH\",\n          \"type_en\": \"utility room\"\n        },\n        {\n          \"label_original\": \"PH\",\n          \"type_en\": \"bathroom\"\n        },\n        {\n          \"label_original\": \"TH/KODINH.H\",\n          \"type_en\": \"bathroom\"\n        }\n      ]\n    },\n    {\n      \"floor_label_original\": \"POHJA II KRS\",\n      \"floor_role\": \"upper\",\n      \"rooms\": [\n        {\n          \"label_original\": \"MH\",\n          \"type_en\": \"bedroom\"\n        },\n        {\n          \"label_original\": \"AULA\",\n          \"type_en\": \"hall/landing\"\n        },\n        {\n          \"label_original\": \"PARVEKE\",\n          \"type_en\": \"balcony\"\n        },\n        {\n          \"label_original\": \"ALKOVI\",\n          \"type_en\": \"alcove\"\n        },\n        {\n          \"label_original\": \"PH\",\n          \"type_en\": \"bathroom\"\n        }\n      ]\n    }\n  ],\n  \"notes\": []\n}",
+  "parsed": {
+    "building_type": "RESIDENTIAL",
+    "num_floors": 2,
+    "floors": [
+      {
+        "floor_label_original": "POHJA I KRS",
+        "floor_role": "ground",
+        "rooms": [
+          {
+            "label_original": "MH",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "OH",
+            "type_en": "living room"
+          },
+          {
+            "label_original": "K",
+            "type_en": "kitchen"
+          },
+          {
+            "label_original": "ET",
+            "type_en": "entry hall"
+          },
+          {
+            "label_original": "TK",
+            "type_en": "technical closet"
+          },
+          {
+            "label_original": "WC",
+            "type_en": "toilet"
+          },
+          {
+            "label_original": "VH",
+            "type_en": "utility room"
+          },
+          {
+            "label_original": "PH",
+            "type_en": "bathroom"
+          },
+          {
+            "label_original": "TH/KODINH.H",
+            "type_en": "bathroom"
+          }
+        ]
+      },
+      {
+        "floor_label_original": "POHJA II KRS",
+        "floor_role": "upper",
+        "rooms": [
+          {
+            "label_original": "MH",
+            "type_en": "bedroom"
+          },
+          {
+            "label_original": "AULA",
+            "type_en": "hall/landing"
+          },
+          {
+            "label_original": "PARVEKE",
+            "type_en": "balcony"
+          },
+          {
+            "label_original": "ALKOVI",
+            "type_en": "alcove"
+          },
+          {
+            "label_original": "PH",
+            "type_en": "bathroom"
+          }
+        ]
+      }
+    ],
+    "notes": []
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "floorplan-studio",
+  "private": true,
+  "scripts": {
+    "dev:all": "bash scripts/dev-all.sh",
+    "dev:web": "cd app/frontend && bun run dev",
+    "dev:api": "cd app/backend && python3 -m uvicorn main:app --reload --port 8000"
+  }
+}
