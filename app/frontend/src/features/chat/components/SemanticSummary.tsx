@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import { useOutputDocument, useApplyEdit } from '@/features/viewer';
+import { PricePanel } from '@/features/pricing';
 import { AdjacencyEditor } from './AdjacencyEditor';
 import { AdjacencyGraph } from './AdjacencyGraph';
 import { RoomRow } from './RoomRow';
@@ -45,6 +46,8 @@ export const SemanticSummary = ({ projectId, floorId }: SemanticSummaryProps) =>
   return (
     <div className="space-y-5 p-4 text-sm">
       <BuildingSummary projectId={projectId} />
+
+      <PricePanel projectId={projectId} floorId={floorId} />
 
       <Section title="Overview">
         <Row label="Building" value={doc.building_type ?? '-'} />
