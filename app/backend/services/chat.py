@@ -13,7 +13,7 @@ import json
 from typing import Optional
 
 import core.commands as cmds
-import infra.ollama_client as ollama_client
+import services.chat_loop as chat_loop
 from core.document import Annotation, Floor, Project
 from helpers.scene import (
     build_building_scene,
@@ -234,38 +234,58 @@ def _resolve_element_refs(raw: dict, eidx: dict[str, str]) -> dict:
     return out
 
 
+def _reason(exc: Exception) -> str:
+    """A short, single-line reason for surfacing a rejected command to the user."""
+    return " ".join(str(exc).split())[:200] or exc.__class__.__name__
+
+
 def _validate(
     raw: dict,
     idx: dict[str, Annotation],
     eidx: dict[str, str],
     p: tuple[float, float, float, float],
-) -> Optional[cmds.EditCommand]:
-    """Denormalize coords, resolve element + pin refs, then validate (None if invalid)."""
+) -> tuple[Optional[cmds.EditCommand], Optional[str]]:
+    """Denormalize coords, resolve element + pin refs, then validate.
+
+    Returns (command, None) on success or (None, reason) so the caller can tell
+    the user WHY an edit was dropped instead of silently discarding it.
+    """
     try:
         resolved = _resolve_pins(_resolve_element_refs(_denormalize(raw, p), eidx), idx)
-        return cmds.EditCommandEnvelope(command=resolved).command
-    except Exception:
-        return None
+        return cmds.EditCommandEnvelope(command=resolved).command, None
+    except Exception as exc:
+        return None, _reason(exc)
 
 
-def _parse_commands(content: str, floor: Floor) -> tuple[str, list]:
-    """Parse the model's JSON reply into (answer_text, validated_commands)."""
+def _parse_commands(content: str, floor: Floor) -> tuple[str, list, list]:
+    """Parse the model's JSON reply into (answer_text, validated, rejected).
+
+    `rejected` is a list of {"command", "reason"} so invalid edits surface in the
+    UI with an explanation instead of disappearing (the old silent-drop).
+    """
     try:
         data = json.loads(content)
     except (ValueError, TypeError):
         # Model ignored the JSON contract — treat the whole reply as the answer.
-        return (content.strip(), [])
+        return (content.strip(), [], [])
     if not isinstance(data, dict):
-        return (content.strip(), [])
+        return (content.strip(), [], [])
     answer_text = str(data.get("answer", "")).strip()
     raw_cmds = data.get("commands", [])
     if not isinstance(raw_cmds, list):
-        return (answer_text, [])
+        return (answer_text, [], [])
     idx = _pin_index(floor)
     eidx = _element_index(floor)
     p = norm_params(floor)
-    validated = [c for c in (_validate(r, idx, eidx, p) for r in raw_cmds) if c is not None]
-    return (answer_text, validated)
+    validated: list = []
+    rejected: list = []
+    for r in raw_cmds:
+        cmd, reason = _validate(r, idx, eidx, p)
+        if cmd is not None:
+            validated.append(cmd)
+        else:
+            rejected.append({"command": r, "reason": reason})
+    return (answer_text, validated, rejected)
 
 
 def answer(
@@ -278,12 +298,14 @@ def answer(
 ) -> dict:
     """Answer a chat message about a floor, proposing validated edit commands.
 
-    Returns {"answer": str, "commands": list[EditCommand]}. Commands are
-    schema-validated and pin-resolved but NOT applied (T12 wires routing,
-    the edit engine applies them separately).
+    Returns {"answer": str, "commands": list[EditCommand], "rejected": list}.
+    The model may first call read-only tools (chat_loop) to inspect the plan;
+    commands are schema-validated and pin-resolved but NOT applied. Invalid
+    commands come back in `rejected` with a reason (no more silent-drop).
     """
     prompt = _build_prompt(project, floor, message, pin_ids, element_ids)
-    messages = [{"role": "system", "content": _SYSTEM}]
+    system = _SYSTEM + "\n" + chat_loop.TOOL_PROTOCOL
+    messages = [{"role": "system", "content": system}]
     # Include last N history turns for multi-turn context (capped at 8)
     if history:
         for turn in history[-8:]:
@@ -292,9 +314,9 @@ def answer(
             if role in ("user", "assistant") and text:
                 messages.append({"role": role, "content": text})
     messages.append({"role": "user", "content": prompt})
-    content = ollama_client.chat(messages, json_format=True)
-    answer_text, validated = _parse_commands(content, floor)
-    return {"answer": answer_text, "commands": validated}
+    content = chat_loop.run_loop(messages, floor)
+    answer_text, validated, rejected = _parse_commands(content, floor)
+    return {"answer": answer_text, "commands": validated, "rejected": rejected}
 
 
 # Building-level (cross-floor) chat lives in its own module to keep this file

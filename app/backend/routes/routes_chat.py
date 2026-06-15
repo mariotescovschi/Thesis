@@ -50,5 +50,6 @@ def post_chat(pid: str, body: ChatRequest) -> dict:
         "data": {
             "answer": result["answer"],
             "proposed_commands": result["commands"],
+            "rejected_commands": result.get("rejected", []),
         }
     }
