@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FolderPlus, Loader2, PanelLeftClose, PanelLeftOpen, Settings } from 'lucide-react';
+import { FolderPlus, Loader2, PanelLeftClose, PanelLeftOpen, Search, Settings } from 'lucide-react';
 import { NewProjectModal, useProjects } from '@/features/projects';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/lib/cn';
@@ -15,6 +15,8 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
   const [createOpen, setCreateOpen] = useState(false);
   const activeProjectId = useWorkspaceStore((s) => s.activeProjectId);
   const setActiveProjectId = useWorkspaceStore((s) => s.setActiveProjectId);
+  const mode = useWorkspaceStore((s) => s.mode);
+  const setMode = useWorkspaceStore((s) => s.setMode);
   const { data: projects, isLoading } = useProjects();
 
   if (collapsed) {
@@ -36,6 +38,16 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
         >
           <FolderPlus className="size-5" />
         </button>
+        <button
+          onClick={() => setMode('search')}
+          title="Search plans"
+          className={cn(
+            'mt-1 rounded-md p-2 hover:bg-accent hover:text-foreground',
+            mode === 'search' ? 'text-foreground' : 'text-muted-foreground',
+          )}
+        >
+          <Search className="size-5" />
+        </button>
       </aside>
     );
   }
@@ -56,6 +68,17 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
         <Button className="w-full" onClick={() => setCreateOpen(true)}>
           <FolderPlus /> New project
         </Button>
+        <button
+          onClick={() => setMode('search')}
+          className={cn(
+            'mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors',
+            mode === 'search'
+              ? 'bg-accent text-accent-foreground'
+              : 'text-muted-foreground hover:bg-accent/60',
+          )}
+        >
+          <Search className="size-4" /> Search plans
+        </button>
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3">

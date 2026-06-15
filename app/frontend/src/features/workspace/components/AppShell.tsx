@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { CenterStage } from '@/features/viewer';
+import { SearchView } from '@/features/search';
 import { useWorkspaceStore } from '../store/workspaceStore';
 import { Sidebar } from './Sidebar';
 import { RightPanel } from './RightPanel';
@@ -8,6 +9,8 @@ export const AppShell = () => {
   const projectId = useWorkspaceStore((s) => s.activeProjectId);
   const activeFile = useWorkspaceStore((s) => s.activeFile);
   const setActiveFile = useWorkspaceStore((s) => s.setActiveFile);
+  const setActiveProjectId = useWorkspaceStore((s) => s.setActiveProjectId);
+  const mode = useWorkspaceStore((s) => s.mode);
   const [sidebarWidth, setSidebarWidth] = useState(260);
   const [collapsed, setCollapsed] = useState(false);
   const dragging = useRef(false);
@@ -41,13 +44,22 @@ export const AppShell = () => {
         />
       )}
       <main className="min-w-0 overflow-hidden bg-background">
-        <CenterStage
-          projectId={projectId}
-          activeFile={activeFile}
-          onSelectFloor={(floorId) =>
-            setActiveFile({ kind: activeFile?.kind ?? 'output', floorId })
-          }
-        />
+        {mode === 'search' ? (
+          <SearchView
+            onOpenResult={(pid, floorId) => {
+              setActiveProjectId(pid);
+              setActiveFile({ kind: 'output', floorId });
+            }}
+          />
+        ) : (
+          <CenterStage
+            projectId={projectId}
+            activeFile={activeFile}
+            onSelectFloor={(floorId) =>
+              setActiveFile({ kind: activeFile?.kind ?? 'output', floorId })
+            }
+          />
+        )}
       </main>
       <RightPanel />
     </div>
