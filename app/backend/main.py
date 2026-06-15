@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 import infra.store as store
 import services.analysis as analysis
-from routes import routes_edit, routes_chat, routes_split, routes_export
+from routes import routes_edit, routes_chat, routes_split, routes_export, routes_pricing
 from core.errors import AppError, ValidationError
 
 app = FastAPI(title="Mappa")
@@ -32,6 +32,7 @@ app.include_router(routes_edit.router)
 app.include_router(routes_chat.router)
 app.include_router(routes_split.router)
 app.include_router(routes_export.router)
+app.include_router(routes_pricing.router)
 
 
 @app.on_event("startup")
