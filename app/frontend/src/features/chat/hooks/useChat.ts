@@ -16,6 +16,7 @@ export const useChat = (projectId: string, floorId: string) => {
   const resetChat = useChatStore((s) => s.newChat);
   const setPreview = useEditorStore((s) => s.setPreview);
   const clearPreview = useEditorStore((s) => s.clearPreview);
+  const setRejected = useChatStore((s) => s.setRejected);
 
   const mutation = useMutation({
     mutationFn: (vars: { message: string; pinIds: string[]; elementIds: string[] }) =>
@@ -29,6 +30,7 @@ export const useChat = (projectId: string, floorId: string) => {
     onSuccess: (res) => {
       pushTurn({ role: 'assistant', text: res.answer });
       setPreview(res.proposed_commands ?? []);
+      setRejected(res.rejected_commands ?? []);
     },
   });
 

@@ -6,6 +6,7 @@ import { useOutputDocument } from '@/features/viewer';
 import { cn } from '@/shared/lib/cn';
 import { PinContextBar } from './PinContextBar';
 import { ProposedEdits } from './ProposedEdits';
+import { RejectedEdits } from './RejectedEdits';
 import { useChat } from '../hooks/useChat';
 import { useChatStore } from '../store/chatStore';
 
@@ -77,6 +78,7 @@ export const ChatConversation = ({ projectId, floorId }: ChatConversationProps) 
 
       <div className="border-t border-border">
         <ProposedEdits projectId={projectId} floorId={floorId} />
+        <RejectedEdits />
         <PinContextBar pins={doc?.annotations ?? []} selected={pins} onToggle={togglePin} />
         {contextElementIds.length > 0 && doc && (
           <div className="flex flex-wrap items-center gap-1.5 px-3 pt-1">

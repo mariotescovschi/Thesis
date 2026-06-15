@@ -9,9 +9,15 @@ export interface ChatRequest {
   history: { role: string; text: string }[];
 }
 
+export interface RejectedCommand {
+  command: { op?: string; [key: string]: unknown };
+  reason: string;
+}
+
 export interface ChatResponse {
   answer: string;
   proposed_commands: EditCommand[];
+  rejected_commands: RejectedCommand[];
 }
 
 export const chatApi = {
