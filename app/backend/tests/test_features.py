@@ -26,6 +26,8 @@ def test_features_basic_counts():
     assert f["total_area_m2"] == 40.0
     assert f["building_apartment"] == 1.0
     assert f["building_house"] == 0.0
+    assert f["count_living"] == 1.0
+    assert f["count_kitchen"] == 1.0
 
 
 def test_area_fractions_sum_to_one_when_areas_known():

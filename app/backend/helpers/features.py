@@ -63,6 +63,7 @@ def floor_features(floor: Floor) -> dict[str, float]:
     for t in ROOM_TYPES:
         share = sum(a for typ, a in areas if typ == t) / denom
         feats[f"area_frac_{t}"] = round(share, 4)
+        feats[f"count_{t}"] = float(sum(1 for e in rooms if e.type == t))
 
     bt = (floor.building_type or "").lower()
     for t in BUILDING_TYPES:
@@ -78,6 +79,7 @@ def feature_keys() -> list[str]:
         "wall_count", "adjacency_density", "compactness", "floor_count",
     ]
     keys += [f"area_frac_{t}" for t in ROOM_TYPES]
+    keys += [f"count_{t}" for t in ROOM_TYPES]
     keys += [f"building_{t}" for t in BUILDING_TYPES]
     return keys
 
