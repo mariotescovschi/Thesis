@@ -34,18 +34,22 @@ def _think() -> Optional[bool]:
     return raw.lower() in ("1", "true", "yes", "on")
 
 
-def chat(messages: list[dict], json_format: bool = True) -> str:
+def chat(messages: list[dict], json_format: bool = True, schema: Optional[dict] = None) -> str:
     """Send a chat request and return the assistant message content (a string).
 
-    Raises AppError (502) on any connectivity / protocol failure so the route
-    layer can surface a clean { error } envelope instead of a stack trace.
+    `schema` (a JSON Schema dict) takes precedence over `json_format` and is passed
+    straight through as Ollama's structured-output `format`; otherwise json_format
+    requests plain JSON mode. Raises AppError (502) on any connectivity / protocol
+    failure so the route layer can surface a clean { error } envelope.
     """
     payload: dict = {
         "model": default_model(),
         "messages": messages,
         "stream": False,
     }
-    if json_format:
+    if schema is not None:
+        payload["format"] = schema
+    elif json_format:
         payload["format"] = "json"
     think = _think()
     if think is not None:
