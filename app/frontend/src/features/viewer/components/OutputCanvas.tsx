@@ -22,6 +22,7 @@ import { PinInspector } from './PinInspector';
 import { CalibrateTool } from './CalibrateTool';
 import { EditPreviewLayer } from './EditPreviewLayer';
 import { ExportMenu } from './ExportMenu';
+import { NormalizeControl } from './NormalizeControl';
 import { CanvasStatusBar } from './CanvasStatusBar';
 import { ConfirmDialog } from './ConfirmDialog';
 
@@ -196,8 +197,9 @@ export const OutputCanvas = ({ projectId, floorId }: OutputCanvasProps) => {
                 onToggleImage={() => setImageVisible((v) => !v)}
               />
             </div>
-            {/* Top-right: export */}
-            <div className="absolute right-3 top-3 z-10">
+            {/* Top-right: normalize + export */}
+            <div className="absolute right-3 top-3 z-10 flex items-center gap-2">
+              <NormalizeControl projectId={projectId} floorId={floorId} />
               <ExportMenu projectId={projectId} floorId={floorId} />
             </div>
             {/* Bottom-left: status bar */}
