@@ -190,6 +190,16 @@ def _room_line(r: dict) -> str:
     )
 
 
+def _segment_line(s: dict) -> str:
+    """One line per segment so the model can target it by id (was: counts only)."""
+    dims = ""
+    if "length_m" in s:
+        dims = f" {s['length_m']}m"
+        if "thickness_m" in s:
+            dims += f" x{s['thickness_m']}m"
+    return f"- {s['kind']} (id={s['id']}) {s['start']}->{s['end']}{dims}"
+
+
 def scene_to_text(scene: dict) -> str:
     """Deterministic, compact human-readable summary for a text prompt."""
     lines = [f"SCENE (coords {scene['coord_space']}, scale_px_per_m={scene['scale_px_per_m']})"]
@@ -200,6 +210,7 @@ def scene_to_text(scene: dict) -> str:
         kinds[s["kind"]] = kinds.get(s["kind"], 0) + 1
     seg_breakdown = ", ".join(f"{k}={kinds[k]}" for k in sorted(kinds)) or "none"
     lines.append(f"Segments ({len(scene['segments'])}): {seg_breakdown}")
+    lines.extend(_segment_line(s) for s in scene["segments"])
     lines.append(f"Pins ({len(scene['pins'])}):")
     lines.extend(f"- {pin['name']} @ [{pin['x']}, {pin['y']}]" for pin in scene["pins"])
     return "\n".join(lines)
