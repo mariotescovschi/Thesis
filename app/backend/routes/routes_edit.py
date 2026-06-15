@@ -6,9 +6,10 @@ and write the result to the overlay (`{floor_id}.edited.json`). Revert simply
 deletes the overlay so the next read falls back to the pipeline base (Q1=C).
 """
 from fastapi import APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 import services.editing as editing
+import services.normalization as normalization
 import infra.store as store
 from core.commands import EditCommand, EditCommandEnvelope
 from core.document import Floor
@@ -18,6 +19,10 @@ router = APIRouter()
 
 class BatchBody(BaseModel):
     commands: list[EditCommand]
+
+
+class NormalizeBody(BaseModel):
+    level: int = Field(ge=1, le=3, description="1 = light, 2 = medium, 3 = hard")
 
 
 @router.patch("/projects/{pid}/output/{floor_id}")
@@ -42,6 +47,19 @@ def apply_edits(pid: str, floor_id: str, body: BatchBody) -> dict[str, Floor]:
         updated = editing.apply(updated, command)       # raises -> nothing written
     store.write_overlay(pid, floor_id, updated)
     return {"data": updated}
+
+
+@router.post("/projects/{pid}/output/{floor_id}/normalize")
+def normalize(pid: str, floor_id: str, body: NormalizeBody) -> dict:
+    """Propose regularization edits for the current Document WITHOUT persisting.
+
+    Returns move_element/delete_element commands so the client can preview them
+    (amber ghost) and apply via the batch endpoint — the base/overlay are untouched
+    until the user accepts. Levels: 1 light, 2 medium, 3 hard.
+    """
+    current = store.read_output(pid, floor_id)          # 404 if never analyzed
+    commands = normalization.propose_normalization(current, body.level)
+    return {"data": {"commands": commands}}
 
 
 @router.delete("/projects/{pid}/output/{floor_id}/edits")
