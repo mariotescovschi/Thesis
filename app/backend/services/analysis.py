@@ -84,6 +84,8 @@ def analyze_project(pid: str) -> Project:
             floor.floor_count = doc.floor_count
             floor.notes = doc.notes
             floor.status = "done"
+            doc.price = floor.price          # carry manifest price into the index record
+            _index_floor(proj, doc)
             print(f"[analyze] {floor.name}: done")
         except Exception as exc:  # noqa: BLE001 surface failure per-floor, keep going
             floor.status = "error"
@@ -93,6 +95,27 @@ def analyze_project(pid: str) -> Project:
 
     _refresh_links(proj, analyzed)
     return proj
+
+
+def _index_floor(proj: Project, doc: Floor) -> None:
+    """Best-effort: add/refresh this floor in the derived search index.
+
+    Indexing must never fail an analysis and embeddings may be offline, so this
+    degrades (vector-less record, then no-op) — the index is a rebuildable cache.
+    """
+    import infra.index_store as index_store
+    import infra.embeddings as embeddings
+    try:
+        record = index_store.build_record(proj, doc, embed=embeddings.embed)
+    except Exception:  # noqa: BLE001 embeddings offline -> index without a vector
+        try:
+            record = index_store.build_record(proj, doc)
+        except Exception:  # noqa: BLE001 give up; the index can be rebuilt later
+            return
+    try:
+        index_store.upsert_floor(record)
+    except Exception:  # noqa: BLE001 cache write failed; rebuild() recovers it
+        pass
 
 
 def _refresh_links(proj: Project, analyzed: dict[str, Floor]) -> None:

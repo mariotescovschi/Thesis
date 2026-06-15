@@ -36,6 +36,7 @@ class Floor(BaseModel):
     height: int = 0
     scale_px_per_m: Optional[float] = None
     status: str = "pending"         # pending | running | done | error
+    price: Optional[float] = None   # user-set asking price for this floor (manifest truth)
     elements: list[Element] = []
     adjacency: list[dict] = []      # [{"from": label, "to": label}]
     annotations: list[Annotation] = []   # per-floor named pins, live in the editable overlay
@@ -57,6 +58,8 @@ class Project(BaseModel):
     name: str = "Untitled"
     type: str = "analysis"
     created: str = ""                # ISO 8601
+    price: Optional[float] = None    # total asking price (manifest truth, user-set)
+    currency: str = "EUR"
     floors: list[Floor] = []
     links: list[Link] = []
     chat: list[dict] = []            # [{"role": "...", "text": "..."}]

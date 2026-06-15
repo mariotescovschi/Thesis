@@ -34,6 +34,7 @@ export interface Floor {
   height: number;
   scale_px_per_m?: number | null;
   status: FloorStatus;
+  price?: number | null;
   elements: Element[];
   adjacency: Adjacency[];
   annotations: Annotation[];
@@ -59,6 +60,8 @@ export interface Project {
   name: string;
   type: string;
   created: string;
+  price?: number | null;
+  currency: string;
   floors: Floor[];
   links: Link[];
   chat: ChatMessage[];
