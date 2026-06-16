@@ -20,7 +20,7 @@ from helpers.features import feature_keys, to_vector
 
 _RIDGE_LAMBDA = 1.0
 _K = 5                 # comparables to surface
-_VERDICT_MIN = 5       # need at least this many priced plans for a verdict
+_VERDICT_MIN = 4       # need at least this many other priced plans for a verdict
 _BAND = 0.10           # ±10% -> "fair"
 _TOP_CONTRIB = 6
 
