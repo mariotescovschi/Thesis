@@ -2,6 +2,7 @@
 from statistics import median
 
 from core.document import Element, Floor, new_id
+from helpers.features import normalize_room_type
 from helpers.geom import poly_area_px
 
 
@@ -18,11 +19,15 @@ def merge_document(base: Floor, width: int, height: int, geom_elements: list[dic
     px_per_m: list[float] = []
     for el, room in zip(room_els, sem_rooms):
         el.label = room.get("label")
-        el.type = room.get("type_en") or room.get("type")
+        el.type = normalize_room_type(room.get("type_en") or room.get("type"))
         area_m2 = room.get("area_m2")
         if area_m2:
             el.area_m2 = area_m2
             px_per_m.append((poly_area_px(el.polygon) / area_m2) ** 0.5)
+    # Geometry rooms with no semantic counterpart get a neutral type so feature
+    # extraction sees a value (not None) and they fall into the 'other' bucket.
+    for el in room_els[len(sem_rooms):]:
+        el.type = "other"
 
     return Floor(
         id=base.id,

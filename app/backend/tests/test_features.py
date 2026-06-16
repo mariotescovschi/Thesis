@@ -1,6 +1,8 @@
 """Tests for pure floor feature extraction."""
 from core.document import Element, Floor
-from helpers.features import describe_floor, feature_keys, floor_features, to_vector
+from helpers.features import (
+    describe_floor, feature_keys, floor_features, normalize_room_type, to_vector,
+)
 
 
 def _floor() -> Floor:
@@ -47,3 +49,28 @@ def test_describe_floor_mentions_rooms():
     desc = describe_floor(_floor())
     assert "2-room" in desc
     assert "apartment" in desc
+
+
+def test_normalize_room_type_maps_aliases_and_defaults():
+    assert normalize_room_type("Living Room") == "living"
+    assert normalize_room_type("WC") == "bathroom"
+    assert normalize_room_type("entry hall") == "hall"
+    assert normalize_room_type("kitchen+dining+saunas") == "kitchen"
+    assert normalize_room_type("bedroom") == "bedroom"
+    assert normalize_room_type(None) == "other"
+    assert normalize_room_type("something weird") == "other"
+
+
+def test_counts_use_normalized_types():
+    floor = Floor(
+        id="fl", name="L0", width=1000, height=1000,
+        elements=[
+            Element(id="r1", kind="room", type="Bedroom", area_m2=12.0,
+                    polygon=[[0, 0], [100, 0], [100, 100], [0, 100]]),
+            Element(id="r2", kind="room", type="MH-ish", area_m2=12.0,
+                    polygon=[[100, 0], [200, 0], [200, 100], [100, 100]]),
+        ],
+    )
+    f = floor_features(floor)
+    assert f["count_bedroom"] == 1.0   # "Bedroom" -> bedroom
+    assert f["count_other"] == 1.0     # unknown -> other

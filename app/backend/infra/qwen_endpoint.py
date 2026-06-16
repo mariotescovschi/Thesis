@@ -19,12 +19,16 @@ PROMPT = (
     "VH/KHH=utility, TK/TEKN=technical, VAR/VARASTO=storage, AUTOTALLI=garage, "
     "PARVEKE=balcony, TERASSI=terrace, KELLARI=cellar, ALK/ALKOVI=alcove, "
     "KIRJ=library/study, K+R=kitchen+dining.\n\n"
+    "Set \"type_en\" to EXACTLY ONE value from this controlled vocabulary, picking the "
+    "closest match: bedroom, kitchen, living, dining, bathroom, hall, sauna, utility, "
+    "technical, storage, garage, balcony, office. If nothing fits, use \"other\". "
+    "Use lowercase, exactly as listed.\n\n"
     "Describe the SEMANTICS ONLY. Do NOT output pixel coordinates or polygons. "
     "Return STRICT JSON, no prose:\n"
     "{\n"
     '  "building_type": "...",\n'
     '  "floor_count": <int>,\n'
-    '  "rooms": [{"label": "<as written>", "type_en": "...", "area_m2": <number or null>}],\n'
+    '  "rooms": [{"label": "<as written>", "type_en": "<controlled vocabulary>", "area_m2": <number or null>}],\n'
     '  "adjacency": [{"from": "<label>", "to": "<label>"}],\n'
     '  "vertical_circulation": "stairs|none|...",\n'
     '  "notes": "1-3 sentences describing the overall layout and how spaces relate"\n'

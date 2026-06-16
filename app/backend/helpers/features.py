@@ -10,10 +10,45 @@ from helpers.geom import bbox, poly_area_px
 # Fixed taxonomies keep the vector layout stable across floors/projects so the
 # index, ridge and kNN all speak the same column order.
 ROOM_TYPES = (
-    "bedroom", "kitchen", "bathroom", "living", "hall",
-    "balcony", "storage", "office",
+    "bedroom", "kitchen", "living", "dining", "bathroom", "hall", "sauna",
+    "utility", "technical", "storage", "garage", "balcony", "office", "other",
 )
 BUILDING_TYPES = ("apartment", "house", "office", "commercial")
+
+# Map the VLM's free-form / Finnish-derived type strings onto the canonical set
+# above so counts and area fractions are stable regardless of how the model phrases
+# a label. Anything unknown (or missing) collapses to "other".
+_TYPE_ALIASES = {
+    "living room": "living",
+    "wc": "bathroom",
+    "toilet": "bathroom",
+    "entry hall": "hall",
+    "hall/landing": "hall",
+    "landing": "hall",
+    "aula": "hall",
+    "kitchen+dining": "kitchen",
+    "kitchen+dining+saunas": "kitchen",
+    "k+r": "kitchen",
+    "dining room": "dining",
+    "technical room": "technical",
+    "changing room": "other",
+    "alcove": "other",
+    "cellar": "storage",
+    "library/study": "office",
+    "library": "office",
+    "study": "office",
+    "terrace": "balcony",
+}
+
+
+def normalize_room_type(raw: Optional[str]) -> str:
+    """Map a raw room type onto the canonical ROOM_TYPES set; default 'other'."""
+    if not raw:
+        return "other"
+    key = raw.strip().lower()
+    if key in ROOM_TYPES:
+        return key
+    return _TYPE_ALIASES.get(key, "other")
 
 
 def _room_area(el) -> float:
@@ -57,13 +92,14 @@ def floor_features(floor: Floor) -> dict[str, float]:
         "floor_count": float(floor.floor_count or 1),
     }
 
-    # Area share per room type (fractions of total room area; sums to ≤ 1).
-    areas = [(e.type or "", _room_area(e)) for e in rooms]
+    # Area share per room type (fractions of total room area; sums to ≤ 1). Types are
+    # normalized so 'living room', 'WC', etc. land on the canonical buckets.
+    areas = [(normalize_room_type(e.type), _room_area(e)) for e in rooms]
     denom = sum(a for _, a in areas) or 1.0
     for t in ROOM_TYPES:
         share = sum(a for typ, a in areas if typ == t) / denom
         feats[f"area_frac_{t}"] = round(share, 4)
-        feats[f"count_{t}"] = float(sum(1 for e in rooms if e.type == t))
+        feats[f"count_{t}"] = float(sum(1 for typ, _ in areas if typ == t))
 
     bt = (floor.building_type or "").lower()
     for t in BUILDING_TYPES:
