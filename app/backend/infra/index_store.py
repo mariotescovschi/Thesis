@@ -101,6 +101,7 @@ def rebuild(embed: Optional[Embed] = None) -> int:
                 floor = store.read_output(proj.id, f.id)
             except NotFoundError:
                 continue
+            floor.price = f.price   # price lives in the manifest, not the output doc
             records.append(build_record(proj, floor, embed))
     _save({"records": records})
     return len(records)
