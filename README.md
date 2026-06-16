@@ -76,6 +76,8 @@ de câteva ori mai puțin. Împărțirea muncii e justificată.
 
 ## Aplicația (Mappa)
 
+![Mappa: canvas tip CAD cu planul segmentat, explorer de proiecte și panou de analiză (preț, camere, relații)](docs/mappa-screenshot.png)
+
 Aplicație locală, single-user, fără auth (deliberat). Layout pe 3 panouri: explorer de proiecte, canvas central, panou de chat plus semantică.
 
 Ce face acum:
