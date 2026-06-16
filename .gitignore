@@ -30,3 +30,7 @@ tmp/
 CubiCasa5k/
 *.svg
 !training/sagemaker/Dockerfile
+
+# large artifacts dropped from history (push >100MB)
+_old/sumo/network/iasi.net.xml
+_old/sumo/network/iasi_bbbike.osm
