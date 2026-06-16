@@ -4,7 +4,10 @@ Two complementary, interpretable models over the priced records in the index:
   • Ridge regression (numpy, closed form) -> estimated price + each feature's
     signed % contribution ("why this number").
   • kNN (cosine on the standardized feature vector) -> the most similar priced
-    plans (comparables) + an over/under/fair verdict at a ±10% band.
+    plans (comparables), shown for context.
+
+The verdict (over/under/fair at a ±10% band) compares the asking price to the ridge
+estimate: above estimate -> overpriced, below -> underpriced.
 
 Pure compute over plain dicts (no I/O, no LLM): the route loads index records and
 passes them in. Degrades cleanly when there is little or no priced data.
@@ -83,14 +86,15 @@ def _comparables(xs: np.ndarray, xt: np.ndarray, priced: list[dict]) -> list[dic
     return out
 
 
-def _verdict(reference: float, comps: list[dict], sample_size: int) -> tuple[str, Optional[float]]:
-    prices = [c["price"] for c in comps if c.get("price") is not None]
-    if sample_size < _VERDICT_MIN or not prices:
+def _verdict(price: Optional[float], estimate: float, sample_size: int) -> tuple[str, Optional[float]]:
+    """Compare the asking price to the model estimate: over/under/fair at ±10%.
+
+    A signed delta of +X% means the asking price is X% above what the model thinks
+    the plan is worth (overpriced); negative means below (underpriced / a good deal).
+    """
+    if sample_size < _VERDICT_MIN or price is None or estimate <= 0:
         return "insufficient_data", None
-    mean = float(np.mean(prices))
-    if mean <= 0:
-        return "insufficient_data", None
-    delta = (reference - mean) / mean
+    delta = (price - estimate) / estimate
     label = "overpriced" if delta > _BAND else "underpriced" if delta < -_BAND else "fair"
     return label, round(delta * 100.0, 1)
 
@@ -112,8 +116,7 @@ def estimate(target: dict, records: list[dict]) -> dict:
     xt = (np.array(to_vector(target.get("features", {}), keys), dtype=float) - mean) / std
     predicted = max(0.0, intercept + float(coef @ xt))
     comps = _comparables(xs, xt, priced)
-    reference = target["price"] if target.get("price") is not None else predicted
-    verdict, delta_pct = _verdict(float(reference), comps, len(priced))
+    verdict, delta_pct = _verdict(target.get("price"), predicted, len(priced))
 
     return {
         "available": True,

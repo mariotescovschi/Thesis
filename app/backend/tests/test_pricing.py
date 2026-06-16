@@ -33,12 +33,21 @@ def test_estimate_tracks_area():
 
 def test_verdict_and_comparables_with_enough_data():
     records = _priced_dataset()
-    # Target priced far above the ~1000*area trend -> overpriced.
+    # Asking far above the model estimate (~1000*area) -> overpriced.
     target = _rec("t", area=60, rooms=3, price=200_000.0)
     res = estimate(target, records)
     assert res["verdict"] == "overpriced"
+    assert res["delta_pct"] > 0
     assert len(res["comparables"]) == 5
     assert res["contributions"]
+
+
+def test_verdict_underpriced_below_estimate():
+    records = _priced_dataset()
+    # Asking well below the model estimate (~60k for area 60) -> underpriced.
+    res = estimate(_rec("t", area=60, rooms=3, price=30_000.0), records)
+    assert res["verdict"] == "underpriced"
+    assert res["delta_pct"] < 0
 
 
 def test_verdict_insufficient_when_few_priced():

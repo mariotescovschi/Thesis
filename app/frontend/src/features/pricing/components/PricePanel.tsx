@@ -46,7 +46,7 @@ const VerdictBadge = ({ verdict, deltaPct }: { verdict: PriceVerdict; deltaPct?:
       <Icon className="size-3.5" />
       {label}
       {deltaPct != null && verdict !== 'fair' && verdict !== 'insufficient_data' && (
-        <span>({deltaPct > 0 ? '+' : ''}{deltaPct}% vs similar)</span>
+        <span>({deltaPct > 0 ? '+' : ''}{deltaPct}% vs estimate)</span>
       )}
     </span>
   );
