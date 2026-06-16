@@ -7,8 +7,7 @@ from typing import Optional
 from core.document import Floor
 from helpers.geom import bbox, poly_area_px
 
-# Fixed taxonomies keep the vector layout stable across floors/projects so the
-# index, ridge and kNN all speak the same column order.
+# Fixed taxonomy keeps the feature-vector layout stable across floors/projects.
 ROOM_TYPES = (
     "bedroom", "kitchen", "living", "dining", "bathroom", "hall", "sauna",
     "utility", "technical", "storage", "garage", "balcony", "office", "other",

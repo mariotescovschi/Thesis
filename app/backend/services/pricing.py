@@ -1,16 +1,9 @@
-"""Pricing service: estimate a floor's price from the derived index + explain it.
+"""Pricing: estimate a floor's price from the derived index and explain it.
 
-Two complementary, interpretable models over the priced records in the index:
-  • Ridge regression (numpy, closed form) -> estimated price + each feature's
-    signed % contribution ("why this number").
-  • kNN (cosine on the standardized feature vector) -> the most similar priced
-    plans (comparables), shown for context.
-
-The verdict (over/under/fair at a ±10% band) compares the asking price to the ridge
-estimate: above estimate -> overpriced, below -> underpriced.
-
-Pure compute over plain dicts (no I/O, no LLM): the route loads index records and
-passes them in. Degrades cleanly when there is little or no priced data.
+Pure compute over plain dicts (no I/O, no LLM): ridge regression gives the estimate
+plus each feature's signed % contribution, kNN (cosine) surfaces comparable plans,
+and the verdict compares the asking price to the estimate (over/under/fair at ±10%).
+The route loads the index records and passes them in.
 """
 from typing import Optional
 

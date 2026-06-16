@@ -13,8 +13,8 @@ _SEGMENT_KINDS = ("wall", "door", "window", "railing")
 _NORM = 1000.0
 
 
-def _norm_params(floor: Floor) -> tuple[float, float, float, float]:
-    """Return (off_x, off_y, w, h) for normalization; fall back to global bbox."""
+def norm_params(floor: Floor) -> tuple[float, float, float, float]:
+    """(off_x, off_y, w, h) for the 0..1000 normalization; falls back to global bbox."""
     if floor.width > 0 and floor.height > 0:
         return (0.0, 0.0, float(floor.width), float(floor.height))
     pts = [p for el in floor.elements for p in el.polygon]
@@ -24,25 +24,10 @@ def _norm_params(floor: Floor) -> tuple[float, float, float, float]:
     return (minx, miny, max(maxx - minx, 1.0), max(maxy - miny, 1.0))
 
 
-def _n(x: float, y: float, p: tuple[float, float, float, float]) -> list[int]:
-    """Normalize a single point into the 0..1000 integer space."""
+def norm_point(x: float, y: float, p: tuple[float, float, float, float]) -> list[int]:
+    """Pixels -> 0..1000 integer space (the model never sees raw pixels)."""
     off_x, off_y, w, h = p
     return [round((x - off_x) * _NORM / w), round((y - off_y) * _NORM / h)]
-
-
-# --- public coordinate helpers ---------------------------------------------
-# The scene presents everything in 0..1000 so raw pixels never leak to the model.
-# Commands the model proposes therefore come back in 0..1000 too and MUST be
-# converted to image pixels before the edit engine (which works in pixels) can
-# apply them. These wrappers expose both directions for the chat service.
-def norm_params(floor: Floor) -> tuple[float, float, float, float]:
-    """Public alias for the (off_x, off_y, w, h) normalization params of a floor."""
-    return _norm_params(floor)
-
-
-def norm_point(x: float, y: float, p: tuple[float, float, float, float]) -> list[int]:
-    """Pixels -> 0..1000 (for presenting pins consistently with the scene)."""
-    return _n(x, y, p)
 
 
 def denorm_point(x: float, y: float, p: tuple[float, float, float, float]) -> list[float]:
@@ -129,8 +114,8 @@ def _build_rooms(floor: Floor, p: tuple[float, float, float, float]) -> list[dic
             "type": el.type,
             "area_m2": el.area_m2,
             "area_approx_pct": round(poly_area_px(el.polygon) / total_area * 100, 1),
-            "centroid": _n(cx, cy, p),
-            "bbox": _n(minx, miny, p) + _n(maxx, maxy, p),
+            "centroid": norm_point(cx, cy, p),
+            "bbox": norm_point(minx, miny, p) + norm_point(maxx, maxy, p),
             "neighbors": _neighbors(key, floor.adjacency),
         })
     return out
@@ -145,8 +130,8 @@ def _build_segments(floor: Floor, p: tuple[float, float, float, float]) -> list[
         entry: dict = {
             "id": el.id,
             "kind": el.kind,
-            "start": _n(start[0], start[1], p),
-            "end": _n(end[0], end[1], p),
+            "start": norm_point(start[0], start[1], p),
+            "end": norm_point(end[0], end[1], p),
         }
         # Add metric dimensions when scale is known
         if floor.scale_px_per_m and floor.scale_px_per_m > 0:
@@ -167,13 +152,13 @@ def _build_segments(floor: Floor, p: tuple[float, float, float, float]) -> list[
 
 def build_scene(floor: Floor) -> dict:
     """Turn a Floor into a compact, normalized scene dict for the LLM."""
-    p = _norm_params(floor)
+    p = norm_params(floor)
     return {
         "rooms": _build_rooms(floor, p),
         "segments": _build_segments(floor, p),
         "adjacency": floor.adjacency,
         "pins": [
-            {"id": a.id, "name": a.name, **dict(zip(("x", "y"), _n(a.x, a.y, p))), "note": a.note}
+            {"id": a.id, "name": a.name, **dict(zip(("x", "y"), norm_point(a.x, a.y, p))), "note": a.note}
             for a in floor.annotations
         ],
         "scale_px_per_m": floor.scale_px_per_m,
