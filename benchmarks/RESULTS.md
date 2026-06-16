@@ -116,10 +116,6 @@ semantics only) vs Claude Opus 4.8 (monolithic, geometry + semantics in one pass
 scored with the same CANON normalization, `outdoor` dropped from both predictions and GT.
 Per-plan F1 arrays feed a paired test.
 
-> The earlier Claude **Opus 4.6** semantic-only run was dropped and archived
-> (`three_way/data/claude_preds_opus46_archive/`). Only 4.8 is used here, so geometry (Section 2) and
-> semantics (Section 5) come from the same model and the same run.
-
 | model | per-plan F1 (mean ± std) | precision | recall |
 |---|---|---|---|
 | Qwen3-VL-8B (L3) | 0.451 ± 0.224 | 0.478 | 0.457 |
@@ -137,7 +133,7 @@ Wilcoxon + 10k-sample percentile bootstrap, seed 42).
 **Honest reading:** on this paired test the frontier monolithic model is **modestly but
 significantly better** on semantic F1 (≈0.07, driven mainly by higher recall; Claude finds
 more rooms). This corrects an earlier claim (made on n=3 qualitatively in
-`COMPARISON_RESULTS.md`, and on the dropped 4.6 micro-average) that the 8B "ties" the
+`COMPARISON_RESULTS.md`) that the 8B "ties" the
 frontier model. It does not tie, it loses by a small, significant margin on semantics.
 
 The thesis argument survives and is more nuanced: the 8B is **within ~0.07 F1** of a
@@ -240,7 +236,6 @@ Mask2Former runs locally on CPU in ~2s per image (effectively free after the one
 - Section 5 per-plan arrays: `three_way/data/sem_headtohead.json`; tests: `three_way/data/stats.json`.
 - Section 6 error analysis (counts / full per-class IoU / per-type F1): `three_way/results/EXTRA_RESULTS.md`,
   raw `three_way/data/extra_results.json`.
-- Archived Claude 4.6: `three_way/data/claude_preds_opus46_archive/`.
 
 ### Reproduce
 
