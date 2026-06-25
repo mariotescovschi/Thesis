@@ -194,7 +194,7 @@ collapse to ≈0.08–0.15 IoU. Reinforces Section 2: geometry is not a VLM job.
 | Semantics (what) | Claude 4.8 by ~0.07 F1 (significant); Qwen close | Section 5: 0.520 vs 0.451, p=0.012 |
 | Training value | fine-tuned ≫ untrained, > CNN | Section 1: every class |
 | OOD robustness | fine-tuned > CNN | Section 3: walls 11% vs 4% |
-| Cost | **Hybrid ~6x cheaper** | $0.014 vs $0.088 per image (semantic pass) |
+| Cost | **Hybrid ~10x cheaper** | $0.009 vs $0.088 per image (semantic pass) |
 
 The monolithic frontier model **loses decisively on geometry** and **wins modestly on
 semantics**. Because geometry is where the large, consistent gap lives, and because the
@@ -211,19 +211,19 @@ Typical CubiCasa floor plan at benchmark resolution (~1400x1000 px):
 | Image tokens (input) | ~1,867 (w*h/750) | N/A (billed by GPU-second) |
 | Prompt tokens (input) | ~800 | ~800 |
 | Output tokens | ~3,000 (full JSON) | ~2,000 (semantics only) |
-| **Cost per image** | **~$0.088** | **~$0.014** |
+| **Cost per image** | **~$0.088** | **~$0.009** |
 
-Pricing used: Claude Opus 4.8 at $5/MTok input, $25/MTok output. Qwen on Modal A100-80GB at $0.000463/s, ~30s per image.
+Pricing used: Claude Opus 4.8 at $5/MTok input, $25/MTok output. Qwen on Modal A10 (24GB) at $0.000306/s, ~30s per image.
 
 At scale:
 
 | volume | Claude Opus 4.8 | Hybrid (Qwen + Mask2Former) | savings |
 |---|---|---|---|
-| 50 plans (this benchmark) | $4.40 | $0.69 | 6x |
-| 1,000 plans | $88 | $14 | 6x |
-| 100,000 plans | **$8,800** | **$1,400** | 6x |
+| 50 plans (this benchmark) | $4.40 | $0.46 | ~10x |
+| 1,000 plans | $88 | $9 | ~10x |
+| 100,000 plans | **$8,800** | **$900** | ~10x |
 
-Mask2Former runs locally on CPU in ~2s per image (effectively free after the one-time training cost), while Claude would need to do geometry + semantics together in one expensive API call. The hybrid is both better at geometry and cheaper to run.
+Mask2Former runs locally on CPU in ~2s per image (effectively free after the one-time training cost), while Claude would need to do geometry + semantics together in one expensive API call. The hybrid is both better at geometry and ~10x cheaper to run.
 
 ---
 

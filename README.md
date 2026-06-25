@@ -1,133 +1,323 @@
-# Plan arhitectural to CAD structurat
+<div align="center">
 
-Pipeline care ia o imagine de plan arhitectural (poză, scan, PDF) și scoate o reprezentare
-structurată: poligoane de camere cu etichetă semantică, pereți, uși, ferestre, balustrade,
-plus relațiile dintre ele. Peste pipeline am construit o aplicație (Mappa) în care poți vedea
-rezultatul pe un canvas tip CAD, îl poți edita și poți vorbi cu un model local despre plan.
+# Mappa
 
-## Ce am vrut și unde am ajuns
+### Floor plan image to structured, editable CAD
 
-Ideea inițială era un pipeline cât mai general care să mapeze orice fel de plan (arhitectural
-sau nu), să îl înțeleagă spațial și, mai departe, să meargă spre planuri mai complexe. N-am
-reușit forma generală, așa că am restrâns scope-ul la planuri rezidențiale și am dus efortul
-spre ceva care chiar funcționează cap-coadă pe acest domeniu.
+Turn a photo, scan, or PDF of a residential floor plan into a structured representation:
+labeled room polygons, walls, doors, windows and railings, plus the relationships between
+them. Then view, edit, query and export it from a CAD-like canvas.
 
-Punctul de plecare a fost ideea din FloorplanVLM (fine-tuning plus RL pe un VLM care emite
-direct geometrie). Am vrut un PoC asemănător, dar mult mai mic, pe un dataset public.
+</div>
 
-## Experimentele rulate
+![Mappa: CAD-like canvas with the segmented plan, project explorer, and the analysis panel (price, rooms, relations)](docs/mappa-screenshot.png)
 
-### Faza 1: VLM direct (abandonată)
+<!-- TODO: replace with a demo video / GIF -->
+<!-- Demo video: link coming soon -->
 
-Am vrut un singur model care, din imagine, să scoată direct JSON cu coordonatele exacte ale
-camerelor, pereților, ușilor. Am antrenat pe CubiCasa5k (cam 5k planuri rezidențiale finlandeze
-adnotate manual).
+> **Status:** working end-to-end on residential floor plans. Local, single-user, no auth (by design).
+> This is a bachelor's thesis project. The engineering rationale and experiment history live in [`docs/`](docs/).
 
-- Qwen3-VL-32B, QLoRA 4-bit, r=64, pe un A100. Dădea OOM repetat pe aceeași
-  imagine mare, era prea greu pentru un singur A100 și inferența era lentă. N-am terminat niciodată
-  fine-tuning-ul și nici nu vedeam un improvement clar.
-- Qwen3-VL-8B (full bf16 și apoi retrain pe Modal). Aici am reușit să termin antrenări, loss
-  scădea, token accuracy a ajuns la ~91.5%. Problema reală: modelul învață sintaxa JSON
-  și vocabularul de tipuri de cameră, dar coordonatele erau greșite. Înțelege *ce* e în imagine,
-  nu *unde* precis.
-- Un side-test cu StarVector (image to SVG), output complet halucinant, dead end în sub 2 ore.
+---
 
-Concluzia după vreo 100 de dolari cheltuiți pe 3 platforme: VLM-urile ating token accuracy mare
-și învață formatul, dar estimează pozițiile prin raționament, nu le percep la nivel de pixel.
-FloorplanVLM raportează că merge end-to-end, dar cu un training loop (SFT plus GRPO, date masive,
-zeci de GPU-uri) care e mult peste buget.
+## Table of contents
 
-### Faza 2: pipeline hibrid (curentul)
+- [What it does](#what-it-does)
+- [Features](#features)
+- [How it works (architecture)](#how-it-works-architecture)
+- [Tech stack](#tech-stack)
+- [Repository layout](#repository-layout)
+- [Getting started](#getting-started)
+  - [Prerequisites](#1-prerequisites)
+  - [Backend (geometry + API)](#2-backend-geometry--api)
+  - [Modal (Qwen3-VL semantics)](#3-modal-qwen3-vl-semantics)
+  - [Ollama (chat + search embeddings)](#4-ollama-chat--search-embeddings)
+  - [Frontend](#5-frontend)
+  - [Run everything](#6-run-everything)
+- [Environment variables](#environment-variables)
+- [Usage walkthrough](#usage-walkthrough)
+- [Benchmarks](#benchmarks)
+- [Training & experiments](#training--experiments)
+- [Roadmap](#roadmap)
+- [License & acknowledgements](#license--acknowledgements)
 
-Am pivotat la o arhitectură unde fiecare componentă face ce știe mai bine.
+---
 
-1. Segmentare clasică cu un model Detectron2 (Mask2Former plus Swin-B), fine-tunat pe CubiCasa5k
-   pe cele 5 clase (cameră, perete, ușă, fereastră, balustradă). Asta face maparea geometrică
-   efectivă, măști precise la nivel de pixel. Rulează local pe CPU.
-2. Un layer de VLM (Qwen3-VL-8B, momentan cel simplu, prin endpoint Modal) care pune eticheta
-   semantică pe camere, compune relațiile dintre ele și aproximează suprafețele. Ăsta e și motivul
-   pentru care am păstrat modelul de 8B din faza 1: pe înțelegere spațială generală și etichetare
-   se descurcă bine pentru cât e de mic.
-3. Un layer de LLM (model local prin Ollama) folosit pentru interogare pe date și pentru a edita
-   planul prin tool-urile disponibile în aplicație. Modelul nu vede pixeli, acționează doar peste
-   o descriere de scenă normalizată (camere, segmente, adiacențe).
+## What it does
 
-Cele 3 ieșiri se fuzionează într-un Document structurat pe care aplicația îl poate desena, edita
-și exporta (DXF, SVG, JSON).
+Vision-language models read floor plans well at the *semantic* level (they know a kitchen
+is a kitchen) but place geometry by reasoning rather than perceiving it pixel-by-pixel, so
+their coordinates are unreliable. Mappa splits the problem so each component does what it is
+good at:
 
-## Ce am obținut până acum
+- a **dedicated segmentation model** owns geometry (the *where*),
+- a **vision-language model** owns semantics (the *what*),
+- a **local LLM** lets you query and edit the result in natural language.
 
-Trei suite de benchmark (detalii în `benchmarks/RESULTS.md`):
+The three outputs are fused into a single structured `Document` you can render, edit and
+export. On geometry this hybrid beats a monolithic frontier model decisively, loses only
+marginally on semantics, and costs several times less per image (see [Benchmarks](#benchmarks)).
 
-- Geometrie, hibrid vs model monolitic (Claude Opus 4.8 care încearcă tot într-o trecere): IoU
-  cameră 0.889 vs 0.672, perete 0.749 vs 0.248. Diferența la pereți e categorică. Modelul
-  monolitic scoate câteva dreptunghiuri grosolane unde segmentarea trasează scheletul real.
-- Antrenarea contează: modelul fine-tunat bate baseline-ul CNN din CubiCasa pe fiecare clasă, iar
-  varianta neantrenată (weights COCO) scorează aproape 0 pe planuri.
-- Semantică, head to head pe aceleași 50 de planuri: Claude e marginal mai bun (F1 0.520 vs 0.451,
-  p=0.012, semnificativ dar mic). Citire onestă: pierdem puțin la semantică, dar modelul nostru e
-  mic, local și ieftin.
-- Cost: hibridul e cam de 6 ori mai ieftin per imagine (~$0.014 vs ~$0.088).
-- Generalizare OOD (FloorPlanCAD, calitativ): modelul fine-tunat încă găsește pereți (~11%) unde
-  baseline-ul CNN se prăbușește (~4%).
+## Features
 
-Argumentul lucrării: hibridul câștigă decisiv pe geometrie, pierde marginal pe semantică și costă
-de câteva ori mai puțin. Împărțirea muncii e justificată.
+**Analysis pipeline**
+- Upload images (photo / scan / PDF), automatic multi-floor detection and split.
+- Pixel-precise geometry: room / wall / door / window / railing masks to polygons.
+- Semantic labeling: room types, building type, adjacency, approximate areas, layout notes.
+- Automatic scale calibration from the median door width; adjacency derived with `shapely`.
 
-## Aplicația (Mappa)
+**Interactive CAD canvas**
+- Konva-based viewer/editor: move elements, vertex editing, add walls, split rooms,
+  calibrate scale, place annotations.
+- Optimistic updates with undo/redo.
+- **Immutable base + editable overlay**: the pipeline writes the base, every edit lands in
+  the overlay, and *revert* simply discards the overlay so the base is never mutated.
 
-![Mappa: canvas tip CAD cu planul segmentat, explorer de proiecte și panou de analiză (preț, camere, relații)](docs/mappa-screenshot.png)
+**Chat over the plan**
+- Talk to a local model about a floor; it reasons over a normalized scene description
+  (rooms, segments, adjacencies), not pixels.
+- Edit commands are **proposed** with a preview and require confirmation before they apply.
 
-Aplicație locală, single-user, fără auth (deliberat). Layout pe 3 panouri: explorer de proiecte, canvas central, panou de chat plus semantică.
+**Search & pricing (real-estate use case)**
+- Natural-language search across all indexed plans (filter extraction + semantic ranking).
+- Per-floor price estimation (ridge + kNN over the index) with comparables and a verdict.
 
-Ce face acum:
-- Upload imagine, detectare și split multi-floor, analiză prin pipeline.
-- Canvas tip CAD cu editare (mută elemente, vertex edit, adaugă pereți, split de cameră,
-  calibrare scară, adnotări), optimistic updates, undo/redo.
-- Model base imutabil plus overlay editabil. Pipeline-ul scrie baza, toate editările intră în
-  overlay, revert înseamnă ștergerea overlay-ului.
-- Chat local peste descrierea de scenă, cu preview și confirm pe comenzile de editare propuse.
-- Export DXF (layere per clasă), SVG, JSON.
-- Calibrare automată a scării din lățimea mediană a ușilor, adiacențe derivate cu shapely.
+**Export**
+- DXF (one layer per class), SVG, and JSON.
 
-## Ce urmează (work in progress)
-
-Pasul final, încă neimplementat, e agregarea tuturor datelor (planuri plus alte informații legate
-de ele) ca să poți face o căutare smart peste o bază de planuri. Use-case-ul concret pe care vreau
-să-l duc la ceva palpabil e în achizițiile imobiliare: un cumpărător sau un agent să poată căuta
-prin toate variantele dintr-un database (cerințe pe număr de camere, suprafață, configurație) și
-să găsească mult mai ușor ce vrea. Documents-urile pe care le produce Mappa acum sunt deja
-input-ul perfect pentru asta.
-
-## Structura repo-ului
+## How it works (architecture)
 
 ```
-pipeline/        inferență geometrie (Mask2Former) + baseline CNN CubiCasa
+                            ┌─────────────────────────────────────────┐
+  Floor plan image  ─────▶  │                Pipeline                  │
+  (photo/scan/PDF)          │                                          │
+                            │  1. Geometry   Mask2Former + Swin-B       │  local CPU
+                            │     (detectron2, fine-tuned on CubiCasa5k)│
+                            │                                          │
+                            │  2. Semantics  Qwen3-VL-8B                │  Modal GPU endpoint
+                            │     (room types, adjacency, notes)        │
+                            │                                          │
+                            │  3. Merge, autoscale, adjacency           │
+                            └───────────────────┬─────────────────────┘
+                                                │
+                                                ▼
+                                     Structured Document
+                                  (rooms, walls, links, ...)
+                                                │
+              ┌─────────────────────────────────┼─────────────────────────────────┐
+              ▼                                 ▼                                 ▼
+       CAD canvas (edit)              Chat / query (Ollama LLM)            Search + pricing
+        + DXF/SVG/JSON                 over normalized scene text          (Ollama embeddings)
+```
+
+The app is a 3-pane SPA (**sidebar** for projects/explorer, **center** for the image/canvas,
+**right** for chat/semantics) talking to a FastAPI backend over a small REST API.
+
+Request flow on the backend is strictly **Route → Service → Store**, with all filesystem I/O
+isolated in a single store module. See [`app/docs/repo-map.md`](app/docs/repo-map.md) for the
+full module map and REST contract.
+
+## Tech stack
+
+| Layer       | Tech |
+|-------------|------|
+| Frontend    | React 19, Vite 8, TypeScript 6, TanStack Query 5, Zustand 5, Tailwind v4, shadcn/ui (Radix), react-konva, lucide-react, sonner. Package manager: **bun**. |
+| Backend     | FastAPI, uvicorn, Python 3.10 (pyenv), Pydantic v2, httpx, shapely, ezdxf. |
+| Geometry    | PyTorch + detectron2 / Mask2Former (Swin-B), runs locally on CPU. |
+| Semantics   | Qwen3-VL-8B served via a **Modal** GPU endpoint. |
+| Chat & search | Local **Ollama** models (chat LLM + `nomic-embed-text` embeddings). |
+
+Storage is the filesystem (a `project.json` manifest plus per-floor folders). No database,
+no auth, deliberately.
+
+## Repository layout
+
+```
+app/                 Mappa application (frontend SPA + FastAPI backend)
+  frontend/          React SPA  (see app/docs/frontend-standards.md)
+  backend/           FastAPI    (see app/docs/backend-standards.md)
+  docs/repo-map.md   single source of truth for where things live in the app
+pipeline/            standalone geometry inference (Mask2Former) + CNN baseline
 experiments/
-  mask2former_training/   antrenare model geometrie (dataset build, evaluate, config)
-  vlm_finetuning/         faza 1 abandonată (notițe, config de referință)
-benchmarks/      cele 3 suite (before_after, generalization, three_way) + RESULTS.md
-app/             aplicația Mappa (frontend + backend), vezi app/docs/repo-map.md
-studies/         papers de referință + note
-docs/            EXPERIMENT_HISTORY.md (istoricul rulărilor, costuri, decizii), references.md
-vendor/          Mask2Former + CubiCasa5k (upstream, vendorizate)
-model/           model_final.pth (greutățile antrenate)
+  mask2former_training/   geometry model training (dataset build, evaluate, config)
+  vlm_finetuning/         abandoned Phase 1 (notes + reference config)
+benchmarks/          three suites (before_after, generalization, three_way) + RESULTS.md
+docs/                EXPERIMENT_HISTORY.md, references.md, PROJECT_JOURNEY.ro.md
+studies/             reference papers + notes
+vendor/              Mask2Former + CubiCasa5k (vendored upstream)
+model/               model_final.pth (trained geometry weights)
 ```
 
-## Rulare rapidă
+## Getting started
 
-Aplicația (din `app/`):
+Mappa has three external pieces to set up: the **local geometry stack** (PyTorch +
+detectron2), a **Modal** endpoint for semantics, and **Ollama** for chat/search. You can run
+the app without Modal/Ollama configured, in which case those features degrade gracefully
+(semantics returns empty, chat/search surface a clean error), but the full experience needs
+all three.
+
+### 1. Prerequisites
+
+- **Python 3.10** (the project uses `pyenv` 3.10.15). The geometry stack (`torch`,
+  `detectron2`, `opencv-python`, `numpy`) is expected to already be available in that
+  interpreter, so do **not** reinstall it into a fresh venv.
+- **bun** (frontend package manager / dev server).
+- **Modal** account + CLI (for Qwen3-VL semantics).
+- **Ollama** (for chat and search embeddings).
+- The trained geometry weights at `model/extracted/model_final.pth`. These are large and
+  tracked via Git LFS; run `git lfs pull` if the file is a pointer after cloning.
+
+### 2. Backend (geometry + API)
 
 ```bash
-cd app/frontend && bun install && bun run dev      # SPA pe :5173
-cd app/backend  && python3 -m uvicorn main:app --reload   # API pe :8000
+cd app/backend
+pip install -r requirements.txt   # app-level deps only (FastAPI, httpx, shapely, ezdxf...)
+python3 -c "import main"           # sanity import, must succeed
+python3 -m uvicorn main:app --reload --port 8000
 ```
 
-Inferența de geometrie standalone:
+The geometry model runs on CPU. Mask2Former's `MSDeformAttn` op has a CPU fallback patch in
+`vendor/Mask2Former/.../ops/functions/ms_deform_attn_func.py` (the `HAS_CUDA_MSDA` flag).
+Keep it; it is required for CPU inference.
+
+To run geometry inference standalone (no app):
 
 ```bash
 python3 pipeline/mask2former_infer.py
 ```
 
-Benchmark-urile sunt re-rulabile, scripturile sunt în `benchmarks/*/`. Detalii și tabele complete
-în `benchmarks/RESULTS.md` și `docs/EXPERIMENT_HISTORY.md`. Orice experiment poate fi refacut pe orice set de date.
+### 3. Modal (Qwen3-VL semantics)
+
+The semantics step calls a Qwen3-VL-8B model on a Modal A100. The Modal app definition lives
+in [`app/backend/infra/qwen_endpoint.py`](app/backend/infra/qwen_endpoint.py).
+
+```bash
+pip install modal
+modal token new                                  # one-time auth
+modal deploy app/backend/infra/qwen_endpoint.py  # deploy the GPU endpoint
+```
+
+`modal deploy` prints a public URL. Put it in `app/backend/.env`:
+
+```dotenv
+QWEN_ENDPOINT=https://<your-modal-app>--qwen-floorplan-semantics-model-analyze.modal.run
+```
+
+If `QWEN_ENDPOINT` is **unset**, the backend instead invokes the Modal function directly via
+the SDK (still requires `modal token new`). If Modal is unavailable, semantics degrades to an
+empty result and the pipeline still produces geometry.
+
+### 4. Ollama (chat + search embeddings)
+
+```bash
+ollama serve                     # start the local server (default :11434)
+ollama pull gemma4:12b           # chat model (matches OLLAMA_MODEL below)
+ollama pull nomic-embed-text     # embeddings for search
+```
+
+### 5. Frontend
+
+```bash
+cd app/frontend
+bun install
+bun run dev                      # SPA on http://localhost:5173
+```
+
+The frontend expects the API on `http://localhost:8000` (CORS is configured for the Vite dev
+origins).
+
+### 6. Run everything
+
+From the repo root you can start backend + frontend together:
+
+```bash
+bun run dev:all        # or: bash scripts/dev-all.sh   (Ctrl+C stops both)
+```
+
+Individual targets: `bun run dev:api` (uvicorn) and `bun run dev:web` (vite).
+
+**Done gate** (used to verify a change is complete):
+
+```bash
+cd app/frontend && bun run lint && bun run build
+cd app/backend  && python3 -c "import main"
+```
+
+## Environment variables
+
+App-level config lives in `app/backend/.env`:
+
+| Variable            | Purpose                                              | Default              |
+|---------------------|------------------------------------------------------|----------------------|
+| `QWEN_ENDPOINT`     | Deployed Modal URL for semantics (unset = call Modal SDK directly) | (none) |
+| `OLLAMA_MODEL`      | Chat model name                                      | `gemma3`             |
+| `OLLAMA_THINK`      | Toggle reasoning for thinking-capable models (`false` = faster, cleaner JSON) | unset |
+| `OLLAMA_EMBED_MODEL`| Embedding model for search                           | `nomic-embed-text`   |
+| `OLLAMA_HOST`       | Ollama server base URL                               | `http://localhost:11434` |
+| `OLLAMA_TIMEOUT`    | Ollama request timeout (seconds)                     | `120`                |
+| `FPS_ROOT`          | Where project folders are stored                     | `~/MappaProjects`    |
+
+> The repo-root `.env` holds **training/experiment** credentials only (HuggingFace token, AWS
+> account/region/S3, SageMaker role). It is **not** needed to run the app and should never be
+> committed with real values.
+
+## Usage walkthrough
+
+1. **Create a project** and upload one or more floor-plan images.
+2. **Analyze**: the pipeline detects/splits floors, runs geometry + semantics, and merges
+   them into a structured `Document` (status is reported per floor).
+3. **Inspect & edit** on the canvas: move elements, edit vertices, add walls, split rooms,
+   calibrate scale, add annotations. Edits go to the overlay; *revert* restores the pipeline base.
+4. **Chat** about the floor; the model proposes edit commands you can preview and confirm.
+5. **Set prices and search** across your indexed plans (rooms, area, configuration), with a
+   per-floor price estimate and comparables.
+6. **Export** to DXF, SVG, or JSON.
+
+## Benchmarks
+
+Three reproducible suites; full tables and methodology in
+[`benchmarks/RESULTS.md`](benchmarks/RESULTS.md). Headline numbers:
+
+| Question | Result |
+|----------|--------|
+| Geometry: hybrid vs monolithic (Claude Opus 4.8) | room IoU **0.889 vs 0.672**, wall IoU **0.749 vs 0.248** |
+| Does training help? | fine-tuned Mask2Former beats the CubiCasa CNN baseline on **every** class; untrained (COCO) ≈ 0 |
+| Semantics head-to-head (n=50, paired) | Claude modestly ahead: F1 **0.520 vs 0.451** (p=0.012), small but significant |
+| Cost per image | hybrid is roughly **6-10x cheaper** (~$0.009-$0.014 vs ~$0.088) |
+| OOD generalization (FloorPlanCAD) | fine-tuned still finds walls (~11%) where the CNN baseline collapses (~4%) |
+
+**The argument:** the hybrid wins decisively on geometry, loses marginally on semantics, and
+costs several times less. The division of labour is justified. Each suite under
+`benchmarks/*/` is re-runnable; see the reproduce commands in `benchmarks/RESULTS.md`.
+
+## Training & experiments
+
+The hybrid design is the result of a deliberate pivot away from an end-to-end VLM approach.
+The full story (run-by-run history, infrastructure lessons, and costs of ~$100 across three
+platforms on the abandoned Phase 1) is preserved in:
+
+- [`docs/EXPERIMENT_HISTORY.md`](docs/EXPERIMENT_HISTORY.md): chronological record of every
+  run, decision and cost.
+- [`experiments/mask2former_training/README.md`](experiments/mask2former_training/README.md):
+  how the geometry model was trained (dataset build, config, hyperparameters).
+- [`experiments/vlm_finetuning/README.md`](experiments/vlm_finetuning/README.md): the
+  abandoned Phase 1 VLM fine-tuning, kept for reference.
+- [`docs/PROJECT_JOURNEY.ro.md`](docs/PROJECT_JOURNEY.ro.md): the original project narrative
+  (Romanian).
+
+## Roadmap
+
+- Aggregate plans plus related metadata into a richer, queryable database to make the
+  real-estate search use case (find variants by rooms / area / configuration) genuinely
+  practical at scale.
+- Demo video.
+
+## License & acknowledgements
+
+Bachelor's thesis project. Built on vendored upstream work:
+
+- [Mask2Former](https://github.com/facebookresearch/Mask2Former) (geometry backbone).
+- [CubiCasa5k](https://github.com/CubiCasa/CubiCasa5k) (training dataset + CNN baseline).
+
+Semantics use Qwen3-VL; chat and embeddings use local Ollama models. See
+[`docs/references.md`](docs/references.md) and [`studies/`](studies/) for the reference papers.
