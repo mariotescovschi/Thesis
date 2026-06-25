@@ -31,7 +31,7 @@ PROMPT = (
     '  "rooms": [{"label": "<as written>", "type_en": "<controlled vocabulary>", "area_m2": <number or null>}],\n'
     '  "adjacency": [{"from": "<label>", "to": "<label>"}],\n'
     '  "vertical_circulation": "stairs|none|...",\n'
-    '  "notes": "1-3 sentences describing the overall layout and how spaces relate"\n'
+    '  "notes": "2-4 sentences: overall layout character, open-plan areas (rooms sharing doors or lacking separating walls), natural light level (many windows = bright/luminous), connectivity (rooms reachable from a single hub), flow between spaces"\n'
     "}\n"
     "Read the labels and m2-areas exactly as written. Return valid JSON only."
 )

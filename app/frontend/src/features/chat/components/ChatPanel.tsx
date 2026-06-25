@@ -59,7 +59,7 @@ const TabbedPanel = ({ projectId, floorId }: TabbedPanelProps) => {
         ))}
       </div>
 
-      <div className="min-h-0 flex-1">
+      <div className="min-h-0 flex-1 overflow-hidden">
         {tab === 'overview' ? (
           <div className="h-full overflow-y-auto">
             <SemanticSummary projectId={projectId} floorId={floorId} />

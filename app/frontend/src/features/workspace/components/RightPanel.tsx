@@ -26,7 +26,7 @@ export const RightPanel = () => {
           <PanelRightClose />
         </Button>
       </header>
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="min-h-0 flex-1 overflow-hidden">
         <ChatPanel projectId={projectId} activeFile={activeFile} />
       </div>
     </aside>

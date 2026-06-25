@@ -35,7 +35,7 @@ export const AppShell = () => {
     : `${sidebarWidth}px auto minmax(0, 1fr) auto`;
 
   return (
-    <div className="grid h-full w-full overflow-hidden" style={{ gridTemplateColumns: cols }}>
+    <div className="grid h-full w-full overflow-hidden" style={{ gridTemplateColumns: cols, gridTemplateRows: 'minmax(0, 1fr)' }}>
       <Sidebar collapsed={collapsed} onToggleCollapse={() => setCollapsed((c) => !c)} />
       {!collapsed && (
         <div

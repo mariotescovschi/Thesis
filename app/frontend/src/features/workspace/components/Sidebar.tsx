@@ -53,7 +53,7 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
   }
 
   return (
-    <aside className="flex h-full flex-col border-r border-border bg-card/40">
+    <aside className="flex h-full flex-col overflow-hidden border-r border-border bg-card/40">
       <header className="flex h-12 items-center justify-between border-b border-border px-3">
         <img src="/Logo.png" alt="Mappa" className="h-7 w-auto" />
         <button
@@ -81,7 +81,7 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
         </button>
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-3">
+      <nav className="min-h-0 flex-1 overflow-y-auto px-3">
         <p className="px-1 pb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Projects
         </p>
