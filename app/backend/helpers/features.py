@@ -138,4 +138,6 @@ def describe_floor(floor: Floor) -> str:
     if types:
         parts.append("rooms: " + ", ".join(types))
     parts.append(f"{int(f['door_count'])} doors, {int(f['window_count'])} windows")
+    if floor.notes:
+        parts.append(floor.notes)
     return "; ".join(parts)

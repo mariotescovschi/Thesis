@@ -1,9 +1,9 @@
 """Search service: natural-language query over the derived plan index.
 
-The LLM turns the query into structured numeric filters; the query is embedded for
-semantic ranking; helpers.search_query.rank() does the deterministic filter + rank.
-Degrades to filter-only (and unranked) when Ollama / embeddings are unavailable —
-search must never hard-fail just because a model is offline.
+The LLM turns the query into structured numeric filters + keywords; the query is
+embedded for semantic ranking; helpers.search_query.rank() does the deterministic
+filter + rank. Degrades to filter-only (and unranked) when Ollama / embeddings are
+unavailable — search must never hard-fail just because a model is offline.
 """
 import json
 from typing import Optional
@@ -17,11 +17,14 @@ _SYSTEM = (
     "Extract structured real-estate search filters from the user's query. Reply "
     "with STRICT JSON only, using any of these OPTIONAL keys: "
     '{"area_min","area_max","price_min","price_max","bedrooms","rooms_min",'
-    '"building_type"}. Areas are in m2; prices numeric; bedrooms/rooms_min integers; '
-    "building_type one of apartment|house|office|commercial. Omit keys you cannot "
-    "confidently infer. Return {} if none apply."
+    '"windows_min","doors_min","building_type","keywords"}. Areas are in m2; prices '
+    "numeric; bedrooms/rooms_min/windows_min/doors_min integers; building_type one of "
+    "apartment|house|office|commercial; keywords is a list of feature/amenity terms "
+    'the user wants (e.g. ["sauna","balcony","floor heating"]). '
+    "Omit keys you cannot confidently infer. Return {} if none apply."
 )
-_NUMERIC = {"area_min", "area_max", "price_min", "price_max", "bedrooms", "rooms_min"}
+_NUMERIC = {"area_min", "area_max", "price_min", "price_max", "bedrooms", "rooms_min",
+            "windows_min", "doors_min"}
 
 
 def _extract_filters(query: str) -> dict:
@@ -42,6 +45,10 @@ def _extract_filters(query: str) -> dict:
             out[k] = float(v)
         elif k == "building_type" and isinstance(v, str) and v.strip():
             out[k] = v.strip().lower()
+        elif k == "keywords" and isinstance(v, list):
+            kws = [s.strip().lower() for s in v if isinstance(s, str) and s.strip()]
+            if kws:
+                out["keywords"] = kws
     return out
 
 
@@ -57,13 +64,15 @@ def search(query: str, top_k: int = 20) -> dict:
     query = (query or "").strip()
     records = index_store.all_records()
     if not query:
-        return {"query": query, "filters": {}, "semantic": False,
-                "results": rank(records, None, {}, top_k)}
+        return {"query": query, "filters": {}, "keywords": [], "semantic": False,
+                "results": rank(records, None, {}, [], top_k)}
     filters = _extract_filters(query)
+    keywords = filters.pop("keywords", [])
     q_emb = _embed_query(query)
     return {
         "query": query,
         "filters": filters,
+        "keywords": keywords,
         "semantic": q_emb is not None,
-        "results": rank(records, q_emb, filters, top_k),
+        "results": rank(records, q_emb, filters, keywords, top_k),
     }

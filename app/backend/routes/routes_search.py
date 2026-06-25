@@ -20,3 +20,15 @@ class SearchBody(BaseModel):
 def post_search(body: SearchBody) -> dict:
     """Return plans ranked for the query (filters + semantic score + price/verdict data)."""
     return {"data": search.search(body.query, body.top_k)}
+
+
+@router.post("/rebuild-index")
+def rebuild_index() -> dict:
+    """Rebuild the search index from all output documents, re-embedding descriptions."""
+    import infra.index_store as index_store
+    import infra.embeddings as embeddings
+    try:
+        count = index_store.rebuild(embed=embeddings.embed)
+    except Exception:  # noqa: BLE001 degrade to no-vector rebuild
+        count = index_store.rebuild()
+    return {"data": {"records": count}}

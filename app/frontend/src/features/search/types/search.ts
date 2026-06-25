@@ -9,11 +9,14 @@ export interface SearchResult {
   currency: string;
   description?: string | null;
   score: number;
+  match: 'exact' | 'semantic';
+  matched_keywords: string[];
 }
 
 export interface SearchResponse {
   query: string;
   filters: Record<string, number | string>;
+  keywords: string[];
   semantic: boolean;
   results: SearchResult[];
 }
